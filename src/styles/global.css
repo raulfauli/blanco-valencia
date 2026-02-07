@@ -1,6 +1,8 @@
 @import "tailwindcss";
 
-@import "@fontsource/poppins";
+@import "@fontsource/poppins/400.css";
+@import "@fontsource/poppins/700.css";
+@import "@fontsource/poppins/900.css";
 
 @theme {
   --color-background: #e4e2dd;
