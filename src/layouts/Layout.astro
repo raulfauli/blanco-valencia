@@ -1,0 +1,22 @@
+---
+import Footer from "../components/Footer.astro";
+
+import "../styles/global.css";
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="icon" href="/favicon.ico" />
+		<title>Blanco Valencia</title>
+	</head>
+	<body class="min-h-screen flex flex-col">
+		<div class="max-w-7xl mx-auto px-10 py-16">
+			<slot />
+			<Footer />
+		</div>
+	</body>
+</html>
