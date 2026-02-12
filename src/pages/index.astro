@@ -1,5 +1,6 @@
 ---
 import Layout from '~/layouts/Layout.astro';
+import Pillars from '../components/Pillars.astro';
 ---
 
 <Layout>
@@ -40,40 +41,7 @@ import Layout from '~/layouts/Layout.astro';
         </div>
       </header>
 
-      <!-- Pillars -->
-      <div
-        class="grid grid-cols-4 gap-0 mb-16 border-t-2 border-b-2 border-black py-8 lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-1"
-      >
-        <div
-          class="text-left border-r border-gray-400 px-8 last:border-r-0 md:border-b md:last:border-b-0 md:py-5 sm:border-r-0 sm:border-b sm:py-5"
-        >
-          <div class="text-6xl font-black mb-5 leading-none">1</div>
-          <div class="text-[15px] font-bold mb-1 leading-tight">Filosofía + Coaching</div>
-          <div class="text-sm font-normal text-gray-600">de fortalezas, libros</div>
-        </div>
-
-        <div
-          class="text-left border-r border-gray-400 px-8 last:border-r-0 md:border-b md:last:border-b-0 md:py-5 sm:border-r-0 sm:border-b sm:py-5"
-        >
-          <div class="text-6xl font-black mb-5 leading-none">2</div>
-          <div class="text-[15px] font-bold mb-1 leading-tight">Relatos y experiencias</div>
-          <div class="text-sm font-normal text-gray-600">personales</div>
-        </div>
-
-        <div
-          class="text-left border-r border-gray-400 px-8 last:border-r-0 md:border-b md:last:border-b-0 md:py-5 sm:border-r-0 sm:border-b sm:py-5"
-        >
-          <div class="text-6xl font-black mb-5 leading-none">3</div>
-          <div class="text-[15px] font-bold mb-1 leading-tight">Autoanálisis + Estrategia y</div>
-          <div class="text-sm font-normal text-gray-600">puesta en práctica.</div>
-        </div>
-
-        <div class="text-left px-8 md:py-5 sm:border-b-0 sm:py-5">
-          <div class="text-6xl font-black mb-5 leading-none">4</div>
-          <div class="text-[15px] font-bold mb-1 leading-tight">Referentes de cambio y</div>
-          <div class="text-sm font-normal text-gray-600">Aprendizaje</div>
-        </div>
-      </div>
+      <Pillars />
 
       <!-- Hero Image -->
       <div class="mb-20">
