@@ -16,4 +16,15 @@ const cultura = defineCollection({
     }),
 });
 
-export const collections = { cultura };
+const fortalezas = defineCollection({
+  // Load Markdown and MDX files in the `src/content/fortalezas/` directory.
+  loader: glob({ base: "./src/content/fortalezas", pattern: "**/*.{md,mdx}" }),
+  // Type-check frontmatter using a schema
+  schema: z.object({
+    title: z.string(),
+    description: z.string(),
+    image: z.string(),
+  }),
+});
+
+export const collections = { cultura, fortalezas };

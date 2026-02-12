@@ -1,0 +1,21 @@
+---
+import { getCollection } from "astro:content";
+import Layout from "../../layouts/Layout.astro";
+
+const fortalezas = await getCollection("fortalezas");
+---
+
+<Layout title="Fortalezas">
+  <h1>Fortalezas</h1>
+  <ul>
+    {
+      fortalezas.map((fortaleza) => (
+        <li>
+          <img src={fortaleza.data.image} alt={fortaleza.data.title} style="width: 100px; height: auto;" />
+          <a href={`/fortalezas/${fortaleza.slug}`}>{fortaleza.data.title}</a>
+          <p>{fortaleza.data.description}</p>
+        </li>
+      ))
+    }
+  </ul>
+</Layout>

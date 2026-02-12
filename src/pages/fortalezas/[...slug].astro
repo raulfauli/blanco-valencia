@@ -1,0 +1,20 @@
+---
+import { getCollection } from "astro:content";
+import Layout from "../../layouts/Layout.astro";
+
+export async function getStaticPaths() {
+  const allFortalezas = await getCollection("fortalezas");
+  return allFortalezas.map((fortaleza) => ({
+    params: { slug: fortaleza.slug },
+    props: { fortaleza },
+  }));
+}
+
+const { fortaleza } = Astro.props;
+---
+
+<Layout title={fortaleza.data.title}>
+  <h1>{fortaleza.data.title}</h1>
+  <img src={fortaleza.data.image} alt={fortaleza.data.title} />
+  <p>{fortaleza.data.description}</p>
+</Layout>
