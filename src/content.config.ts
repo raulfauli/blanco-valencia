@@ -1,9 +1,9 @@
 import { defineCollection, z } from "astro:content";
 import { glob } from "astro/loaders";
 
-const culturaOnline = defineCollection({
-  // Load Markdown and MDX files in the `src/content/cultura-online/` directory.
-  loader: glob({ base: "./src/content/cultura-online", pattern: "**/*.{md,mdx}" }),
+const cultura = defineCollection({
+  // Load Markdown and MDX files in the `src/content/cultura/` directory.
+  loader: glob({ base: "./src/content/cultura", pattern: "**/*.{md,mdx}" }),
   // Type-check frontmatter using a schema
   schema: ({ image }) =>
     z.object({
@@ -16,4 +16,4 @@ const culturaOnline = defineCollection({
     }),
 });
 
-export const collections = { culturaOnline };
+export const collections = { cultura };
