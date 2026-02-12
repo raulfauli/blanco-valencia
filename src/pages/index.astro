@@ -1,6 +1,9 @@
 ---
 import Layout from '~/layouts/Layout.astro';
 import Pillars from '../components/Pillars.astro';
+import { getCollection } from 'astro:content';
+
+const posts = (await getCollection('culturaOnline')).sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime());
 ---
 
 <Layout>
@@ -56,58 +59,26 @@ import Pillars from '../components/Pillars.astro';
       <section class="my-20">
         <h2 class="text-5xl font-black mb-10 uppercase">Cultura Online</h2>
         <div class="grid grid-cols-3 gap-10 mb-16 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1">
-          <div class="bg-white/30 overflow-hidden transition-transform hover:-translate-y-1">
-            <img
-              src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='250'%3E%3Crect fill='%23999' width='400' height='250'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='sans-serif' font-size='16' fill='%23666'%3EImagen noticia%3C/text%3E%3C/svg%3E"
-              alt="Noticia"
-              class="w-full h-[250px] object-cover grayscale"
-            />
-            <div class="p-8">
-              <div class="text-xs font-bold tracking-wider text-gray-600 mb-4">12 DIC 2025</div>
-              <h3 class="text-[22px] font-bold mb-4 leading-tight">
-                La importancia de la pausa en el desarrollo personal
-              </h3>
-              <p class="text-[15px] leading-relaxed text-gray-700">
-                Descubre cómo el ritmo pausado puede ser tu mayor fortaleza en el camino hacia el autoconocimiento
-                profundo.
-              </p>
+          {posts.slice(0, 3).map(post => (
+            <div class="bg-white/30 overflow-hidden transition-transform hover:-translate-y-1">
+              <img
+                src={post.data.heroImage.src}
+                alt={post.data.title}
+                class="w-full h-[250px] object-cover grayscale"
+              />
+              <div class="p-8">
+                <div class="text-xs font-bold tracking-wider text-gray-600 mb-4">
+                  {post.data.pubDate.toLocaleDateString('es-ES', { day: 'numeric', month: 'short', year: 'numeric' }).toUpperCase()}
+                </div>
+                <h3 class="text-[22px] font-bold mb-4 leading-tight">
+                  <a href={`/cultura-online/${post.id}/`} class="hover:opacity-60 transition-opacity">{post.data.title}</a>
+                </h3>
+                <p class="text-[15px] leading-relaxed text-gray-700">
+                  {post.data.description}
+                </p>
+              </div>
             </div>
-          </div>
-
-          <div class="bg-white/30 overflow-hidden transition-transform hover:-translate-y-1">
-            <img
-              src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='250'%3E%3Crect fill='%23999' width='400' height='250'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='sans-serif' font-size='16' fill='%23666'%3EImagen noticia%3C/text%3E%3C/svg%3E"
-              alt="Noticia"
-              class="w-full h-[250px] object-cover grayscale"
-            />
-            <div class="p-8">
-              <div class="text-xs font-bold tracking-wider text-gray-600 mb-4">05 DIC 2025</div>
-              <h3 class="text-[22px] font-bold mb-4 leading-tight">
-                Nuevos enfoques en coaching de fortalezas humanas
-              </h3>
-              <p class="text-[15px] leading-relaxed text-gray-700">
-                Exploramos metodologías innovadoras que ponen el foco en tus capacidades naturales y cómo potenciarlas.
-              </p>
-            </div>
-          </div>
-
-          <div class="bg-white/30 overflow-hidden transition-transform hover:-translate-y-1">
-            <img
-              src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='250'%3E%3Crect fill='%23999' width='400' height='250'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='sans-serif' font-size='16' fill='%23666'%3EImagen noticia%3C/text%3E%3C/svg%3E"
-              alt="Noticia"
-              class="w-full h-[250px] object-cover grayscale"
-            />
-            <div class="p-8">
-              <div class="text-xs font-bold tracking-wider text-gray-600 mb-4">28 NOV 2025</div>
-              <h3 class="text-[22px] font-bold mb-4 leading-tight">
-                Referentes que inspiran: historias de transformación
-              </h3>
-              <p class="text-[15px] leading-relaxed text-gray-700">
-                Conoce casos reales de personas que han encontrado su camino a través del autoanálisis y la práctica
-                consciente.
-              </p>
-            </div>
-          </div>
+          ))}
         </div>
       </section>
 

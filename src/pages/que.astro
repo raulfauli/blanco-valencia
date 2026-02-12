@@ -1,61 +1,109 @@
 ---
 import Layout from "~/layouts/Layout.astro";
 import Pillars from "../components/Pillars.astro";
-
 ---
 
 <Layout>
-    <!-- Header Bar -->
-    <div class="bg-black py-5 px-10 flex justify-between items-center">
-        <a href=/" class="text-2xl font-black text-background no-underline tracking-wide">BLANCO VALENCIA</a>
-        <a href="/" class="text-background no-underline text-[13px] font-semibold tracking-wide uppercase transition-opacity hover:opacity-70">← Volver al inicio</a>
+  <!-- Header Bar -->
+  <div class="flex items-center justify-between bg-black px-10 py-5">
+    <a href='/"' class="text-background text-2xl font-black tracking-wide no-underline">BLANCO VALENCIA</a>
+    <a
+      href="/"
+      class="text-background text-[13px] font-semibold tracking-wide uppercase no-underline transition-opacity hover:opacity-70"
+      >← Volver al inicio</a
+    >
+  </div>
+
+  <Pillars />
+
+  <!-- Article Container -->
+  <article class="mx-auto max-w-4xl px-10 py-20">
+    <!-- Article Intro -->
+    <div class="mb-12 text-[22px] leading-relaxed font-normal text-gray-800 md:text-xl">
+      QUÉ → la dirección, el sentido y la posibilidad
     </div>
 
-    <Pillars />
-
-    <!-- Article Container -->
-    <article class="max-w-4xl mx-auto py-20 px-10">
-        <!-- Article Intro -->
-        <div class="text-[22px] font-normal leading-relaxed mb-12 text-gray-800 md:text-xl">
-            QUÉ → la dirección, el sentido y la posibilidad
-        </div>
-
-        <!-- Article Content -->
-        <div class="text-lg leading-loose text-gray-900">
-        <p>Muchas personas llegan a este punto con una sensación contradictoria.<br>Por un lado, saben que algo podría ser distinto.<br>Por otro, se sienten cansadas, desorientadas o con la energía dispersa, como si llevaran demasiado tiempo sosteniendo una vida que no termina de encajar.</p>
-<p><strong>Despues de mirarte con más claridad  cuando empiezas a recuperar una relación más equilibrada contigo, aparece una pregunta que no se puede evitar:</strong>  </p>
-<p><strong>¿qué estás haciendo con tu vida ahora mismo y hacia dónde te estás dirigiendo?</strong></p>
-<p>La fase <em>Qué</em> aparece cuando empiezas a preguntarte, con honestidad:<br><strong>¿esto que estoy viviendo me representa de verdad?</strong><br>¿O simplemente he seguido adelante sin pararme a revisar si el rumbo sigue siendo mío?</p>
-<p>Aquí suelen aparecer dudas muy humanas:</p>
-<ul>
-<li>“No sé qué quiero, pero sé que así no.” ¿Que estas persiguiendo realmente?</li>
-<li>“Antes tenía ilusión y ahora voy en automático.” ¿ que objetivos te mueven y cuales te desgastan?</li>
-<li>“Tengo capacidades, pero no sé dónde ponerlas.”  ¿Donde estas invirtiendo tu tiempo, tu talento y tu energía?</li>
-<li>“Siento que podría vivir con más sentido, pero no sé por dónde empezar.”¿ Y si lo que llamas meta hoy, responde más a una decisión propia o a una adaptación prolongada?</li>
-</ul>
-<p>En esta fase no se busca una respuesta perfecta.<br>Se abre <strong>la posibilidad de volver a ilusionarte de forma realista</strong>, Se trata de <strong>revisar la coherencia entre lo que haces y lo que eres</strong>, entre tus valores, tus capacidades y la vida que estás construyendo. Conectando con aquello que te activa, te da energía y te devuelve sensación de dirección.</p>
-<p>Exploramos qué te mueve hoy, no lo que debería moverte.<br>Qué te da vitalidad y qué te la roba.<br>Dónde estás poniendo tu talento y si ese lugar te devuelve sentido, crecimiento y coherencia.</p>
-<p>Trabajamos con el talento entendido como aquello que se activa cuando utilizas tus fortalezas de forma alineada, no como una exigencia de rendimiento ni como una identidad que te atrape.</p>
-<p>No hablamos de metas idealizadas ni de encontrar un propósito definitivo.<br>Hablamos de <strong>reconectar con una dirección que tenga sentido para ti ahora</strong>, una dirección que puedas imaginar sin que te genere presión o miedo inmediato.</p>
-<p>Cuando el <em>qué</em> empieza a ordenarse, algo cambia de forma natural:<br>la energía deja de estar tan dispersa,<br>aparece más claridad,<br>y con ella, una motivación distinta, más serena, más tuya.</p>
-<p>No es euforia.<br>Es <strong>la alegría tranquila de sentir que vuelves a avanzar hacia algo que te incluye</strong>.</p>
-<p>La fase <em>Qué</em> abre ese espacio:<br>el de empezar a imaginar una vida más alineada, sin forzarla,<br>pero sabiendo que <strong>sí es posible construirla paso a paso</strong>. Hay alegría sin ruido.</p>
-<hr>
-<ul>
-<li><strong>QUÉ</strong>  como fase  <strong>aparece como consecuencia natural</strong>:<br>  cuando recuperas un poco de claridad interna, <strong>emerge la pregunta por la dirección</strong>.<br>  No desde la exigencia, sino desde   la posibilidad.</li>
-</ul>
-<p>primero me entiendo → luego me pregunto hacia dónde voy.</p>
-<p><strong>Lo que hace especialmente bien el QUÉ</strong></p>
-<ul>
-<li>No niega el cansancio que aparece en el QUIÉN</li>
-<li>No introduce una alegría impostada</li>
-<li>La alegría que aparece es <strong>posible, no obligatoria</strong></li>
-<li><p>No dice “vas a conseguirlo”, dice:</p>
-</li>
-<li><p><strong>QUÉ</strong> → <em>“empiezo a imaginar algo distinto”</em></p>
-</li>
-</ul>
-        </div>
-
-    </article>
+    <!-- Article Content -->
+    <div class="text-lg leading-loose text-gray-900">
+      <p>
+        Muchas personas llegan a este punto con una sensación contradictoria.<br />Por un lado, saben que algo podría
+        ser distinto.<br />Por otro, se sienten cansadas, desorientadas o con la energía dispersa, como si llevaran
+        demasiado tiempo sosteniendo una vida que no termina de encajar.
+      </p>
+      <p>
+        <strong
+          >Despues de mirarte con más claridad cuando empiezas a recuperar una relación más equilibrada contigo, aparece
+          una pregunta que no se puede evitar:</strong
+        >
+      </p>
+      <p><strong>¿qué estás haciendo con tu vida ahora mismo y hacia dónde te estás dirigiendo?</strong></p>
+      <p>
+        La fase <em>Qué</em> aparece cuando empiezas a preguntarte, con honestidad:<br /><strong
+          >¿esto que estoy viviendo me representa de verdad?</strong
+        ><br />¿O simplemente he seguido adelante sin pararme a revisar si el rumbo sigue siendo mío?
+      </p>
+      <p>Aquí suelen aparecer dudas muy humanas:</p>
+      <ul>
+        <li>“No sé qué quiero, pero sé que así no.” ¿Que estas persiguiendo realmente?</li>
+        <li>“Antes tenía ilusión y ahora voy en automático.” ¿ que objetivos te mueven y cuales te desgastan?</li>
+        <li>
+          “Tengo capacidades, pero no sé dónde ponerlas.” ¿Donde estas invirtiendo tu tiempo, tu talento y tu energía?
+        </li>
+        <li>
+          “Siento que podría vivir con más sentido, pero no sé por dónde empezar.”¿ Y si lo que llamas meta hoy,
+          responde más a una decisión propia o a una adaptación prolongada?
+        </li>
+      </ul>
+      <p>
+        En esta fase no se busca una respuesta perfecta.<br />Se abre <strong
+          >la posibilidad de volver a ilusionarte de forma realista</strong
+        >, Se trata de <strong>revisar la coherencia entre lo que haces y lo que eres</strong>, entre tus valores, tus
+        capacidades y la vida que estás construyendo. Conectando con aquello que te activa, te da energía y te devuelve
+        sensación de dirección.
+      </p>
+      <p>
+        Exploramos qué te mueve hoy, no lo que debería moverte.<br />Qué te da vitalidad y qué te la roba.<br />Dónde
+        estás poniendo tu talento y si ese lugar te devuelve sentido, crecimiento y coherencia.
+      </p>
+      <p>
+        Trabajamos con el talento entendido como aquello que se activa cuando utilizas tus fortalezas de forma alineada,
+        no como una exigencia de rendimiento ni como una identidad que te atrape.
+      </p>
+      <p>
+        No hablamos de metas idealizadas ni de encontrar un propósito definitivo.<br />Hablamos de <strong
+          >reconectar con una dirección que tenga sentido para ti ahora</strong
+        >, una dirección que puedas imaginar sin que te genere presión o miedo inmediato.
+      </p>
+      <p>
+        Cuando el <em>qué</em> empieza a ordenarse, algo cambia de forma natural:<br />la energía deja de estar tan
+        dispersa,<br />aparece más claridad,<br />y con ella, una motivación distinta, más serena, más tuya.
+      </p>
+      <p>
+        No es euforia.<br />Es <strong
+          >la alegría tranquila de sentir que vuelves a avanzar hacia algo que te incluye</strong
+        >.
+      </p>
+      <p>
+        La fase <em>Qué</em> abre ese espacio:<br />el de empezar a imaginar una vida más alineada, sin forzarla,<br
+        />pero sabiendo que <strong>sí es posible construirla paso a paso</strong>. Hay alegría sin ruido.
+      </p>
+      <hr />
+      <ul>
+        <li>
+          <strong>QUÉ</strong> como fase <strong>aparece como consecuencia natural</strong>:<br /> cuando recuperas un poco
+          de claridad interna, <strong>emerge la pregunta por la dirección</strong>.<br /> No desde la exigencia, sino desde
+          la posibilidad.
+        </li>
+      </ul>
+      <p>primero me entiendo → luego me pregunto hacia dónde voy.</p>
+      <p><strong>Lo que hace especialmente bien el QUÉ</strong></p>
+      <ul>
+        <li>No niega el cansancio que aparece en el QUIÉN</li>
+        <li>No introduce una alegría impostada</li>
+        <li>La alegría que aparece es <strong>posible, no obligatoria</strong></li>
+        <li><p>No dice “vas a conseguirlo”, dice:</p></li>
+        <li><p><strong>QUÉ</strong> → <em>“empiezo a imaginar algo distinto”</em></p></li>
+      </ul>
+    </div>
+  </article>
 </Layout>
