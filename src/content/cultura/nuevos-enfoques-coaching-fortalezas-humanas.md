@@ -34,6 +34,18 @@ Itatur? Quiatae cullecum rem ent aut odis in re eossequodi nonsequ idebis ne sap
 ### Syntax
 
 ```markdown
+[External link](https://play.tailwindcss.com/uj1vGACRJA?layout=preview)
+```
+
+### Output
+
+[External link](https://play.tailwindcss.com/uj1vGACRJA?layout=preview)
+
+## Images
+
+### Syntax
+
+```markdown
 ![Alt text](./full/or/relative/path/of/image)
 ```
 
