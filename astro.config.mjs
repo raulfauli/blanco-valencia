@@ -9,6 +9,8 @@ import rehypeExternalLinks from 'rehype-external-links';
 // https://astro.build/config
 export default defineConfig({
   site: 'https://blancovalencia.com',
+  base: '/beta/',
+  outDir: './dist/beta',
   integrations: [mdx(), sitemap()],
   markdown: {
     rehypePlugins: [

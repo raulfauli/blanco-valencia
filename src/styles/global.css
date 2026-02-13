@@ -14,3 +14,7 @@ body {
   font-family: "Poppins", sans-serif;
   background-color: var(--color-background);
 }
+
+.stretched-link {
+  @apply after:absolute after:inset-0;
+}

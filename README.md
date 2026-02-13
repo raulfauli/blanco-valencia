@@ -51,3 +51,10 @@ Feel free to check [our documentation](https://docs.astro.build) or jump into ou
 pnpm run build
 rsync -avz -e 'ssh -o StrictHostKeyChecking=no' --delete dist/* ubuntu@178.33.163.91:/var/www/blancovalencia.com
 ```
+
+## Deploy Beta
+
+```bash
+pnpm run build
+rsync -avz -e 'ssh -o StrictHostKeyChecking=no' --delete dist/beta ubuntu@178.33.163.91:/var/www/blancovalencia.com
+```
