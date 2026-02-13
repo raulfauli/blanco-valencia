@@ -2,7 +2,6 @@
 title: "La importancia de la pausa en el desarrollo personal."
 description: "Descubre cómo el ritmo pausado puede ser tu mayor fortaleza en el camino hacia el autoconocimiento profundo"
 pubDate: "2025-12-12"
-updatedDate: "Dec 12 2025"
 heroImage: "~/assets/cultura/importancia-pausa-desarrollo-personal.jpg"
 ---
 

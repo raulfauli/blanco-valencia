@@ -1,7 +1,6 @@
 @layer theme, base, components, utilities;
-@import "tailwindcss/theme.css" layer(theme);
-@import "tailwindcss/preflight.css" layer(base);
-@import "tailwindcss/utilities.css" layer(utilities);
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
 
 @import "@fontsource/poppins/400.css";
 @import "@fontsource/poppins/700.css";
