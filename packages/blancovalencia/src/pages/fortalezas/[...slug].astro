@@ -5,7 +5,7 @@ import Layout from "../../layouts/Layout.astro";
 export async function getStaticPaths() {
   const allFortalezas = await getCollection("fortalezas");
   return allFortalezas.map((fortaleza) => ({
-    params: { slug: fortaleza.slug },
+    params: { slug: fortaleza.id },
     props: { fortaleza },
   }));
 }
