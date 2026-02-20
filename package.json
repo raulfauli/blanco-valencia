@@ -5,10 +5,8 @@
 	],
 	"type": "module",
 	"scripts": {
-		"dev:blancovalencia": "bun run --cwd packages/blancovalencia dev",
-		"build:blancovalencia": "bun run --cwd packages/blancovalencia build",
-		"dev:espinosa": "bun run --cwd packages/espinosa dev",
-		"build:espinosa": "bun run --cwd packages/espinosa build"
+		"astro:blancovalencia": "bun run --cwd packages/blancovalencia astro",
+		"astro:espinosa": "bun run --cwd packages/espinosa astro"
 	},
 	"devDependencies": {
 		"@types/bun": "latest",
