@@ -1,68 +1,77 @@
 ---
 import Layout from "~/layouts/Layout.astro";
-
 ---
 
 <Layout>
-    <!-- Header Bar -->
-    <div class="bg-black py-5 px-10">
-        <a href="/" class="text-2xl font-black text-[#e4e2dd] no-underline tracking-wide">BLANCO VALENCIA</a>
-    </div>
+	<!-- Header Bar -->
+	<div class="bg-black px-10 py-5">
+		<a href="/" class="text-2xl font-black tracking-wide text-[#e4e2dd] no-underline">BLANCO VALENCIA</a>
+	</div>
 
-    <!-- Error Container -->
-    <div class="flex-1 flex items-center justify-center py-10 px-5">
-        <div class="text-center max-w-4xl">
-            <!-- Error Number -->
-            <div class="text-[200px] font-black leading-none tracking-tighter mb-5 opacity-10 md:text-[120px]">404</div>
+	<!-- Error Container -->
+	<div class="flex flex-1 items-center justify-center px-5 py-10">
+		<div class="max-w-4xl text-center">
+			<!-- Error Number -->
+			<div class="mb-5 text-[200px] leading-none font-black tracking-tighter opacity-10 md:text-[120px]">404</div>
 
-            <!-- Error Title -->
-            <h1 class="text-[56px] font-black mb-8 tracking-tight leading-tight md:text-4xl">Esta página no existe</h1>
+			<!-- Error Title -->
+			<h1 class="mb-8 text-[56px] leading-tight font-black tracking-tight md:text-4xl">Esta página no existe</h1>
 
-            <!-- Error Message -->
-            <p class="text-xl leading-loose mb-5 text-gray-700 font-light md:text-lg">
-                A veces, perderse es parte del camino. La página que buscas no está aquí,
-                pero tal vez esto sea una invitación a explorar otros horizontes.
-            </p>
+			<!-- Error Message -->
+			<p class="mb-5 text-xl leading-loose font-light text-gray-700 md:text-lg">
+				A veces, perderse es parte del camino. La página que buscas no está aquí, pero tal vez esto sea una invitación a
+				explorar otros horizontes.
+			</p>
 
-            <!-- Error Quote -->
-            <div class="text-lg italic my-10 text-gray-600 py-8 px-8 border-l-4 border-black text-left max-w-2xl mx-auto">
-                "No todos los que deambulan están perdidos. A veces, el desvío nos lleva exactamente donde necesitamos estar."
-            </div>
+			<!-- Error Quote -->
+			<div class="mx-auto my-10 max-w-2xl border-l-4 border-black px-8 py-8 text-left text-lg text-gray-600 italic">
+				"No todos los que deambulan están perdidos. A veces, el desvío nos lleva exactamente donde necesitamos estar."
+			</div>
 
-            <!-- Button Group -->
-            <div class="flex gap-5 justify-center mt-12 flex-wrap">
-                <a href="/" class="inline-block py-5 px-10 text-sm font-bold tracking-widest uppercase no-underline transition-all border-2 border-black bg-black text-[#e4e2dd] hover:bg-transparent hover:text-black">
-                    Volver al inicio
-                </a>
-                <a href="#" class="inline-block py-5 px-10 text-sm font-bold tracking-widest uppercase no-underline transition-all border-2 border-black bg-transparent text-black hover:bg-black hover:text-[#e4e2dd]">
-                    Explorar artículos
-                </a>
-            </div>
+			<!-- Button Group -->
+			<div class="mt-12 flex flex-wrap justify-center gap-5">
+				<a
+					href="/"
+					class="inline-block border-2 border-black bg-black px-10 py-5 text-sm font-bold tracking-widest text-[#e4e2dd] uppercase no-underline transition-all hover:bg-transparent hover:text-black"
+				>
+					Volver al inicio
+				</a>
+				<a
+					href="#"
+					class="inline-block border-2 border-black bg-transparent px-10 py-5 text-sm font-bold tracking-widest text-black uppercase no-underline transition-all hover:bg-black hover:text-[#e4e2dd]"
+				>
+					Explorar artículos
+				</a>
+			</div>
 
-            <!-- Suggestions -->
-            <div class="mt-20 pt-16 border-t border-gray-400">
-                <h2 class="text-2xl font-bold mb-8 uppercase tracking-wide">Mientras tanto, puedes explorar</h2>
+			<!-- Suggestions -->
+			<div class="mt-20 border-t border-gray-400 pt-16">
+				<h2 class="mb-8 text-2xl font-bold tracking-wide uppercase">Mientras tanto, puedes explorar</h2>
 
-                <div class="grid grid-cols-3 gap-8 mt-10 text-left md:grid-cols-1">
-                    <a href="#" class="no-underline text-black p-6 bg-white/30 transition-transform hover:-translate-y-1">
-                        <div class="text-5xl font-black mb-4 opacity-30">1</div>
-                        <div class="text-lg font-bold mb-3">Filosofía + Coaching</div>
-                        <div class="text-sm text-gray-600 leading-relaxed">Descubre nuestro enfoque en fortalezas y libros recomendados</div>
-                    </a>
+				<div class="mt-10 grid grid-cols-3 gap-8 text-left md:grid-cols-1">
+					<a href="#" class="bg-white/30 p-6 text-black no-underline transition-transform hover:-translate-y-1">
+						<div class="mb-4 text-5xl font-black opacity-30">1</div>
+						<div class="mb-3 text-lg font-bold">Filosofía + Coaching</div>
+						<div class="text-sm leading-relaxed text-gray-600">
+							Descubre nuestro enfoque en fortalezas y libros recomendados
+						</div>
+					</a>
 
-                    <a href="#" class="no-underline text-black p-6 bg-white/30 transition-transform hover:-translate-y-1">
-                        <div class="text-5xl font-black mb-4 opacity-30">2</div>
-                        <div class="text-lg font-bold mb-3">Cultura Online</div>
-                        <div class="text-sm text-gray-600 leading-relaxed">Lee nuestros artículos más recientes sobre desarrollo personal</div>
-                    </a>
+					<a href="#" class="bg-white/30 p-6 text-black no-underline transition-transform hover:-translate-y-1">
+						<div class="mb-4 text-5xl font-black opacity-30">2</div>
+						<div class="mb-3 text-lg font-bold">Cultura Online</div>
+						<div class="text-sm leading-relaxed text-gray-600">
+							Lee nuestros artículos más recientes sobre desarrollo personal
+						</div>
+					</a>
 
-                    <a href="#" class="no-underline text-black p-6 bg-white/30 transition-transform hover:-translate-y-1">
-                        <div class="text-5xl font-black mb-4 opacity-30">3</div>
-                        <div class="text-lg font-bold mb-3">Solicitar Cita</div>
-                        <div class="text-sm text-gray-600 leading-relaxed">Agenda una sesión de coaching personalizada</div>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
+					<a href="#" class="bg-white/30 p-6 text-black no-underline transition-transform hover:-translate-y-1">
+						<div class="mb-4 text-5xl font-black opacity-30">3</div>
+						<div class="mb-3 text-lg font-bold">Solicitar Cita</div>
+						<div class="text-sm leading-relaxed text-gray-600">Agenda una sesión de coaching personalizada</div>
+					</a>
+				</div>
+			</div>
+		</div>
+	</div>
 </Layout>

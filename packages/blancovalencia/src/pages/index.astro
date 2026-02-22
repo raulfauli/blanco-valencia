@@ -8,288 +8,195 @@ const posts = (await getCollection("cultura")).sort((a, b) => b.data.pubDate.get
 ---
 
 <Layout>
-  <div class="container m-auto my-10">
-    <!-- Header -->
-    <header class="mb-10 text-center">
-      <div class="mb-10">
-        <div class="text-[13px] font-normal tracking-widest text-gray-600 uppercase">
-          La ciencia al servicio del bienestar humano
-        </div>
-      </div>
+	<div class="container m-auto my-10">
+		<!-- Header -->
+		<header class="mb-10 text-center">
+			<div class="mb-10">
+				<div class="text-[13px] font-normal tracking-widest text-gray-600 uppercase">
+					La ciencia al servicio del bienestar humano
+				</div>
+			</div>
 
-      <h1
-        class="mb-5 text-[140px] leading-[0.9] font-black tracking-tight uppercase sm:text-[60px] md:text-[100px] lg:text-[140px]"
-      >
-        BLANCO<br />VALENCIA<span class="align-super text-[40px]">®</span>
-      </h1>
+			<h1
+				class="mb-5 text-[140px] leading-[0.9] font-black tracking-tight uppercase sm:text-[60px] md:text-[100px] lg:text-[140px]"
+			>
+				BLANCO<br />VALENCIA<span class="align-super text-[40px]">®</span>
+			</h1>
 
-      <div class="mb-16 flex items-center justify-between pb-5">
-        <a
-          href="/fortalezas"
-          class="text-[15px] font-bold tracking-wider uppercase transition-opacity hover:opacity-60"
-        >
-          Fortalezas Humanas
-        </a>
-        <a href="/proposito" class="text-[15px] font-bold tracking-wider uppercase transition-opacity hover:opacity-60">
-          Propósito Real
-        </a>
-        <a href="/cultura" class="text-[15px] font-bold tracking-wider uppercase transition-opacity hover:opacity-60">
-          Cultura Online.
-        </a>
-      </div>
-    </header>
+			<div class="mb-16 flex items-center justify-between pb-5">
+				<a
+					href="/fortalezas"
+					class="text-[15px] font-bold tracking-wider uppercase transition-opacity hover:opacity-60"
+				>
+					Fortalezas Humanas
+				</a>
+				<a href="/proposito" class="text-[15px] font-bold tracking-wider uppercase transition-opacity hover:opacity-60">
+					Propósito Real
+				</a>
+				<a href="/cultura" class="text-[15px] font-bold tracking-wider uppercase transition-opacity hover:opacity-60">
+					Cultura Online.
+				</a>
+			</div>
+		</header>
 
-    <Pillars />
+		<Pillars />
 
-    <!-- Hero Image -->
-    <div class="mb-20">
-      <img
-        src={heroImage.src}
-        alt="Surfista con tabla"
-        class="h-[700px] w-full object-cover contrast-110 grayscale sm:h-[400px] md:h-[500px]"
-      />
-    </div>
+		<!-- Hero Image -->
+		<div class="mb-20">
+			<img
+				src={heroImage.src}
+				alt="Surfista con tabla"
+				class="h-[700px] w-full object-cover contrast-110 grayscale sm:h-[400px] md:h-[500px]"
+			/>
+		</div>
 
-    <!-- News Section -->
-    <section class="my-20">
-      <h2 class="mb-10 text-5xl font-black uppercase">Cultura Online</h2>
-      <div class="mb-16 grid grid-cols-3 gap-10 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-        {
-          posts.slice(0, 3).map((post) => (
-            <div class="relative overflow-hidden bg-white/30 transition-transform hover:-translate-y-1">
-              <img src={post.data.heroImage.src} alt={post.data.title} class="h-[250px] w-full object-cover" />
-              <div class="p-8">
-                <div class="mb-4 text-xs font-bold tracking-wider text-gray-600">
-                  {post.data.pubDate
-                    .toLocaleDateString("es-ES", {
-                      day: "numeric",
-                      month: "short",
-                      year: "numeric",
-                    })
-                    .toUpperCase()}
-                </div>
-                <h3 class="mb-4 text-[22px] leading-tight font-bold">
-                  <a href={`/cultura/${post.id}/`} class="stretched-link transition-opacity hover:opacity-60">
-                    {post.data.title}
-                  </a>
-                </h3>
-                <p class="text-[15px] leading-relaxed text-gray-700">{post.data.description}</p>
-              </div>
-            </div>
-          ))
-        }
-      </div>
-    </section>
+		<!-- News Section -->
+		<section class="my-20">
+			<h2 class="mb-10 text-5xl font-black uppercase">Cultura Online</h2>
+			<div class="mb-16 grid grid-cols-3 gap-10 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+				{
+					posts.slice(0, 3).map((post) => (
+						<div class="relative overflow-hidden bg-white/30 transition-transform hover:-translate-y-1">
+							<img src={post.data.heroImage.src} alt={post.data.title} class="h-[250px] w-full object-cover" />
+							<div class="p-8">
+								<div class="mb-4 text-xs font-bold tracking-wider text-gray-600">
+									{post.data.pubDate
+										.toLocaleDateString("es-ES", {
+											day: "numeric",
+											month: "short",
+											year: "numeric",
+										})
+										.toUpperCase()}
+								</div>
+								<h3 class="mb-4 text-[22px] leading-tight font-bold">
+									<a href={`/cultura/${post.id}/`} class="stretched-link transition-opacity hover:opacity-60">
+										{post.data.title}
+									</a>
+								</h3>
+								<p class="text-[15px] leading-relaxed text-gray-700">{post.data.description}</p>
+							</div>
+						</div>
+					))
+				}
+			</div>
+		</section>
 
-    <!-- Testimonials Section -->
-    <section class="my-20">
-      <h2 class="mb-10 text-5xl font-black uppercase">Opiniones</h2>
-      <div class="mb-16 text-center text-lg tracking-wider text-gray-600 uppercase">
-        Trabajando para quienes prefieren ir despacio, pero llegar profundo
-      </div>
-      <div class="mb-16 grid grid-cols-2 gap-10 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-2">
-        <!-- Testimonial 1 -->
-        <div class="flex gap-8 bg-white/50 p-10 transition-all hover:-translate-y-1 hover:shadow-2xl">
-          <div class="h-20 w-20 flex-shrink-0 overflow-hidden rounded-full bg-gray-400">
-            <img
-              src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80'%3E%3Ccircle cx='40' cy='40' r='40' fill='%23999'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='sans-serif' font-size='32' fill='%23666'%3EMG%3C/text%3E%3C/svg%3E"
-              alt="María García"
-              class="h-full w-full object-cover grayscale"
-            />
-          </div>
-          <div class="flex-1">
-            <div class="mb-4 flex items-start justify-between">
-              <div class="flex-1">
-                <div class="mb-1 text-base font-bold">María García</div>
-                <div class="mb-3 text-[13px] text-gray-600">Directora de Marketing</div>
-                <div class="mb-4 flex gap-1">
-                  <span class="text-lg">★</span>
-                  <span class="text-lg">★</span>
-                  <span class="text-lg">★</span>
-                  <span class="text-lg">★</span>
-                  <span class="text-lg">★</span>
-                </div>
-              </div>
-            </div>
-            <div class="text-[15px] leading-relaxed text-gray-800">
-              "Trabajar con Vicente cambió mi perspectiva sobre lo que significa crecer profesionalmente. No busca
-              resultados rápidos sino transformaciones reales. Su enfoque en las fortalezas me ayudó a reconocer
-              capacidades que ni siquiera sabía que tenía."
-            </div>
-          </div>
-        </div>
+		<!-- Testimonials Section -->
+		<section class="my-20">
+			<h2 class="mb-10 text-5xl font-black uppercase">Opiniones</h2>
+			<div class="mb-16 text-center text-lg tracking-wider text-gray-600 uppercase">
+				Trabajando para quienes prefieren ir despacio, pero llegar profundo
+			</div>
+			<div class="mb-16 grid grid-cols-2 gap-10 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-2">
+				<!-- Testimonial 1 -->
+				<div class="flex gap-8 bg-white/50 p-10 transition-all hover:-translate-y-1 hover:shadow-2xl">
+					<div class="h-20 w-20 flex-shrink-0 overflow-hidden rounded-full bg-gray-400">
+						<img
+							src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80'%3E%3Ccircle cx='40' cy='40' r='40' fill='%23999'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='sans-serif' font-size='32' fill='%23666'%3EMG%3C/text%3E%3C/svg%3E"
+							alt="María García"
+							class="h-full w-full object-cover grayscale"
+						/>
+					</div>
+					<div class="flex-1">
+						<div class="mb-4 flex items-start justify-between">
+							<div class="flex-1">
+								<div class="mb-1 text-base font-bold">María García</div>
+								<div class="mb-3 text-[13px] text-gray-600">Directora de Marketing</div>
+								<div class="mb-4 flex gap-1">
+									<span class="text-lg">★</span>
+									<span class="text-lg">★</span>
+									<span class="text-lg">★</span>
+									<span class="text-lg">★</span>
+									<span class="text-lg">★</span>
+								</div>
+							</div>
+						</div>
+						<div class="text-[15px] leading-relaxed text-gray-800">
+							"Trabajar con Vicente cambió mi perspectiva sobre lo que significa crecer profesionalmente. No busca
+							resultados rápidos sino transformaciones reales. Su enfoque en las fortalezas me ayudó a reconocer
+							capacidades que ni siquiera sabía que tenía."
+						</div>
+					</div>
+				</div>
 
-        <!-- Testimonial 2 -->
-        <div class="flex gap-8 bg-white/50 p-10 transition-all hover:-translate-y-1 hover:shadow-2xl">
-          <div class="h-20 w-20 flex-shrink-0 overflow-hidden rounded-full bg-gray-400">
-            <img
-              src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80'%3E%3Ccircle cx='40' cy='40' r='40' fill='%23999'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='sans-serif' font-size='32' fill='%23666'%3ECR%3C/text%3E%3C/svg%3E"
-              alt="Carlos Ruiz"
-              class="h-full w-full object-cover grayscale"
-            />
-          </div>
-          <div class="flex-1">
-            <div class="mb-4 flex items-start justify-between">
-              <div class="flex-1">
-                <div class="mb-1 text-base font-bold">Carlos Ruiz</div>
-                <div class="mb-3 text-[13px] text-gray-600">Emprendedor</div>
-                <div class="mb-4 flex gap-1">
-                  <span class="text-lg">★</span>
-                  <span class="text-lg">★</span>
-                  <span class="text-lg">★</span>
-                  <span class="text-lg">★</span>
-                  <span class="text-lg">★</span>
-                </div>
-              </div>
-            </div>
-            <div class="text-[15px] leading-relaxed text-gray-800">
-              "El proceso fue profundo y revelador. Vicente tiene la habilidad de hacer las preguntas correctas en el
-              momento correcto. Su paciencia y su enfoque pausado fueron exactamente lo que necesitaba para encontrar
-              claridad en medio del caos."
-            </div>
-          </div>
-        </div>
+				<!-- Testimonial 2 -->
+				<div class="flex gap-8 bg-white/50 p-10 transition-all hover:-translate-y-1 hover:shadow-2xl">
+					<div class="h-20 w-20 flex-shrink-0 overflow-hidden rounded-full bg-gray-400">
+						<img
+							src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80'%3E%3Ccircle cx='40' cy='40' r='40' fill='%23999'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='sans-serif' font-size='32' fill='%23666'%3ECR%3C/text%3E%3C/svg%3E"
+							alt="Carlos Ruiz"
+							class="h-full w-full object-cover grayscale"
+						/>
+					</div>
+					<div class="flex-1">
+						<div class="mb-4 flex items-start justify-between">
+							<div class="flex-1">
+								<div class="mb-1 text-base font-bold">Carlos Ruiz</div>
+								<div class="mb-3 text-[13px] text-gray-600">Emprendedor</div>
+								<div class="mb-4 flex gap-1">
+									<span class="text-lg">★</span>
+									<span class="text-lg">★</span>
+									<span class="text-lg">★</span>
+									<span class="text-lg">★</span>
+									<span class="text-lg">★</span>
+								</div>
+							</div>
+						</div>
+						<div class="text-[15px] leading-relaxed text-gray-800">
+							"El proceso fue profundo y revelador. Vicente tiene la habilidad de hacer las preguntas correctas en el
+							momento correcto. Su paciencia y su enfoque pausado fueron exactamente lo que necesitaba para encontrar
+							claridad en medio del caos."
+						</div>
+					</div>
+				</div>
 
-        <!-- Testimonial 3 -->
-        <div class="flex gap-8 bg-white/50 p-10 transition-all hover:-translate-y-1 hover:shadow-2xl">
-          <div class="h-20 w-20 flex-shrink-0 overflow-hidden rounded-full bg-gray-400">
-            <img
-              src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80'%3E%3Ccircle cx='40' cy='40' r='40' fill='%23999'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='sans-serif' font-size='32' fill='%23666'%3EAM%3C/text%3E%3C/svg%3E"
-              alt="Ana Martínez"
-              class="h-full w-full object-cover grayscale"
-            />
-          </div>
-          <div class="flex-1">
-            <div class="mb-4 flex items-start justify-between">
-              <div class="flex-1">
-                <div class="mb-1 text-base font-bold">Ana Martínez</div>
-                <div class="mb-3 text-[13px] text-gray-600">Psicóloga</div>
-                <div class="mb-4 flex gap-1">
-                  <span class="text-lg">★</span>
-                  <span class="text-lg">★</span>
-                  <span class="text-lg">★</span>
-                  <span class="text-lg">★</span>
-                  <span class="text-lg">★</span>
-                </div>
-              </div>
-            </div>
-            <div class="text-[15px] leading-relaxed text-gray-800">
-              "Después de años probando diferentes métodos, finalmente encontré en este enfoque algo auténtico. No es
-              coaching tradicional; es una invitación a conocerte de verdad. Los resultados llegan, pero de una forma
-              más sólida y duradera."
-            </div>
-          </div>
-        </div>
+				<!-- Testimonial 3 -->
+				<div class="flex gap-8 bg-white/50 p-10 transition-all hover:-translate-y-1 hover:shadow-2xl">
+					<div class="h-20 w-20 flex-shrink-0 overflow-hidden rounded-full bg-gray-400">
+						<img
+							src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80'%3E%3Ccircle cx='40' cy='40' r='40' fill='%23999'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='sans-serif' font-size='32' fill='%23666'%3EAM%3C/text%3E%3C/svg%3E"
+							alt="Ana Martínez"
+							class="h-full w-full object-cover grayscale"
+						/>
+					</div>
+					<div class="flex-1">
+						<div class="mb-4 flex items-start justify-between">
+							<div class="flex-1">
+								<div class="mb-1 text-base font-bold">Ana Martínez</div>
+								<div class="mb-3 text-[13px] text-gray-600">Psicóloga</div>
+								<div class="mb-4 flex gap-1">
+									<span class="text-lg">★</span>
+									<span class="text-lg">★</span>
+									<span class="text-lg">★</span>
+									<span class="text-lg">★</span>
+									<span class="text-lg">★</span>
+								</div>
+							</div>
+						</div>
+						<div class="text-[15px] leading-relaxed text-gray-800">
+							"Después de años probando diferentes métodos, finalmente encontré en este enfoque algo auténtico. No es
+							coaching tradicional; es una invitación a conocerte de verdad. Los resultados llegan, pero de una forma
+							más sólida y duradera."
+						</div>
+					</div>
+				</div>
+			</div>
 
-        <!-- Testimonial 4 -->
-        <div class="flex gap-8 bg-white/50 p-10 transition-all hover:-translate-y-1 hover:shadow-2xl">
-          <div class="h-20 w-20 flex-shrink-0 overflow-hidden rounded-full bg-gray-400">
-            <img
-              src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80'%3E%3Ccircle cx='40' cy='40' r='40' fill='%23999'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='sans-serif' font-size='32' fill='%23666'%3EJL%3C/text%3E%3C/svg%3E"
-              alt="Javier López"
-              class="h-full w-full object-cover grayscale"
-            />
-          </div>
-          <div class="flex-1">
-            <div class="mb-4 flex items-start justify-between">
-              <div class="flex-1">
-                <div class="mb-1 text-base font-bold">Javier López</div>
-                <div class="mb-3 text-[13px] text-gray-600">Consultor de Negocios</div>
-                <div class="mb-4 flex gap-1">
-                  <span class="text-lg">★</span>
-                  <span class="text-lg">★</span>
-                  <span class="text-lg">★</span>
-                  <span class="text-lg">★</span>
-                  <span class="text-lg">★</span>
-                </div>
-              </div>
-            </div>
-            <div class="text-[15px] leading-relaxed text-gray-800">
-              "Lo que más valoro es la honestidad. Vicente no te dice lo que quieres oír, te ayuda a descubrir lo que
-              necesitas saber. Su metodología basada en fortalezas me dio herramientas prácticas que uso todos los
-              días."
-            </div>
-          </div>
-        </div>
-
-        <!-- Testimonial 5 -->
-        <div class="flex gap-8 bg-white/50 p-10 transition-all hover:-translate-y-1 hover:shadow-2xl">
-          <div class="h-20 w-20 flex-shrink-0 overflow-hidden rounded-full bg-gray-400">
-            <img
-              src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80'%3E%3Ccircle cx='40' cy='40' r='40' fill='%23999'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='sans-serif' font-size='32' fill='%23666'%3ELS%3C/text%3E%3C/svg%3E"
-              alt="Laura Sánchez"
-              class="h-full w-full object-cover grayscale"
-            />
-          </div>
-          <div class="flex-1">
-            <div class="mb-4 flex items-start justify-between">
-              <div class="flex-1">
-                <div class="mb-1 text-base font-bold">Laura Sánchez</div>
-                <div class="mb-3 text-[13px] text-gray-600">Arquitecta</div>
-                <div class="mb-4 flex gap-1">
-                  <span class="text-lg">★</span>
-                  <span class="text-lg">★</span>
-                  <span class="text-lg">★</span>
-                  <span class="text-lg">★</span>
-                  <span class="text-lg">★</span>
-                </div>
-              </div>
-            </div>
-            <div class="text-[15px] leading-relaxed text-gray-800">
-              "Buscaba coaching y encontré un proceso de autodescubrimiento. La filosofía de ir despacio pero llegar
-              profundo no es solo un eslogan, es realmente cómo funciona. Recomiendo este proceso a cualquiera que
-              busque cambio genuino."
-            </div>
-          </div>
-        </div>
-
-        <!-- Testimonial 6 -->
-        <div class="flex gap-8 bg-white/50 p-10 transition-all hover:-translate-y-1 hover:shadow-2xl">
-          <div class="h-20 w-20 flex-shrink-0 overflow-hidden rounded-full bg-gray-400">
-            <img
-              src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80'%3E%3Ccircle cx='40' cy='40' r='40' fill='%23999'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='sans-serif' font-size='32' fill='%23666'%3ERF%3C/text%3E%3C/svg%3E"
-              alt="Roberto Fernández"
-              class="h-full w-full object-cover grayscale"
-            />
-          </div>
-          <div class="flex-1">
-            <div class="mb-4 flex items-start justify-between">
-              <div class="flex-1">
-                <div class="mb-1 text-base font-bold">Roberto Fernández</div>
-                <div class="mb-3 text-[13px] text-gray-600">Director de Operaciones</div>
-                <div class="mb-4 flex gap-1">
-                  <span class="text-lg">★</span>
-                  <span class="text-lg">★</span>
-                  <span class="text-lg">★</span>
-                  <span class="text-lg">★</span>
-                  <span class="text-lg">★</span>
-                </div>
-              </div>
-            </div>
-            <div class="text-[15px] leading-relaxed text-gray-800">
-              "Vicente me ayudó a transitar una etapa profesional complicada con una perspectiva completamente nueva. Su
-              capacidad para conectar filosofía, estrategia práctica y autoconocimiento es única. Fue exactamente lo que
-              necesitaba."
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- CTA Section -->
-    <section class="my-20 bg-black/5 px-16 py-20 text-center">
-      <h2 class="mb-8 text-[56px] leading-tight font-black uppercase sm:text-[36px] md:text-[42px] lg:text-[56px]">
-        ¿Listo para comenzar<br />tu proceso?
-      </h2>
-      <p class="mx-auto mb-10 max-w-3xl text-lg leading-relaxed">
-        Agenda una sesión de coaching online conmigo. Trabajaremos juntos para identificar tus fortalezas, diseñar
-        estrategias personalizadas y avanzar hacia tus objetivos con profundidad y autenticidad.
-      </p>
-      <a
-        href="#contacto"
-        class="inline-block border-2 border-black bg-black px-16 py-5 text-base font-bold tracking-widest text-[#e4e2dd] uppercase transition-all hover:bg-transparent hover:text-black"
-        >Solicitar una cita</a
-      >
-    </section>
-  </div>
+			<!-- CTA Section -->
+			<section class="my-20 bg-black/5 px-16 py-20 text-center">
+				<h2 class="mb-8 text-[56px] leading-tight font-black uppercase sm:text-[36px] md:text-[42px] lg:text-[56px]">
+					¿Listo para comenzar<br />tu proceso?
+				</h2>
+				<p class="mx-auto mb-10 max-w-3xl text-lg leading-relaxed">
+					Agenda una sesión de coaching online conmigo. Trabajaremos juntos para identificar tus fortalezas, diseñar
+					estrategias personalizadas y avanzar hacia tus objetivos con profundidad y autenticidad.
+				</p>
+				<a
+					href="#contacto"
+					class="inline-block border-2 border-black bg-black px-16 py-5 text-base font-bold tracking-widest text-[#e4e2dd] uppercase transition-all hover:bg-transparent hover:text-black"
+					>Solicitar una cita</a
+				>
+			</section>
+		</section>
+	</div>
 </Layout>
