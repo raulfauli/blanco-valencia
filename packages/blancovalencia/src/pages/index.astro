@@ -17,10 +17,8 @@ const posts = (await getCollection("cultura")).sort((a, b) => b.data.pubDate.get
 				</div>
 			</div>
 
-			<h1
-				class="mb-5 text-[140px] leading-[0.9] font-black tracking-tight uppercase sm:text-[60px] md:text-[100px] lg:text-[140px]"
-			>
-				BLANCO<br />VALENCIA<span class="align-super text-[40px]">®</span>
+			<h1 class="mb-5 text-7xl leading-none font-black tracking-tight uppercase sm:text-8xl md:text-9xl">
+				BLANCO<br />VALENCIA<span class="align-super text-4xl">®</span>
 			</h1>
 
 			<div class="mb-16 flex items-center justify-between pb-5">
@@ -53,7 +51,7 @@ const posts = (await getCollection("cultura")).sort((a, b) => b.data.pubDate.get
 		<!-- News Section -->
 		<section class="my-20">
 			<h2 class="mb-10 text-5xl font-black uppercase">Cultura Online</h2>
-			<div class="mb-16 grid grid-cols-3 gap-10 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+			<div class="mb-16 grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-3">
 				{
 					posts.slice(0, 3).map((post) => (
 						<div class="relative overflow-hidden bg-white/30 transition-transform hover:-translate-y-1">
