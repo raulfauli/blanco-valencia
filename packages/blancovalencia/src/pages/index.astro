@@ -51,10 +51,12 @@ const posts = (await getCollection("cultura")).sort((a, b) => b.data.pubDate.get
 		<!-- News Section -->
 		<section class="my-20">
 			<h2 class="mb-10 text-5xl font-black uppercase">Cultura Online</h2>
-			<div class="mb-16 grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-3">
+			<div class="mb-16 grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-3">
 				{
-					posts.slice(0, 3).map((post) => (
-						<div class="relative overflow-hidden bg-white/30 transition-transform hover:-translate-y-1">
+					posts.slice(0, 3).map((post, index) => (
+						<div
+							class={`relative overflow-hidden bg-white/30 transition-transform hover:-translate-y-1 ${index === 0 ? "sm:col-span-2 lg:col-span-1" : ""}`}
+						>
 							<img src={post.data.heroImage.src} alt={post.data.title} class="h-[250px] w-full object-cover" />
 							<div class="p-8">
 								<div class="mb-4 text-xs font-bold tracking-wider text-gray-600">
@@ -85,7 +87,7 @@ const posts = (await getCollection("cultura")).sort((a, b) => b.data.pubDate.get
 			<div class="mb-16 text-center text-lg tracking-wider text-gray-600 uppercase">
 				Trabajando para quienes prefieren ir despacio, pero llegar profundo
 			</div>
-			<div class="mb-16 grid grid-cols-2 gap-10 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-2">
+			<div class="mb-16 grid grid-cols-1 gap-10 lg:grid-cols-2">
 				<!-- Testimonial 1 -->
 				<div class="flex gap-8 bg-white/50 p-10 transition-all hover:-translate-y-1 hover:shadow-2xl">
 					<div class="h-20 w-20 flex-shrink-0 overflow-hidden rounded-full bg-gray-400">
