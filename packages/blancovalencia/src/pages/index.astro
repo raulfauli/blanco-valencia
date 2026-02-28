@@ -5,6 +5,7 @@ import heroImage from "../assets/hero.webp";
 import Pillars from "../components/Pillars.astro";
 
 const posts = (await getCollection("cultura")).sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime());
+const baseUrl = import.meta.env.BASE_URL;
 ---
 
 <Layout>
@@ -23,15 +24,21 @@ const posts = (await getCollection("cultura")).sort((a, b) => b.data.pubDate.get
 
 			<div class="mb-16 flex items-center justify-between pb-5">
 				<a
-					href="/fortalezas"
+					href={`${baseUrl}contacto/`}
 					class="text-[15px] font-bold tracking-wider uppercase transition-opacity hover:opacity-60"
 				>
 					Fortalezas Humanas
 				</a>
-				<a href="/proposito" class="text-[15px] font-bold tracking-wider uppercase transition-opacity hover:opacity-60">
+				<a
+					href={`${baseUrl}proposito/`}
+					class="text-[15px] font-bold tracking-wider uppercase transition-opacity hover:opacity-60"
+				>
 					Propósito Real
 				</a>
-				<a href="/cultura" class="text-[15px] font-bold tracking-wider uppercase transition-opacity hover:opacity-60">
+				<a
+					href={`${baseUrl}cultura/`}
+					class="text-[15px] font-bold tracking-wider uppercase transition-opacity hover:opacity-60"
+				>
 					Cultura Online.
 				</a>
 			</div>
@@ -69,7 +76,7 @@ const posts = (await getCollection("cultura")).sort((a, b) => b.data.pubDate.get
 										.toUpperCase()}
 								</div>
 								<h3 class="mb-4 text-[22px] leading-tight font-bold">
-									<a href={`/cultura/${post.id}/`} class="stretched-link transition-opacity hover:opacity-60">
+									<a href={`${baseUrl}cultura/${post.id}/`} class="stretched-link transition-opacity hover:opacity-60">
 										{post.data.title}
 									</a>
 								</h3>

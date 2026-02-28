@@ -3,6 +3,7 @@ import { getCollection } from "astro:content";
 
 const fortalezas = await getCollection("fortalezas");
 const currentPath = Astro.url.pathname;
+const baseUrl = import.meta.env.BASE_URL;
 ---
 
 <section class="mt-16">
@@ -10,7 +11,7 @@ const currentPath = Astro.url.pathname;
 	<ul class="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6">
 		{
 			fortalezas.map((fortaleza) => {
-				const href = `/fortalezas/${fortaleza.id}`;
+				const href = `${baseUrl}fortalezas/${fortaleza.id}`;
 				const isActive = currentPath === href;
 
 				return (

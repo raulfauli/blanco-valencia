@@ -4,6 +4,7 @@ import BaseHead from "../../components/BaseHead.astro";
 import Footer from "../../components/Footer.astro";
 import HeaderBar from "../../components/HeaderBar.astro";
 import { SITE_DESCRIPTION, SITE_TITLE } from "../../consts";
+const baseUrl = import.meta.env.BASE_URL;
 
 const posts = (await getCollection("cultura")).sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 ---
@@ -33,7 +34,10 @@ const posts = (await getCollection("cultura")).sort((a, b) => b.data.pubDate.val
 											.toUpperCase()}
 									</div>
 									<h3 class="mb-4 text-[22px] leading-tight font-bold">
-										<a href={`/cultura/${post.id}/`} class="stretched-link transition-opacity hover:opacity-60">
+										<a
+											href={`${baseUrl}cultura/${post.id}/`}
+											class="stretched-link transition-opacity hover:opacity-60"
+										>
 											{post.data.title}
 										</a>
 									</h3>

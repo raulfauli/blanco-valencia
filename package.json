@@ -6,6 +6,7 @@
 	"type": "module",
 	"scripts": {
 		"astro:blancovalencia": "bun run --cwd packages/blancovalencia astro",
+		"deploy:blancovalencia": "rsync -avz --delete packages/blancovalencia/dist/beta ubuntu@178.33.163.91:/var/www/blancovalencia.com",
 		"astro:espinosa": "bun run --cwd packages/espinosa astro"
 	},
 	"devDependencies": {
