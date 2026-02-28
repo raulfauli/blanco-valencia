@@ -1,0 +1,404 @@
+<!doctype html>
+<html lang="es">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Fortalezas - Blanco Valencia</title>
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;900&display=swap"
+			rel="stylesheet"
+		/>
+		<script src="https://cdn.tailwindcss.com"></script>
+		<style>
+			body {
+				font-family: "Poppins", sans-serif;
+			}
+		</style>
+	</head>
+	<body class="text-black">
+		<HeaderBar />
+
+		<!-- Main Container -->
+		<div class="mx-auto max-w-7xl px-10 py-16">
+			<!-- Page Header -->
+			<div class="mb-16 text-center">
+				<div class="mb-6 text-[13px] font-normal tracking-widest text-gray-600 uppercase">Fortalezas Humanas</div>
+				<h1 class="mb-4 text-6xl font-black tracking-tight uppercase sm:text-4xl md:text-5xl">
+					Explorando tus Capacidades
+				</h1>
+				<p class="mx-auto max-w-2xl text-lg text-gray-700">
+					Cada fortaleza es una puerta hacia el autoconocimiento profundo. Explora, reflexiona y descubre qué
+					capacidades resuenan contigo.
+				</p>
+			</div>
+
+			<!-- Fortaleza Card -->
+			<div id="fortaleza-card" class="mb-12 border-2 border-black bg-white/40">
+				<div class="grid grid-cols-2 gap-0">
+					<!-- Image Side -->
+					<div class="relative">
+						<img
+							id="fortaleza-image"
+							src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='600'%3E%3Crect fill='%23999' width='600' height='600'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='sans-serif' font-size='24' fill='%23666'%3EImagen de la fortaleza%3C/text%3E%3C/svg%3E"
+							alt="Fortaleza"
+							class="h-full min-h-[500px] w-full object-cover grayscale"
+						/>
+					</div>
+
+					<!-- Content Side -->
+					<div class="flex flex-col justify-center p-16 sm:p-6 md:p-8 lg:p-12">
+						<div class="mb-8 text-sm font-bold tracking-widest text-gray-600 uppercase">Fortaleza</div>
+						<h2
+							id="fortaleza-title"
+							class="mb-8 text-6xl font-black tracking-tight uppercase sm:text-3xl md:text-4xl lg:text-5xl"
+						>
+							ACEPTAR
+						</h2>
+						<p id="fortaleza-description" class="text-xl leading-relaxed text-gray-800 md:text-base lg:text-lg">
+							Dejar de gastar energía en negar para empezar a usarla en vivir. El punto exacto donde termina la
+							resistencia inútil, empieza la aceptación.
+						</p>
+					</div>
+				</div>
+			</div>
+
+			<!-- Extended Content -->
+			<div class="mb-12 border-2 border-black bg-white/30 p-16 md:p-8 lg:p-12">
+				<div class="mx-auto max-w-4xl">
+					<div id="fortaleza-content" class="space-y-6 text-lg leading-loose text-gray-900">
+						<!-- El contenido se cargará dinámicamente -->
+					</div>
+				</div>
+			</div>
+
+			<!-- Navigation -->
+			<div class="flex items-center justify-between border-t-2 border-b-2 border-black py-8">
+				<button
+					id="btn-prev"
+					class="flex items-center gap-4 border-2 border-black bg-black px-8 py-4 text-lg font-bold tracking-wider text-[#e4e2dd] uppercase transition-all hover:bg-transparent hover:text-black disabled:cursor-not-allowed disabled:opacity-30 disabled:hover:bg-black disabled:hover:text-[#e4e2dd] md:px-4"
+				>
+					<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+						<path d="M19 12H5M12 19l-7-7 7-7" />
+					</svg>
+					<span class="md:hidden">Anterior</span>
+				</button>
+
+				<div class="text-center">
+					<div class="text-lg font-bold tracking-wider text-gray-600 uppercase">
+						<span id="current-number">1</span> de <span id="total-number">26</span>
+					</div>
+				</div>
+
+				<button
+					id="btn-next"
+					class="flex items-center gap-4 border-2 border-black bg-black px-8 py-4 text-lg font-bold tracking-wider text-[#e4e2dd] uppercase transition-all hover:bg-transparent hover:text-black disabled:cursor-not-allowed disabled:opacity-30 disabled:hover:bg-black disabled:hover:text-[#e4e2dd] md:px-4"
+				>
+					<span class="md:hidden">Siguiente</span>
+					<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+						<path d="M5 12h14M12 5l7 7-7 7" />
+					</svg>
+				</button>
+			</div>
+
+			<!-- Fortalezas Grid (Quick Navigation) -->
+			<div class="mt-16">
+				<h3 class="mb-8 text-2xl font-bold tracking-wide uppercase">Todas las Fortalezas</h3>
+				<div id="fortalezas-grid" class="grid grid-cols-6 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
+					<!-- Se generarán dinámicamente con JavaScript -->
+				</div>
+			</div>
+		</div>
+
+		<!-- Footer -->
+		<footer class="mt-20 bg-black px-5 py-10 text-center text-[#e4e2dd]">
+			<div class="text-xs tracking-wide opacity-70">
+				Vicente Bravo — Coaching Online — Asociación Internacional de Coaching y Mentoring
+			</div>
+		</footer>
+
+		<script>
+			// Base de datos de fortalezas (ordenadas alfabéticamente)
+			const fortalezas = [
+				{
+					title: "ACEPTAR",
+					description:
+						"Dejar de gastar energía en negar para empezar a usarla en vivir. El punto exacto donde termina la resistencia inútil, empieza la aceptación.",
+					image:
+						"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='600'%3E%3Crect fill='%23999' width='600' height='600'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='sans-serif' font-size='32' fill='%23666'%3EACEPTAR%3C/text%3E%3C/svg%3E",
+					content: `
+                    <h3 class="text-3xl font-bold mb-6">¿Qué significa realmente aceptar?</h3>
+                    <p class="mb-6">La aceptación no es resignación. No es conformarse ni rendirse. Es el reconocimiento profundo de lo que es, sin el filtro de lo que debería ser. Es soltar la lucha contra la realidad para poder trabajar con ella en lugar de contra ella.</p>
+
+                    <p class="mb-6">Cuando aceptamos, no estamos diciendo que nos gusta la situación o que no queremos cambiarla. Estamos reconociendo que luchar contra hechos consumados solo consume energía que podríamos usar para avanzar. La aceptación es el punto de partida del cambio genuino, no su enemigo.</p>
+
+                    <h3 class="text-2xl font-bold mb-4 mt-8">La paradoja de la aceptación</h3>
+                    <p class="mb-6">Existe una paradoja poderosa en esta fortaleza: solo cuando aceptamos plenamente dónde estamos, podemos movernos hacia donde queremos ir. La resistencia nos ancla al problema; la aceptación nos libera para buscar soluciones.</p>
+
+                    <p class="mb-6">En el coaching, vemos constantemente cómo las personas gastan una cantidad inmensa de energía negando realidades: "No debería sentirme así", "Esto no debería haber pasado", "No es justo". Esa energía, cuando se redirige hacia la aceptación y luego hacia la acción, se convierte en fuerza transformadora.</p>
+
+                    <h3 class="text-2xl font-bold mb-4 mt-8">Cómo desarrollar esta fortaleza</h3>
+                    <p class="mb-6">La aceptación se cultiva con práctica consciente. Cada vez que te encuentres resistiendo una realidad, pregúntate: ¿Esta resistencia cambia algo? ¿O solo me consume? Luego, conscientemente, practica soltar esa resistencia. No es fácil, pero es poderoso.</p>
+
+                    <p>Aceptar es un acto de valentía y sabiduría. Es elegir la claridad sobre la ilusión, la acción sobre la reacción, y el poder personal sobre la victimización.</p>
+                `,
+				},
+				{
+					title: "ADAPTACIÓN",
+					description:
+						"La capacidad de ajustarse a nuevas circunstancias sin perder la esencia. Flexibilidad con propósito, cambio con dirección.",
+					image:
+						"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='600'%3E%3Crect fill='%23888' width='600' height='600'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='sans-serif' font-size='28' fill='%23555'%3EADAPTACIÓN%3C/text%3E%3C/svg%3E",
+					content: `
+                    <h3 class="text-3xl font-bold mb-6">El arte de fluir con el cambio</h3>
+                    <p class="mb-6">La adaptación es una de las fortalezas más valiosas en un mundo en constante transformación. No se trata de ser como el agua que toma cualquier forma, sino de ser como el bambú: flexible pero con raíces profundas, capaz de doblarse sin romperse.</p>
+
+                    <p class="mb-6">Adaptarse no significa abandonar quién eres o qué valoras. Significa ajustar tu enfoque, tus estrategias y tus métodos mientras mantienes intacto tu propósito central. Es la capacidad de responder creativamente a circunstancias cambiantes sin perder tu norte.</p>
+
+                    <h3 class="text-2xl font-bold mb-4 mt-8">La diferencia entre reaccionar y adaptarse</h3>
+                    <p class="mb-6">Reaccionar es automático; adaptarse es intencional. Cuando reaccionamos, simplemente respondemos al estímulo. Cuando nos adaptamos, observamos, evaluamos y elegimos conscientemente cómo ajustarnos. La adaptación requiere presencia y reflexión.</p>
+
+                    <p>En el desarrollo personal, quienes cultivan esta fortaleza son capaces de navegar transiciones profesionales, cambios relacionales y giros inesperados de la vida con una gracia que otros admiran. No porque no sientan el impacto del cambio, sino porque han desarrollado la capacidad de metabolizarlo y convertirlo en crecimiento.</p>
+                `,
+				},
+				{
+					title: "AUTENTICIDAD",
+					description:
+						"Ser quien realmente eres sin disfraces ni máscaras. La coherencia entre lo que piensas, dices y haces.",
+					image:
+						"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='600'%3E%3Crect fill='%23999' width='600' height='600'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='sans-serif' font-size='24' fill='%23666'%3EAUTENTICIDAD%3C/text%3E%3C/svg%3E",
+					content: `
+                    <h3 class="text-3xl font-bold mb-6">Vivir desde tu verdad</h3>
+                    <p class="mb-6">La autenticidad es quizás una de las fortalezas más difíciles de cultivar en un mundo que constantemente nos invita a ser lo que otros esperan de nosotros. Ser auténtico significa conocerte lo suficientemente bien como para saber qué es tuyo y qué es impuesto, y tener el coraje de honrar esa distinción.</p>
+
+                    <p class="mb-6">No se trata de "decir siempre lo que piensas sin filtro" o de "ser tú mismo sin importar las consecuencias". La autenticidad madura entiende que hay momentos y formas apropiadas, pero nunca sacrifica la verdad esencial de quién eres en el altar de la conveniencia social.</p>
+
+                    <h3 class="text-2xl font-bold mb-4 mt-8">El precio de la inautenticidad</h3>
+                    <p class="mb-6">Cuando vivimos de forma inauténtica, pagamos un precio invisible pero alto: la desconexión de nosotros mismos. Cada vez que actuamos en contra de nuestros valores por complacer, cada vez que callamos nuestra voz por miedo al rechazo, perdemos un poco de nuestra esencia.</p>
+
+                    <p>La autenticidad no es un destino sino un camino continuo de autoconocimiento y expresión honesta. Es la fortaleza que sostiene todas las demás, porque sin ella, ¿para quién estamos desarrollando estas capacidades?</p>
+                `,
+				},
+				{
+					title: "CLARIDAD",
+					description:
+						"Ver con nitidez lo que importa. Cortar el ruido para encontrar la señal. La capacidad de distinguir lo esencial de lo accesorio.",
+					image:
+						"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='600'%3E%3Crect fill='%23aaa' width='600' height='600'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='sans-serif' font-size='32' fill='%23777'%3ECLARIDAD%3C/text%3E%3C/svg%3E",
+					content: `
+                    <h3 class="text-3xl font-bold mb-6">El poder de ver con nitidez</h3>
+                    <p class="mb-6">En un mundo saturado de información, opciones y estímulos constantes, la claridad se ha convertido en un superpoder. No es solo saber qué quieres, sino también saber qué no quieres. Es la capacidad de discernir entre lo urgente y lo importante, entre el ruido y la señal.</p>
+
+                    <p class="mb-6">La claridad no llega por casualidad. Es el resultado de hacer pausas intencionadas para reflexionar, de hacer las preguntas correctas, y de tener el valor de enfrentar respuestas que a veces son incómodas pero necesarias.</p>
+
+                    <h3 class="text-2xl font-bold mb-4 mt-8">Claridad vs. Certeza</h3>
+                    <p class="mb-6">Es importante distinguir: la claridad no es certeza absoluta sobre el futuro. Es comprensión profunda sobre el presente y sobre tus valores, prioridades y dirección. Puedes tener claridad sobre tu próximo paso sin tener certeza sobre dónde terminarás en cinco años.</p>
+
+                    <p>En el trabajo de coaching, la claridad es a menudo el primer gran avance. Cuando una persona logra ver con nitidez qué está pasando realmente, qué quiere genuinamente y qué está dispuesta a hacer al respecto, el cambio se vuelve inevitable.</p>
+                `,
+				},
+				{
+					title: "COMPROMISO",
+					description:
+						"Mantener la palabra dada, especialmente contigo mismo. La disciplina de seguir adelante cuando la motivación inicial desaparece.",
+					image:
+						"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='600'%3E%3Crect fill='%23999' width='600' height='600'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='sans-serif' font-size='28' fill='%23666'%3ECOMPROMISO%3C/text%3E%3C/svg%3E",
+					content: `
+                    <h3 class="text-3xl font-bold mb-6">Más allá de la motivación</h3>
+                    <p class="mb-6">El compromiso es lo que queda cuando la motivación se va. Es la promesa que te haces a ti mismo y que mantienes no porque sea fácil, sino precisamente porque es difícil. Es la fortaleza que transforma intenciones en resultados.</p>
+
+                    <p class="mb-6">Todos tenemos momentos de inspiración donde nos comprometemos a cambios importantes. La diferencia entre quienes logran esos cambios y quienes no, casi siempre se reduce a esta fortaleza: la capacidad de seguir adelante cuando el entusiasmo inicial se desvanece y queda solo el trabajo duro.</p>
+
+                    <h3 class="text-2xl font-bold mb-4 mt-8">El compromiso contigo mismo</h3>
+                    <p class="mb-6">Paradójicamente, el compromiso más importante y el más fácil de romper es el que hacemos con nosotros mismos. Cancelamos nuestra sesión de ejercicio, posponemos ese proyecto personal, rompemos esa promesa de cuidarnos mejor. Cada vez que lo hacemos, erosionamos un poco nuestra autoconfianza.</p>
+
+                    <p>Cultivar el compromiso empieza con compromisos pequeños y consistentes. No se trata de heroísmo ocasional sino de mostrar presencia constante. Es la acumulación de días donde cumples tu palabra contigo mismo lo que construye esta fortaleza fundamental.</p>
+                `,
+				},
+				{
+					title: "CORAJE",
+					description:
+						"No es la ausencia de miedo, sino la acción a pesar del miedo. La valentía de dar el siguiente paso aunque no veas todo el camino.",
+					image:
+						"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='600'%3E%3Crect fill='%23888' width='600' height='600'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='sans-serif' font-size='32' fill='%23555'%3ECORAJE%3C/text%3E%3C/svg%3E",
+					content: `
+                    <h3 class="text-3xl font-bold mb-6">Actuar a pesar del miedo</h3>
+                    <p class="mb-6">El coraje no es la ausencia de miedo; es la voluntad de actuar mientras el miedo está presente. Es reconocer que el miedo es información, no instrucción. Te dice que algo importa, no necesariamente que debes detenerte.</p>
+
+                    <p class="mb-6">En el coaching trabajamos frecuentemente con personas que esperan sentirse valientes antes de actuar. Pero el coraje no funciona así. El coraje aparece cuando actúas a pesar de no sentirte valiente. Cada acción valiente fortalece esta capacidad para la próxima vez.</p>
+
+                    <h3 class="text-2xl font-bold mb-4 mt-8">Diferentes formas de coraje</h3>
+                    <p class="mb-6">Existe el coraje de tomar grandes decisiones, pero también el coraje de las acciones pequeñas y consistentes. El coraje de decir la verdad incómoda. El coraje de pedir ayuda. El coraje de admitir que te equivocaste. El coraje de empezar de nuevo.</p>
+
+                    <p>El coraje se cultiva en la práctica. Cada vez que eliges hacer lo correcto en lugar de lo cómodo, cada vez que hablas tu verdad aunque tu voz tiemble, estás fortaleciendo este músculo esencial para una vida auténtica y significativa.</p>
+                `,
+				},
+				{
+					title: "CREATIVIDAD",
+					description:
+						"Ver posibilidades donde otros ven límites. La capacidad de conectar ideas aparentemente inconexas para generar algo nuevo.",
+					image:
+						"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='600'%3E%3Crect fill='%23999' width='600' height='600'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='sans-serif' font-size='28' fill='%23666'%3ECREATIVIDAD%3C/text%3E%3C/svg%3E",
+					content: `
+                    <h3 class="text-3xl font-bold mb-6">Más allá del arte</h3>
+                    <p class="mb-6">La creatividad no es solo para artistas. Es la capacidad humana fundamental de generar opciones donde parecía no haberlas, de imaginar futuros diferentes, de conectar ideas de formas nuevas. Es una fortaleza esencial para la resolución de problemas y la innovación en cualquier área de la vida.</p>
+
+                    <p class="mb-6">Cuando trabajamos con personas en procesos de cambio, la creatividad es a menudo la llave que abre puertas que parecían cerradas. No porque la solución sea elaborada o artística, sino porque requiere pensar de manera no convencional sobre situaciones que habían visto de una sola forma durante años.</p>
+
+                    <h3 class="text-2xl font-bold mb-4 mt-8">Cultivando la mente creativa</h3>
+                    <p class="mb-6">La creatividad se nutre de la curiosidad, la apertura y la disposición a experimentar. Se atrofia con el miedo al error, el perfeccionismo paralizante y la necesidad de tener todas las respuestas antes de empezar.</p>
+
+                    <p>Una práctica poderosa es preguntarte regularmente: "¿Qué más podría ser verdad?" "¿Qué otras opciones existen?" "¿Cómo lo abordaría alguien completamente diferente a mí?" Estas preguntas abren espacios creativos donde antes solo veías un camino.</p>
+                `,
+				},
+				{
+					title: "EMPATÍA",
+					description:
+						"Ponerse en los zapatos del otro sin perder los propios. Comprender sin necesidad de estar de acuerdo.",
+					image:
+						"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='600'%3E%3Crect fill='%23aaa' width='600' height='600'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='sans-serif' font-size='32' fill='%23777'%3EEMPATÍA%3C/text%3E%3C/svg%3E",
+					content: `
+                    <h3 class="text-3xl font-bold mb-6">El puente hacia la comprensión</h3>
+                    <p class="mb-6">La empatía es la capacidad de entender y resonar con la experiencia emocional de otra persona. No es simpatía (sentir lástima) ni es estar de acuerdo. Es la habilidad de ver el mundo desde la perspectiva del otro, entender su marco de referencia, y validar su experiencia sin necesariamente compartir sus conclusiones.</p>
+
+                    <p class="mb-6">En un mundo cada vez más polarizado, la empatía se vuelve una fortaleza crítica. No para que todos pensemos igual, sino para que podamos mantener conexiones humanas incluso en medio del desacuerdo. La empatía no debilita tu posición; la enriquece al permitirte entender el panorama completo.</p>
+
+                    <h3 class="text-2xl font-bold mb-4 mt-8">Empatía con límites</h3>
+                    <p class="mb-6">Es importante distinguir: la empatía no significa absorber las emociones de otros hasta agotarte, ni significa tolerar comportamientos dañinos. La empatía madura incluye límites saludables. Puedes entender por qué alguien actúa de cierta forma sin aceptar que te trate de esa manera.</p>
+
+                    <p>Desarrollar empatía empieza con la práctica de la escucha genuina. No escuchar para responder, sino escuchar para comprender. Hacer preguntas desde la curiosidad genuina en lugar del juicio. Y recordar que cada persona tiene una historia completa que no conoces.</p>
+                `,
+				},
+				{
+					title: "ENFOQUE",
+					description:
+						"Dirigir toda tu atención hacia lo que realmente importa. La capacidad de decir no a las distracciones para decir sí a las prioridades.",
+					image:
+						"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='600'%3E%3Crect fill='%23999' width='600' height='600'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='sans-serif' font-size='32' fill='%23666'%3EENFOQUE%3C/text%3E%3C/svg%3E",
+					content: `
+                    <h3 class="text-3xl font-bold mb-6">La fortaleza más valiosa de nuestra era</h3>
+                    <p class="mb-6">En un mundo diseñado para dispersar tu atención, el enfoque se ha convertido en una fortaleza extraordinariamente valiosa. No es solo la capacidad de concentrarte en una tarea, sino la sabiduría de saber qué merece tu atención en primer lugar y el coraje de proteger ese espacio contra las infinitas demandas de tu tiempo.</p>
+
+                    <p class="mb-6">El enfoque no es natural en el entorno moderno. Es una práctica deliberada que requiere establecer límites, eliminar distracciones y, lo más difícil de todo, decir no a oportunidades que son buenas pero no son las mejores para ti en este momento.</p>
+
+                    <h3 class="text-2xl font-bold mb-4 mt-8">El costo de la dispersión</h3>
+                    <p class="mb-6">La multitarea es un mito. Lo que realmente hacemos es cambiar rápidamente entre tareas, y cada cambio tiene un costo cognitivo. La persona que intenta avanzar en diez frentes simultáneamente termina avanzando poco en todos. El enfoque no es limitante; es liberador porque permite progreso real.</p>
+
+                    <p>Cultivar el enfoque comienza con decisiones claras sobre prioridades. No puedes enfocarte en todo, y esa no es una limitación sino una realidad. El enfoque requiere primero claridad sobre qué importa, luego el compromiso de proteger ese espacio, y finalmente la disciplina de volver al centro cada vez que te dispersas.</p>
+                `,
+				},
+				{
+					title: "GRATITUD",
+					description:
+						"Reconocer lo que tienes antes de perseguir lo que falta. La práctica de valorar incluso lo pequeño.",
+					image:
+						"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='600'%3E%3Crect fill='%23888' width='600' height='600'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='sans-serif' font-size='32' fill='%23555'%3EGRATITUD%3C/text%3E%3C/svg%3E",
+					content: `
+                    <h3 class="text-3xl font-bold mb-6">El antídoto contra la insatisfacción</h3>
+                    <p class="mb-6">La gratitud no es un estado emocional pasivo ni un pensamiento positivo forzado. Es una práctica activa de reconocimiento de lo que ya existe en tu vida. En un mundo que constantemente te dice que necesitas más, la gratitud es el acto revolucionario de decir "esto, aquí, ahora, ya es suficiente".</p>
+
+                    <p class="mb-6">Esto no significa conformismo o falta de ambición. La paradoja de la gratitud es que cuanto más valoras lo que tienes, más capaz eres de crear más. No desde un lugar de carencia desesperada, sino desde un lugar de abundancia reconocida.</p>
+
+                    <h3 class="text-2xl font-bold mb-4 mt-8">Gratitud como práctica</h3>
+                    <p class="mb-6">La gratitud se cultiva intencionalmente. No es esperar hasta que te sientas agradecido; es buscar activamente razones para estarlo incluso en momentos difíciles. No ignorando las dificultades, sino encontrando destellos de luz incluso en la oscuridad.</p>
+
+                    <p>Una práctica simple pero transformadora: cada día, identifica tres cosas específicas por las que estás agradecido. No generales ("mi familia") sino específicas ("la risa de mi hijo esta mañana"). La especificidad entrena tu cerebro a notar lo bueno que siempre ha estado ahí pero que pasabas por alto.</p>
+                `,
+				},
+			];
+
+			let currentIndex = 0;
+
+			// Elementos del DOM
+			const fortalezaTitle = document.getElementById("fortaleza-title");
+			const fortalezaDescription = document.getElementById("fortaleza-description");
+			const fortalezaImage = document.getElementById("fortaleza-image");
+			const btnPrev = document.getElementById("btn-prev");
+			const btnNext = document.getElementById("btn-next");
+			const currentNumber = document.getElementById("current-number");
+			const totalNumber = document.getElementById("total-number");
+			const fortalezasGrid = document.getElementById("fortalezas-grid");
+
+			// Actualizar la visualización
+			function updateFortaleza() {
+				const fortaleza = fortalezas[currentIndex];
+				fortalezaTitle.textContent = fortaleza.title;
+				fortalezaDescription.textContent = fortaleza.description;
+				fortalezaImage.src = fortaleza.image;
+				fortalezaImage.alt = fortaleza.title;
+
+				currentNumber.textContent = currentIndex + 1;
+				totalNumber.textContent = fortalezas.length;
+
+				// Actualizar estado de botones
+				btnPrev.disabled = currentIndex === 0;
+				btnNext.disabled = currentIndex === fortalezas.length - 1;
+
+				// Scroll al inicio suave
+				window.scrollTo({ top: 0, behavior: "smooth" });
+
+				// Actualizar grid activo
+				updateGridActive();
+			}
+
+			// Navegación
+			btnPrev.addEventListener("click", () => {
+				if (currentIndex > 0) {
+					currentIndex--;
+					updateFortaleza();
+				}
+			});
+
+			btnNext.addEventListener("click", () => {
+				if (currentIndex < fortalezas.length - 1) {
+					currentIndex++;
+					updateFortaleza();
+				}
+			});
+
+			// Navegación con teclado
+			document.addEventListener("keydown", (e) => {
+				if (e.key === "ArrowLeft" && currentIndex > 0) {
+					currentIndex--;
+					updateFortaleza();
+				} else if (e.key === "ArrowRight" && currentIndex < fortalezas.length - 1) {
+					currentIndex++;
+					updateFortaleza();
+				}
+			});
+
+			// Generar grid de navegación rápida
+			function generateGrid() {
+				fortalezasGrid.innerHTML = "";
+				fortalezas.forEach((fortaleza, index) => {
+					const button = document.createElement("button");
+					button.textContent = fortaleza.title;
+					button.className =
+						"py-3 px-4 text-sm font-semibold border-2 border-black transition-all hover:bg-black hover:text-[#e4e2dd]";
+					button.addEventListener("click", () => {
+						currentIndex = index;
+						updateFortaleza();
+					});
+					fortalezasGrid.appendChild(button);
+				});
+			}
+
+			// Actualizar botón activo en grid
+			function updateGridActive() {
+				const buttons = fortalezasGrid.querySelectorAll("button");
+				buttons.forEach((btn, index) => {
+					if (index === currentIndex) {
+						btn.classList.add("bg-black", "text-[#e4e2dd]");
+					} else {
+						btn.classList.remove("bg-black", "text-[#e4e2dd]");
+					}
+				});
+			}
+
+			// Inicializar
+			generateGrid();
+			updateFortaleza();
+		</script>
+	</body>
+</html>
