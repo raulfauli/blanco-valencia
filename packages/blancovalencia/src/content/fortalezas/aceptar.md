@@ -1,0 +1,5 @@
+---
+title: ACEPTAR
+description: Dejar de gastar energía en negar para empezar a usarla en vivir. El punto exacto donde termina la resistencia inútil, empieza la aceptación
+image: /fortalezas/aceptar.jpg
+---
