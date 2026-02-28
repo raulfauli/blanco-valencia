@@ -1,53 +1,89 @@
 ---
 import Layout from "~/layouts/Layout.astro";
+import HeaderBar from "../components/HeaderBar.astro";
 import Pillars from "../components/Pillars.astro";
-
 ---
 
 <Layout>
-    <!-- Header Bar -->
-    <div class="bg-black py-5 px-10 flex justify-between items-center">
-        <a href="/" class="text-2xl font-black text-background no-underline tracking-wide">BLANCO VALENCIA</a>
-        <a href="/" class="text-background no-underline text-[13px] font-semibold tracking-wide uppercase transition-opacity hover:opacity-70">← Volver al inicio</a>
-    </div>
+	<HeaderBar />
 
-    <Pillars />
+	<Pillars />
 
-    <!-- Article Container -->
-    <article class="max-w-4xl mx-auto py-20 px-10">
-        <!-- Article Intro -->
-        <div class="text-[22px] font-normal leading-relaxed mb-12 text-gray-800 md:text-xl">
-            CÓMO → el acompañamiento que lo hace sostenible
-        </div>
+	<!-- Article Container -->
+	<article class="mx-auto max-w-4xl px-10 py-20">
+		<!-- Article Intro -->
+		<div class="mb-12 text-[22px] leading-relaxed font-normal text-gray-800 md:text-xl">
+			CÓMO → el acompañamiento que lo hace sostenible
+		</div>
 
-        <!-- Article Content -->
-        <div class="text-lg leading-loose text-gray-900">
-        <p>Cuando empiezas a ver con más claridad quién eres y hacia dónde quieres ir, surge una necesidad muy concreta:<br><strong>no hacerlo solo y no volver a perderte en el intento</strong>.</p>
-<p>De la necesidad de <strong>un acompañamiento que facilite claridad, que lleve la brújula en los momentos inexactos.</strong> Un espacio donde puedas avanzar sin tener que sostenerlo todo tú.</p>
-<p>La fase <em>Cómo</em> es el corazón del acompañamiento.<br>No es una técnica ni un método rígido, sino una forma de estar contigo mientras ordenas, decides y avanzas sin violencia interna.</p>
-<p>Trabajamos desde un modelo de coaching de fortalezas, integrando una mirada ontológica y herramientas de la psicología positiva aplicada. Esto nos permite acompañar procesos reales, no ideales, respetando el ritmo y el momento vital de cada persona.</p>
-<p>El proceso se apoya en varios pilares:</p>
-<ul>
-<li><strong>Escucha profunda</strong>, para identificar qué está ocurriendo más allá de los síntomas visibles.</li>
-<li><strong>Trabajo con fortalezas</strong>, entendidas como recursos vivos que se pueden activar, regular, combinar o reforzar según la situación.</li>
-<li><strong>Seguimiento consciente</strong>, para no perder el eje cuando aparecen dudas, retrocesos o decisiones difíciles.</li>
-<li><strong>Revisión y ajuste</strong>, porque crecer no es ir siempre hacia delante, sino saber rectificar sin castigarse.</li>
-<li><strong>Anclaje</strong>, para que lo aprendido no se quede en una sesión, sino que se traduzca en decisiones y cambios sostenibles.</li>
-</ul>
-<p>No se trata de “sacar la mejor versión de ti”,<br>sino de <strong>dejar de luchar contra quien ya eres</strong> y empezar a usar tus recursos con más coherencia.</p>
-<p>Durante el proceso aparecen miedos, resistencias y momentos de bloqueo. No se interpretan como fallos, sino como información valiosa sobre lo que necesita más cuidado, más tiempo o más claridad.</p>
-<p>El <em>cómo</em> no promete caminos fáciles,<br>pero sí algo fundamental: <strong>no caminar a ciegas ni en soledad</strong>.</p>
-<p>Cuando el proceso está bien acompañado, la persona no solo avanza,<br>aprende a <strong>sostenerse a sí misma</strong> con más confianza y coherencia</p>
-<p>Lo que hace especialmente bien la fase COMO.</p>
-<p>X</p>
-<p>X</p>
-<p>X</p>
-<p>x</p>
-<ul>
-<li><strong>CÓMO</strong> → <em>“puedo recorrerlo sin perderme”</em></li>
-</ul>
-
-</div>
-
-    </article>
+		<!-- Article Content -->
+		<div class="text-lg leading-loose text-gray-900">
+			<p>
+				Cuando empiezas a ver con más claridad quién eres y hacia dónde quieres ir, surge una necesidad muy concreta:<br
+				/><strong>no hacerlo solo y no volver a perderte en el intento</strong>.
+			</p>
+			<p>
+				De la necesidad de <strong
+					>un acompañamiento que facilite claridad, que lleve la brújula en los momentos inexactos.</strong
+				> Un espacio donde puedas avanzar sin tener que sostenerlo todo tú.
+			</p>
+			<p>
+				La fase <em>Cómo</em> es el corazón del acompañamiento.<br />No es una técnica ni un método rígido, sino una
+				forma de estar contigo mientras ordenas, decides y avanzas sin violencia interna.
+			</p>
+			<p>
+				Trabajamos desde un modelo de coaching de fortalezas, integrando una mirada ontológica y herramientas de la
+				psicología positiva aplicada. Esto nos permite acompañar procesos reales, no ideales, respetando el ritmo y el
+				momento vital de cada persona.
+			</p>
+			<p>El proceso se apoya en varios pilares:</p>
+			<ul>
+				<li>
+					<strong>Escucha profunda</strong>, para identificar qué está ocurriendo más allá de los síntomas visibles.
+				</li>
+				<li>
+					<strong>Trabajo con fortalezas</strong>, entendidas como recursos vivos que se pueden activar, regular,
+					combinar o reforzar según la situación.
+				</li>
+				<li>
+					<strong>Seguimiento consciente</strong>, para no perder el eje cuando aparecen dudas, retrocesos o decisiones
+					difíciles.
+				</li>
+				<li>
+					<strong>Revisión y ajuste</strong>, porque crecer no es ir siempre hacia delante, sino saber rectificar sin
+					castigarse.
+				</li>
+				<li>
+					<strong>Anclaje</strong>, para que lo aprendido no se quede en una sesión, sino que se traduzca en decisiones
+					y cambios sostenibles.
+				</li>
+			</ul>
+			<p>
+				No se trata de “sacar la mejor versión de ti”,<br />sino de <strong>dejar de luchar contra quien ya eres</strong
+				> y empezar a usar tus recursos con más coherencia.
+			</p>
+			<p>
+				Durante el proceso aparecen miedos, resistencias y momentos de bloqueo. No se interpretan como fallos, sino como
+				información valiosa sobre lo que necesita más cuidado, más tiempo o más claridad.
+			</p>
+			<p>
+				El <em>cómo</em> no promete caminos fáciles,<br />pero sí algo fundamental: <strong
+					>no caminar a ciegas ni en soledad</strong
+				>.
+			</p>
+			<p>
+				Cuando el proceso está bien acompañado, la persona no solo avanza,<br />aprende a <strong
+					>sostenerse a sí misma</strong
+				> con más confianza y coherencia
+			</p>
+			<p>Lo que hace especialmente bien la fase COMO.</p>
+			<p>X</p>
+			<p>X</p>
+			<p>X</p>
+			<p>x</p>
+			<ul>
+				<li><strong>CÓMO</strong> → <em>“puedo recorrerlo sin perderme”</em></li>
+			</ul>
+		</div>
+	</article>
 </Layout>

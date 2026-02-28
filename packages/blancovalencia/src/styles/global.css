@@ -7,14 +7,18 @@
 @import "@fontsource/poppins/900.css";
 
 @theme {
-  --color-background: #e4e2dd;
+	--color-blanco: #e4e2dd;
 }
 
 body {
-  font-family: "Poppins", sans-serif;
-  background-color: var(--color-background);
+	font-family: "Poppins", sans-serif;
+	background-color: var(--color-blanco);
 }
 
 .stretched-link {
-  @apply after:absolute after:inset-0;
+	@apply after:absolute after:inset-0;
+}
+
+.container {
+	@apply mx-auto p-4;
 }
