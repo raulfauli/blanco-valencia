@@ -5,6 +5,7 @@
 	"scripts": {
 		"dev": "astro dev",
 		"build": "astro build --base beta",
+		"deploy": "rsync -avz --delete dist/beta ubuntu@178.33.163.91:/var/www/blancovalencia.com",
 		"preview": "astro preview",
 		"astro": "astro"
 	},
