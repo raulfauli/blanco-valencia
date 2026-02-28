@@ -1,5 +1,6 @@
 ---
 import { getCollection } from "astro:content";
+import FortalezaDictionary from "../../components/FortalezaDictionary.astro";
 import HeaderBar from "../../components/HeaderBar.astro";
 import Layout from "../../layouts/Layout.astro";
 
@@ -17,7 +18,17 @@ const { fortaleza } = Astro.props;
 <Layout title={fortaleza.data.title}>
 	<HeaderBar />
 	<div class="container">
-		<div id="fortaleza-card" class="mb-12 border-2 border-black bg-white/40">
+		<section class="mb-16 text-center">
+			<div class="mb-6 text-[13px] font-normal tracking-widest text-gray-600 uppercase">Fortalezas Humanas</div>
+			<h1 class="mb-4 text-6xl font-black tracking-tight uppercase sm:text-4xl md:text-5xl">
+				Explorando tus Capacidades
+			</h1>
+			<p class="mx-auto max-w-2xl text-lg text-gray-700">
+				Cada fortaleza es una puerta hacia el autoconocimiento profundo. Explora, reflexiona y descubre qué capacidades
+				resuenan contigo.
+			</p>
+		</section>
+		<section class="mb-12 border-2 border-black bg-white/40">
 			<div class="grid grid-cols-2 gap-0">
 				<!-- Image Side -->
 				<div class="relative">
@@ -25,7 +36,7 @@ const { fortaleza } = Astro.props;
 						id="fortaleza-image"
 						src={fortaleza.data.image}
 						alt={fortaleza.data.title}
-						class="h-full min-h-[500px] w-full object-cover grayscale"
+						class="h-full min-h-[500px] w-full object-cover"
 					/>
 				</div>
 
@@ -43,6 +54,8 @@ const { fortaleza } = Astro.props;
 					</p>
 				</div>
 			</div>
-		</div>
+		</section>
+
+		<FortalezaDictionary />
 	</div>
 </Layout>

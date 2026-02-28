@@ -1,31 +1,12 @@
 ---
-import { getCollection } from "astro:content";
+import FortalezaDictionary from "../../components/FortalezaDictionary.astro";
 import HeaderBar from "../../components/HeaderBar.astro";
 import Layout from "../../layouts/Layout.astro";
-
-const fortalezas = await getCollection("fortalezas");
 ---
 
 <Layout title="Fortalezas">
 	<HeaderBar />
 	<div class="container">
-		<section class="mt-16">
-			<h3 class="mb-8 text-2xl font-bold tracking-wide uppercase">Diccionario de Fortalezas</h3>
-			<ul class="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6">
-				{
-					fortalezas.map((fortaleza) => (
-						<li>
-							<a
-								href={`/fortalezas/${fortaleza.id}`}
-								title={fortaleza.data.title}
-								class="hover:text-blanco block truncate border-2 border-black px-4 py-3 text-center text-sm font-semibold uppercase transition-all hover:bg-black"
-							>
-								{fortaleza.data.title}
-							</a>
-						</li>
-					))
-				}
-			</ul>
-		</section>
+		<FortalezaDictionary />
 	</div>
 </Layout>

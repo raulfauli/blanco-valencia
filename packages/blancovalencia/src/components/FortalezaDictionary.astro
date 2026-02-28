@@ -1,0 +1,32 @@
+---
+import { getCollection } from "astro:content";
+
+const fortalezas = await getCollection("fortalezas");
+const currentPath = Astro.url.pathname;
+---
+
+<section class="mt-16">
+	<h3 class="mb-8 text-2xl font-bold tracking-wide uppercase">Diccionario de Fortalezas</h3>
+	<ul class="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6">
+		{
+			fortalezas.map((fortaleza) => {
+				const href = `/fortalezas/${fortaleza.id}`;
+				const isActive = currentPath === href;
+
+				return (
+					<li>
+						<a
+							href={href}
+							title={fortaleza.data.title}
+							class={`block truncate border-2 px-4 py-3 text-center text-sm font-semibold uppercase transition-all ${
+								isActive ? "text-blanco border-black bg-black" : "hover:text-blanco border-black hover:bg-black"
+							}`}
+						>
+							{fortaleza.data.title}
+						</a>
+					</li>
+				);
+			})
+		}
+	</ul>
+</section>
