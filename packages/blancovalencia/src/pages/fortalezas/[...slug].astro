@@ -31,7 +31,7 @@ const { Content } = await render(fortaleza);
 			</p>
 		</section>
 		<section class="mb-12 border-2 border-black bg-white/40">
-			<div class="grid grid-cols-2 gap-0">
+			<div class="grid grid-cols-1 gap-0 md:grid-cols-2">
 				<!-- Image Side -->
 				<div class="relative">
 					<Image
@@ -44,13 +44,10 @@ const { Content } = await render(fortaleza);
 				<!-- Content Side -->
 				<div class="flex flex-col justify-center p-16 sm:p-6 md:p-8 lg:p-12">
 					<div class="mb-8 text-sm font-bold tracking-widest text-gray-600 uppercase">Fortaleza</div>
-					<h2
-						id="fortaleza-title"
-						class="mb-8 text-6xl font-black tracking-tight uppercase sm:text-3xl md:text-4xl lg:text-5xl"
-					>
+					<h2 class="mb-8 text-6xl font-black tracking-tight uppercase sm:text-3xl md:text-4xl lg:text-5xl">
 						{fortaleza.data.title}
 					</h2>
-					<p id="fortaleza-description" class="text-xl leading-relaxed text-gray-800 md:text-base lg:text-lg">
+					<p class="text-xl leading-relaxed text-gray-800 md:text-base lg:text-lg">
 						{fortaleza.data.description}
 					</p>
 				</div>
