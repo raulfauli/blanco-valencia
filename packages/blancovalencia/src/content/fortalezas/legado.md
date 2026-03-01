@@ -1,5 +1,5 @@
 ---
 title: LEGADO
 description: Cuando tu vida deja base no ruido el tiempo juega como aliado.
-image: /fortalezas/legado.jpg
+image: legado.jpg
 ---

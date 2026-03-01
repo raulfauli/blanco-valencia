@@ -6,7 +6,7 @@
 	"type": "module",
 	"scripts": {
 		"blancovalencia:astro": "bun run --cwd packages/blancovalencia astro",
-		"blancovalencia:deploy": "bun run --cwd packages/blancovalencia deploy",
+		"blancovalencia:deploy": "bun run blancovalencia:astro build && bun run --cwd packages/blancovalencia deploy",
 		"espinosa:astro": "bun run --cwd packages/espinosa astro"
 	},
 	"devDependencies": {

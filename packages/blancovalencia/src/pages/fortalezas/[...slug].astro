@@ -1,5 +1,6 @@
 ---
-import { getCollection } from "astro:content";
+import { Image } from "astro:assets";
+import { getCollection, render } from "astro:content";
 import FortalezaDictionary from "../../components/FortalezaDictionary.astro";
 import HeaderBar from "../../components/HeaderBar.astro";
 import Layout from "../../layouts/Layout.astro";
@@ -13,6 +14,7 @@ export async function getStaticPaths() {
 }
 
 const { fortaleza } = Astro.props;
+const { Content } = await render(fortaleza);
 ---
 
 <Layout title={fortaleza.data.title}>
@@ -32,8 +34,7 @@ const { fortaleza } = Astro.props;
 			<div class="grid grid-cols-2 gap-0">
 				<!-- Image Side -->
 				<div class="relative">
-					<img
-						id="fortaleza-image"
+					<Image
 						src={fortaleza.data.image}
 						alt={fortaleza.data.title}
 						class="h-full min-h-[500px] w-full object-cover"
@@ -54,6 +55,10 @@ const { fortaleza } = Astro.props;
 					</p>
 				</div>
 			</div>
+		</section>
+
+		<section class="prose lg:prose-xl">
+			<Content />
 		</section>
 
 		<FortalezaDictionary />
