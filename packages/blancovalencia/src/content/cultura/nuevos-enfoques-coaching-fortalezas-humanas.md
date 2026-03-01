@@ -49,10 +49,6 @@ Itatur? Quiatae cullecum rem ent aut odis in re eossequodi nonsequ idebis ne sap
 ![Alt text](./full/or/relative/path/of/image)
 ```
 
-### Output
-
-![blog placeholder](../../assets/blog-placeholder-about.jpg)
-
 ## Blockquotes
 
 The blockquote element represents content that is quoted from another source, optionally with a citation which must be within a `footer` or `cite` element, and optionally with in-line changes such as annotations and abbreviations.
@@ -113,13 +109,13 @@ we can use 3 backticks ``` in new line and write snippet and close with 3 backti
 ```html
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <title>Example HTML5 Document</title>
-  </head>
-  <body>
-    <p>Test</p>
-  </body>
+	<head>
+		<meta charset="utf-8" />
+		<title>Example HTML5 Document</title>
+	</head>
+	<body>
+		<p>Test</p>
+	</body>
 </html>
 ```
 ````
@@ -129,13 +125,13 @@ we can use 3 backticks ``` in new line and write snippet and close with 3 backti
 ```html
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <title>Example HTML5 Document</title>
-  </head>
-  <body>
-    <p>Test</p>
-  </body>
+	<head>
+		<meta charset="utf-8" />
+		<title>Example HTML5 Document</title>
+	</head>
+	<body>
+		<p>Test</p>
+	</body>
 </html>
 ```
 
