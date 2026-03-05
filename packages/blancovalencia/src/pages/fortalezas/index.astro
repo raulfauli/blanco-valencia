@@ -2,11 +2,123 @@
 import FortalezaDictionary from "../../components/FortalezaDictionary.astro";
 import HeaderBar from "../../components/HeaderBar.astro";
 import Layout from "../../layouts/Layout.astro";
+import fortalezasBg from "../../assets/fortalezas/pexels-v-o-y-t-a-1516057-2928116.jpg";
 ---
+
+<style>
+	.vertical-text {
+		writing-mode: vertical-rl;
+		text-orientation: mixed;
+	}
+</style>
 
 <Layout title="Fortalezas">
 	<HeaderBar />
 	<div class="container">
-		<FortalezaDictionary />
+		<div class="relative z-10 flex w-full items-center">
+			<!-- Left Side: Vertical Title -->
+			<div class="flex flex-shrink-0 items-center justify-center px-16 md:px-8 lg:px-12" style={`background-image: url(${fortalezasBg.src}); background-size: cover; background-position: center;`}>
+				<h1
+					class="vertical-text text-9xl font-black tracking-widest text-white uppercase sm:text-6xl md:text-7xl lg:text-8xl"
+				>
+					FORTALEZAS HUMANAS
+				</h1>
+			</div>
+
+			<!-- Right Side: Links -->
+			<div class="flex flex-1 items-center justify-center px-16 sm:px-6 md:px-8 lg:px-12">
+				<div class="w-full max-w-3xl space-y-6">
+					<a href="#claves-esenciales" class="group block">
+						<div
+							class="border-2 border-white bg-white/10 p-8 backdrop-blur-sm transition-all hover:border-white hover:bg-white md:p-5 lg:p-6"
+						>
+							<div class="flex items-center justify-between">
+								<span
+									class="text-2xl font-bold tracking-wide text-white uppercase group-hover:text-black md:text-lg lg:text-xl"
+								>
+									Claves esenciales que estructuran el carácter en la vida adulta
+								</span>
+								<svg
+									class="ml-4 h-8 w-8 flex-shrink-0 text-white group-hover:text-black md:h-6 md:w-6 lg:h-7 lg:w-7"
+									fill="none"
+									stroke="currentColor"
+									viewBox="0 0 24 24"
+								>
+									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"></path>
+								</svg>
+							</div>
+						</div>
+					</a>
+
+					<a href="#fortalezas-bienestar" class="group block">
+						<div
+							class="border-2 border-white bg-white/10 p-8 backdrop-blur-sm transition-all hover:border-white hover:bg-white md:p-5 lg:p-6"
+						>
+							<div class="flex items-center justify-between">
+								<span
+									class="text-2xl font-bold tracking-wide text-white uppercase group-hover:text-black md:text-lg lg:text-xl"
+								>
+									Las fortalezas y el bienestar: Una relación práctica
+								</span>
+								<svg
+									class="ml-4 h-8 w-8 flex-shrink-0 text-white group-hover:text-black md:h-6 md:w-6 lg:h-7 lg:w-7"
+									fill="none"
+									stroke="currentColor"
+									viewBox="0 0 24 24"
+								>
+									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"></path>
+								</svg>
+							</div>
+						</div>
+					</a>
+
+					<a href="#criterio-seleccion" class="group block">
+						<div
+							class="border-2 border-white bg-white/10 p-8 backdrop-blur-sm transition-all hover:border-white hover:bg-white md:p-5 lg:p-6"
+						>
+							<div class="flex items-center justify-between">
+								<span
+									class="text-2xl font-bold tracking-wide text-white uppercase group-hover:text-black md:text-lg lg:text-xl"
+								>
+									Criterio de selección de las fortalezas
+								</span>
+								<svg
+									class="ml-4 h-8 w-8 flex-shrink-0 text-white group-hover:text-black md:h-6 md:w-6 lg:h-7 lg:w-7"
+									fill="none"
+									stroke="currentColor"
+									viewBox="0 0 24 24"
+								>
+									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"></path>
+								</svg>
+							</div>
+						</div>
+					</a>
+
+					<a href="#diccionario" class="group block">
+						<div
+							class="border-2 border-white bg-white/10 p-8 backdrop-blur-sm transition-all hover:border-white hover:bg-white md:p-5 lg:p-6"
+						>
+							<div class="flex items-center justify-between">
+								<span
+									class="text-2xl font-bold tracking-wide text-white uppercase group-hover:text-black md:text-lg lg:text-xl"
+								>
+									Diccionario de fortalezas
+								</span>
+								<svg
+									class="ml-4 h-8 w-8 flex-shrink-0 text-white group-hover:text-black md:h-6 md:w-6 lg:h-7 lg:w-7"
+									fill="none"
+									stroke="currentColor"
+									viewBox="0 0 24 24"
+								>
+									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"></path>
+								</svg>
+							</div>
+						</div>
+					</a>
+				</div>
+			</div>
+		</div>
 	</div>
+
+	<FortalezaDictionary />
 </Layout>
