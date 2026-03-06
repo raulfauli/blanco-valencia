@@ -1,21 +1,145 @@
 ---
 import { getCollection } from "astro:content";
-import BaseHead from "../../components/BaseHead.astro";
-import Footer from "../../components/Footer.astro";
+import culturaBg from "../../assets/cultura/importancia-pausa-desarrollo-personal.jpg";
 import HeaderBar from "../../components/HeaderBar.astro";
-import { SITE_DESCRIPTION, SITE_TITLE } from "../../consts";
+import Layout from "../../layouts/Layout.astro";
 const baseUrl = import.meta.env.BASE_URL;
 
 const posts = (await getCollection("cultura")).sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 ---
 
-<!doctype html>
-<html lang="en">
-	<head>
-		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
-	</head>
-	<body>
-		<HeaderBar />
+<style>
+	.vertical-text {
+		writing-mode: vertical-rl;
+		text-orientation: mixed;
+	}
+</style>
+
+
+<Layout title="Cultura">
+	<HeaderBar />
+
+		<div
+		class="relative z-10 flex w-full items-center"
+		style={`background-image: url(${culturaBg.src}); background-size: cover; background-position: center;`}
+	>
+		<!-- Left Side: Vertical Title -->
+		<div class="relative flex shrink-0 items-center justify-center px-16 py-8 md:px-8 lg:px-12">
+			<div class="absolute inset-0"></div>
+			<h1
+				class="vertical-text relative z-10 text-9xl font-black tracking-widest text-white uppercase sm:text-6xl md:text-7xl lg:text-8xl"
+			>
+				CULTURA ONLINE
+			</h1>
+		</div>
+
+		<!-- Right Side: Links -->
+		<div class="flex flex-1 items-center justify-center px-16 sm:px-6 md:px-8 lg:px-12">
+			<div class="w-full max-w-3xl space-y-6">
+				<a href="#claves-esenciales" class="group block">
+					<div class="bg-white/10 p-8 backdrop-blur-sm transition-all hover:bg-white md:p-5 lg:p-6">
+						<div class="flex items-center justify-between">
+							<span
+								class="text-2xl font-bold tracking-wide text-white uppercase group-hover:text-black md:text-lg lg:text-xl"
+							>
+								REFLEXIONES ONTOLOGICAS
+							</span>
+							<svg
+								class="ml-4 h-8 w-8 shrink-0 text-white group-hover:text-black md:h-6 md:w-6 lg:h-7 lg:w-7"
+								fill="none"
+								stroke="currentColor"
+								viewBox="0 0 24 24"
+							>
+								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"></path>
+							</svg>
+						</div>
+					</div>
+				</a>
+
+				<a href="#fortalezas-bienestar" class="group block">
+					<div class="bg-white/10 p-8 backdrop-blur-sm transition-all hover:bg-white md:p-5 lg:p-6">
+						<div class="flex items-center justify-between">
+							<span
+								class="text-2xl font-bold tracking-wide text-white uppercase group-hover:text-black md:text-lg lg:text-xl"
+							>
+								PSICOLOGIA POSITIVA: CIENCIA APLICADA
+							</span>
+							<svg
+								class="ml-4 h-8 w-8 shrink-0 text-white group-hover:text-black md:h-6 md:w-6 lg:h-7 lg:w-7"
+								fill="none"
+								stroke="currentColor"
+								viewBox="0 0 24 24"
+							>
+								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"></path>
+							</svg>
+						</div>
+					</div>
+				</a>
+
+				<a href="#criterio-seleccion" class="group block">
+					<div class="bg-white/10 p-8 backdrop-blur-sm transition-all hover:bg-white md:p-5 lg:p-6">
+						<div class="flex items-center justify-between">
+							<span
+								class="text-2xl font-bold tracking-wide text-white uppercase group-hover:text-black md:text-lg lg:text-xl"
+							>
+								ENTRENAMIENTOS COTIDIANOS
+							</span>
+							<svg
+								class="ml-4 h-8 w-8 shrink-0 text-white group-hover:text-black md:h-6 md:w-6 lg:h-7 lg:w-7"
+								fill="none"
+								stroke="currentColor"
+								viewBox="0 0 24 24"
+							>
+								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"></path>
+							</svg>
+						</div>
+					</div>
+				</a>
+
+				<a href="#diccionario" class="group block">
+					<div class="bg-white/10 p-8 backdrop-blur-sm transition-all hover:bg-white md:p-5 lg:p-6">
+						<div class="flex items-center justify-between">
+							<span
+								class="text-2xl font-bold tracking-wide text-white uppercase group-hover:text-black md:text-lg lg:text-xl"
+							>
+								CURIOSIDADES: EVIDENCIA Y LEGADO
+							</span>
+							<svg
+								class="ml-4 h-8 w-8 shrink-0 text-white group-hover:text-black md:h-6 md:w-6 lg:h-7 lg:w-7"
+								fill="none"
+								stroke="currentColor"
+								viewBox="0 0 24 24"
+							>
+								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"></path>
+							</svg>
+						</div>
+					</div>
+				</a>
+
+				<a href="#diccionario" class="group block">
+					<div class="bg-white/10 p-8 backdrop-blur-sm transition-all hover:bg-white md:p-5 lg:p-6">
+						<div class="flex items-center justify-between">
+							<span
+								class="text-2xl font-bold tracking-wide text-white uppercase group-hover:text-black md:text-lg lg:text-xl"
+							>
+								BIBLIOTECA
+							</span>
+							<svg
+								class="ml-4 h-8 w-8 shrink-0 text-white group-hover:text-black md:h-6 md:w-6 lg:h-7 lg:w-7"
+								fill="none"
+								stroke="currentColor"
+								viewBox="0 0 24 24"
+							>
+								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"></path>
+							</svg>
+						</div>
+					</div>
+				</a>
+			</div>
+		</div>
+	</div>
+
+
 		<main class="container">
 			<section>
 				<div class="mb-16 grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-3">
@@ -81,6 +205,4 @@ const posts = (await getCollection("cultura")).sort((a, b) => b.data.pubDate.val
 				</div>
 			</section>
 		</main>
-		<Footer />
-	</body>
-</html>
+</Layout>
