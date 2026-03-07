@@ -1,0 +1,24 @@
+@layer theme, base, components, utilities;
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+@theme {
+	--color-brand: #e4e2dd;
+}
+
+.prose ul > li::marker {
+	color: black;
+}
+
+body {
+	font-family: "Poppins", sans-serif;
+	background-color: var(--color-brand);
+}
+
+.stretched-link {
+	@apply after:absolute after:inset-0;
+}
+
+.container {
+	@apply mx-auto p-4;
+}
