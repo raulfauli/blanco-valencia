@@ -27,4 +27,11 @@ const fortalezas = defineCollection({
 		}),
 });
 
-export const collections = { cultura, fortalezas };
+const pages = defineCollection({
+	loader: glob({
+		base: "./src/content/pages",
+		pattern: "**/*.{md,mdx}",
+	}),
+});
+
+export const collections = { cultura, fortalezas, pages };
