@@ -1,0 +1,43 @@
+---
+import { Image } from "astro:assets";
+import type { CollectionEntry } from "astro:content";
+import { getCollection, render } from "astro:content";
+import HeaderBar from "~/components/HeaderBar.astro";
+import propositoBg from "~/content/pages/proposito-real.jpg";
+import Layout from "~/layouts/Layout.astro";
+
+const allContent = await getCollection("pages");
+const entry: CollectionEntry<"pages"> | undefined = allContent.find((e) => e.id === "proposito-real");
+
+if (!entry) {
+	throw new Error("No se encontró el contenido de proposito-real");
+}
+
+const { Content } = await render(entry);
+---
+
+<Layout>
+	<HeaderBar />
+
+	    <div class="relative h-[70vh] flex items-center justify-center overflow-hidden">
+        <!-- Background Image -->
+        <Image src={propositoBg} alt="Propósito real" class="absolute inset-0 w-full h-full object-cover" />
+
+        <!-- Dark Overlay -->
+        <div class="absolute inset-0 bg-black/50"></div>
+
+        <!-- Title Over Image -->
+        <div class="relative z-10 text-center px-10">
+            <h1 class="text-8xl font-black text-white uppercase tracking-tight leading-none mb-6 lg:text-7xl md:text-6xl sm:text-5xl">
+                Propósito real
+            </h1>
+            <div class="w-32 h-1 bg-white mx-auto"></div>
+        </div>
+    </div>
+
+	<div class="container">
+		<article class="prose lg:prose-xl max-w-none columns-1 gap-8 md:columns-2">
+			<Content />
+		</article>
+	</div>
+</Layout>
