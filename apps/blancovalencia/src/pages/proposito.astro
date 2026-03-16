@@ -29,7 +29,7 @@ const { Content, headings } = await render(entry);
 		<!-- Title Over Image -->
 		<div class="relative z-10 px-10 text-center">
 			<h1
-				class="mb-6 text-8xl leading-none font-black tracking-tight text-white uppercase sm:text-5xl md:text-6xl lg:text-7xl"
+				class="mb-6 text-4xl leading-none font-black tracking-tight text-white uppercase sm:text-5xl md:text-6xl lg:text-7xl"
 			>
 				Propósito real
 			</h1>
@@ -73,18 +73,25 @@ const { Content, headings } = await render(entry);
 				function onScroll() {
 					const offset = 120; // pixels from top to consider
 					let activeId = null;
-					for (let i = headings.length - 1; i >= 0; i--) {
-						const top = headings[i].getBoundingClientRect().top;
-						if (top <= offset) {
-							activeId = headings[i].id;
-							break;
-						}
-					}
 
-					// Fallback to first heading if none matched and we're near top
-					if (!activeId && headings.length) {
-						const firstTop = headings[0].getBoundingClientRect().top;
-						if (firstTop <= window.innerHeight) activeId = headings[0].id;
+					// If we're at (or very near) the bottom of the page, activate the last heading
+					const nearBottom = (window.innerHeight + window.scrollY) >= (document.documentElement.scrollHeight - 80);
+					if (nearBottom && headings.length) {
+						activeId = headings[headings.length - 1].id;
+					} else {
+						for (let i = headings.length - 1; i >= 0; i--) {
+							const top = headings[i].getBoundingClientRect().top;
+							if (top <= offset) {
+								activeId = headings[i].id;
+								break;
+							}
+						}
+
+						// Fallback to first heading if none matched and we're near top
+						if (!activeId && headings.length) {
+							const firstTop = headings[0].getBoundingClientRect().top;
+							if (firstTop <= window.innerHeight) activeId = headings[0].id;
+						}
 					}
 
 					links.forEach(l => l.classList.remove('font-bold'));
