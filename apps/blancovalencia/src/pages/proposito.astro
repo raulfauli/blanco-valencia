@@ -49,7 +49,7 @@ const { Content, headings } = await render(entry);
 						{
 							headings.map((h) => (
 								<li class={`ml-${(h.depth - 2) * 4}`}>
-									<a href={`#${h.slug}`}>{h.text}</a>
+									<a class="toc-link" data-slug={h.slug} href={`#${h.slug}`}>{h.text}</a>
 								</li>
 							))
 						}
@@ -58,4 +58,53 @@ const { Content, headings } = await render(entry);
 			</aside>
 		</div>
 	</div>
+
+		<script type="module">
+			// TOC active link on scroll
+			document.addEventListener('DOMContentLoaded', () => {
+				const content = document.querySelector('article.prose');
+				if (!content) return;
+
+				const headingSelectors = 'h1,h2,h3,h4,h5,h6';
+				const headings = Array.from(content.querySelectorAll(headingSelectors)).filter(h => h.id);
+				const links = Array.from(document.querySelectorAll('a.toc-link'));
+				const linkById = Object.fromEntries(links.map(l => [l.dataset.slug, l]));
+
+				function onScroll() {
+					const offset = 120; // pixels from top to consider
+					let activeId = null;
+					for (let i = headings.length - 1; i >= 0; i--) {
+						const top = headings[i].getBoundingClientRect().top;
+						if (top <= offset) {
+							activeId = headings[i].id;
+							break;
+						}
+					}
+
+					// Fallback to first heading if none matched and we're near top
+					if (!activeId && headings.length) {
+						const firstTop = headings[0].getBoundingClientRect().top;
+						if (firstTop <= window.innerHeight) activeId = headings[0].id;
+					}
+
+					links.forEach(l => l.classList.remove('font-bold'));
+					if (activeId && linkById[activeId]) {
+						linkById[activeId].classList.add('font-bold');
+					}
+				}
+
+				// Run on load and on scroll (throttle)
+				onScroll();
+				let ticking = false;
+				window.addEventListener('scroll', () => {
+					if (!ticking) {
+						window.requestAnimationFrame(() => {
+							onScroll();
+							ticking = false;
+						});
+						ticking = true;
+					}
+				}, { passive: true });
+			});
+		</script>
 </Layout>
