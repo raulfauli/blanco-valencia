@@ -38,19 +38,24 @@ const { Content, headings } = await render(entry);
 	</div>
 
 	<div class="container">
-		<article class="prose lg:prose-xl max-w-none columns-1 gap-8 md:columns-2">
-			<Content />
-		</article>
-		<aside class="text-sm">
-			<ul>
-				{
-					headings.map((h) => (
-						<li class={`ml-${(h.depth - 2) * 4}`}>
-							<a href={`#${h.slug}`}>{h.text}</a>
-						</li>
-					))
-				}
-			</ul>
-		</aside>
+		<div class="grid gap-8 md:grid-cols-3">
+			<article class="prose lg:prose-xl md:col-span-2">
+				<Content />
+			</article>
+
+			<aside class="md:col-span-1">
+				<nav class="sticky top-20 self-start">
+					<ul class="text-sm space-y-2">
+						{
+							headings.map((h) => (
+								<li class={`ml-${(h.depth - 2) * 4}`}>
+									<a href={`#${h.slug}`}>{h.text}</a>
+								</li>
+							))
+						}
+					</ul>
+				</nav>
+			</aside>
+		</div>
 	</div>
 </Layout>
