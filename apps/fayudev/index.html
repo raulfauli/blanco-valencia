@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Are You a Bot?</title>
+		<link rel="stylesheet" href="/styles.css" />
+	</head>
+	<body>
+		<main class="container">
+			<h1>Are You a Bot?</h1>
+			<p>Browser signals, session activity, and device characteristics are analyzed to estimate bot probability.</p>
+
+			<section aria-labelledby="browser-information">
+				<h2 id="browser-information">Browser Information</h2>
+				<div class="info-grid">
+					<div class="info-item">
+						<label for="user-agent">User Agent</label>
+						<span id="user-agent">Loading...</span>
+					</div>
+					<div class="info-item">
+						<label for="screen-size">Screen Size</label>
+						<span id="screen-size">Loading...</span>
+					</div>
+					<div class="info-item">
+						<label for="browser-language">Language</label>
+						<span id="browser-language">Loading...</span>
+					</div>
+					<div class="info-item">
+						<label for="incognito-mode">Incognito Mode</label>
+						<span id="incognito-mode">Loading...</span>
+					</div>
+					<div class="info-item">
+						<label for="ip-address">IP Address</label>
+						<span id="ip-address">Loading...</span>
+					</div>
+					<div class="info-item">
+						<label for="device-type">Device Type</label>
+						<span id="device-type">Loading...</span>
+					</div>
+					<div class="info-item">
+						<label for="browser-version">Browser Version</label>
+						<span id="browser-version">Loading...</span>
+					</div>
+					<div class="info-item">
+						<label for="visit-count">Visit Count</label>
+						<span id="visit-count">Loading...</span>
+					</div>
+				</div>
+			</section>
+
+			<section class="probability-display" aria-labelledby="bot-analysis">
+				<h2 id="bot-analysis">Bot Analysis</h2>
+				<div class="probability-meter" aria-live="polite">
+					<div class="probability-bar" id="probability-bar"></div>
+					<div class="probability-text" id="probability-text">Calculating...</div>
+				</div>
+			</section>
+
+			<section class="factors-section" aria-labelledby="risk-factors">
+				<h2 id="risk-factors">Risk Factors</h2>
+				<div id="factors-list"></div>
+			</section>
+
+			<section class="disclaimer" aria-labelledby="disclaimer">
+				<h2 id="disclaimer">Disclaimer</h2>
+				<p>This estimate is heuristic and should not be used as the sole signal for blocking traffic.</p>
+			</section>
+		</main>
+
+		<script src="/script.js"></script>
+	</body>
+</html>

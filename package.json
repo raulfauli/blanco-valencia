@@ -7,7 +7,9 @@
 	"scripts": {
 		"blancovalencia:astro": "bun run --cwd apps/blancovalencia astro",
 		"blancovalencia:deploy": "bun run --cwd apps/blancovalencia deploy",
-		"espinosa:astro": "bun run --cwd apps/espinosa astro"
+		"espinosa:astro": "bun run --cwd apps/espinosa astro",
+		"fayu:start": "bun run --cwd apps/fayudev start",
+		"fayu:deploy": "bun run --cwd apps/fayudev deploy"
 	},
 	"devDependencies": {
 		"@types/bun": "latest",
