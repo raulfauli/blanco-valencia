@@ -1,5 +1,4 @@
 ---
-import { ClientRouter } from "astro:transitions";
 import Footer from "../components/Footer.astro";
 
 import "../styles/global.css";
@@ -16,7 +15,6 @@ const { title } = Astro.props;
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<link rel="icon" href="/favicon.ico" />
 		<title>{title || "Blanco Valencia"}</title>
-		<ClientRouter />
 	</head>
 	<body class="flex min-h-screen flex-col scroll-smooth">
 		<slot />
