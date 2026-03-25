@@ -2,7 +2,7 @@
 title: "Nuevos enfoques en coaching de fortalezas humanas"
 description: "Exploramos metodologías innovadoras que ponen el foco en tus capacidades naturales y cómo potenciarlas."
 pubDate: "2025-12-05"
-heroImage: "~/assets/cultura/nuevos-enfoques-coaching-fortalezas-humanas.jpg"
+image: "nuevos-enfoques-coaching-fortalezas-humanas.jpg"
 ---
 
 Explorar tus capacidades naturales no es suficiente: el verdadero cambio ocurre cuando aprendes a sostenerlas con criterio y coherencia

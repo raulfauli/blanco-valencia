@@ -11,7 +11,7 @@ const cultura = defineCollection({
 			description: z.string(),
 			// Transform string to Date object
 			pubDate: z.coerce.date(),
-			heroImage: image(),
+			image: image(),
 		}),
 });
 

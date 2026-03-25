@@ -23,3 +23,9 @@ cp -r ~/Dropbox/BlancoValencia/* ./apps/blancovalencia/src/content/
 cp -r ./apps/blancovalencia/src/content/* ~/Dropbox/BlancoValencia/
 rclone sync ~/Dropbox/BlancoValencia Dropbox:/BlancoValencia
 ```
+
+## Deploy
+
+```
+bun run blancovalencia:astro build && bun run blancovalencia:deploy
+```

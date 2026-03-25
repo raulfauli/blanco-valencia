@@ -1,7 +1,6 @@
 ---
 import { getCollection } from "astro:content";
 import Layout from "~/layouts/Layout.astro";
-import heroImage from "../assets/hero.webp";
 import Pillars from "../components/Pillars.astro";
 
 const posts = (await getCollection("cultura")).sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime());
@@ -49,7 +48,7 @@ const baseUrl = import.meta.env.BASE_URL;
 		<!-- Hero Image -->
 		<div class="mb-20">
 			<img
-				src={heroImage.src}
+				src={image.src}
 				alt="Surfista con tabla"
 				class="h-[700px] w-full object-cover contrast-110 grayscale sm:h-[400px] md:h-[500px]"
 			/>
@@ -64,7 +63,7 @@ const baseUrl = import.meta.env.BASE_URL;
 						<div
 							class={`relative overflow-hidden bg-white/30 transition-transform hover:-translate-y-1 ${index === 0 ? "sm:col-span-2 lg:col-span-1" : ""}`}
 						>
-							<img src={post.data.heroImage.src} alt={post.data.title} class="h-[250px] w-full object-cover" />
+							<img src={post.data.image.src} alt={post.data.title} class="h-[250px] w-full object-cover" />
 							<div class="p-8">
 								<div class="mb-4 text-xs font-bold tracking-wider text-gray-600">
 									{post.data.pubDate
