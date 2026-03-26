@@ -2,7 +2,6 @@
 title: "Referentes que inspiran: historias de transformación"
 description: "Conoce casos reales de personas que han encontrado su camino a través del autoanálisis y la práctica consciente"
 pubDate: "2025-11-28"
-image: "referentes-inspiran-historias-transformacion.jpg"
 ---
 
 El Eje: la diferencia entre avanzar y no estar perdido. Referentes que inspiran

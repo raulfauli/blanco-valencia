@@ -5,7 +5,15 @@ import BlogPost from "../../layouts/BlogPost.astro";
 
 export async function getStaticPaths() {
 	const posts = await getCollection("cultura");
-	return posts.map((post) => ({
+	const images = import.meta.glob("../../content/cultura/*.jpg", { eager: true });
+	const postsWithImages = posts.map((post) => ({
+		...post,
+		data: {
+			...post.data,
+			image: images[`../../content/cultura/${post.id}.jpg`]?.default,
+		},
+	}));
+	return postsWithImages.map((post) => ({
 		params: { slug: post.id },
 		props: post,
 	}));

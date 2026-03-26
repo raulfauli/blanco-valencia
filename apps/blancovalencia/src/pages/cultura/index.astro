@@ -1,4 +1,5 @@
 ---
+import { Image } from "astro:assets";
 import { getCollection } from "astro:content";
 import culturaBg from "~/content/cultura/importancia-pausa-desarrollo-personal.jpg";
 import HeaderBar from "../../components/HeaderBar.astro";
@@ -6,6 +7,14 @@ import Layout from "../../layouts/Layout.astro";
 const baseUrl = import.meta.env.BASE_URL;
 
 const posts = (await getCollection("cultura")).sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+const images = import.meta.glob("../../content/cultura/*.jpg", { eager: true });
+const postsWithImages = posts.map((post) => ({
+	...post,
+	data: {
+		...post.data,
+		image: images[`../../content/cultura/${post.id}.jpg`]?.default,
+	},
+}));
 ---
 
 <style>
@@ -142,9 +151,9 @@ const posts = (await getCollection("cultura")).sort((a, b) => b.data.pubDate.val
 		<section>
 			<div class="mb-16 grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-3">
 				{
-					posts.map((post) => (
+					postsWithImages.map((post) => (
 						<div class={`relative overflow-hidden bg-white/30 transition-transform hover:-translate-y-1`}>
-							<img src={post.data.image.src} alt={post.data.title} class="h-[250px] w-full object-cover" />
+							<Image src={post.data.image} alt={post.data.title} class="h-[250px] w-full object-cover" />
 							<div class="p-8">
 								<div class="mb-4 text-xs font-bold tracking-wider text-gray-600">
 									{post.data.pubDate
@@ -171,9 +180,9 @@ const posts = (await getCollection("cultura")).sort((a, b) => b.data.pubDate.val
 		<section>
 			<div class="mb-16 grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-3">
 				{
-					posts.map((post) => (
+					postsWithImages.map((post) => (
 						<div class={`relative overflow-hidden bg-white/30 transition-transform hover:-translate-y-1`}>
-							<img src={post.data.image.src} alt={post.data.title} class="h-[250px] w-full object-cover" />
+							<Image src={post.data.image} alt={post.data.title} class="h-[250px] w-full object-cover" />
 							<div class="p-8">
 								<div class="mb-4 text-xs font-bold tracking-wider text-gray-600">
 									{post.data.pubDate
