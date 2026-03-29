@@ -15,10 +15,8 @@ Inside of your Astro project, you'll see the following folders and files:
 ├── public/
 │   └── favicon.svg
 ├── src
-│   ├── assets
-│   │   └── astro.svg
 │   ├── components
-│   │   └── Welcome.astro
+│   │   └── Footer.astro
 │   ├── layouts
 │   │   └── Layout.astro
 │   └── pages

@@ -3,6 +3,7 @@
 @plugin "@tailwindcss/typography";
 
 @theme {
+	--color-primary: #f30000;
 	--color-brand: #e4e2dd;
 }
 
