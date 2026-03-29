@@ -12,7 +12,7 @@ export async function GET(context) {
 
   return rss({
     title: 'Macarias Travel',
-    description: 'Vive y escribe tu historia - Blog de montana, rutas y viajes de aventura',
+    description: 'Vive y escribe tu historia - Blog de montaña, rutas y viajes de aventura',
     site: context.site,
     items: allContent.map((item) => ({
       title: item.data.title,

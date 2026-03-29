@@ -1,6 +1,6 @@
 ---
 title: Sobre Nosotros
-description: Vive y escribe tu historia - Tu blog de montana, rutas y viajes de aventura.
+description: Vive y escribe tu historia - Tu blog de montaña, rutas y viajes de aventura.
 pubDate: 2026-03-28
 author: Macarias Travel
 tags:
@@ -12,10 +12,10 @@ featured: true
 
 # Familia Macarias
 
-Antes de nada, quería informaros un poquito sobre nosotros. Como bien lo estáis leyendo y vais sabiendo somos la familia Macarias:  
-- Andrei Iulian Macarie 🇷🇴/🇪🇸  
-- Stefanny Arias Valencia 🇨🇴/🇪🇸  
-- Emily Raquel Macarie Arias 🇪🇸  
+Antes de nada, quería informaros un poquito sobre nosotros. Como bien lo estáis leyendo y vais sabiendo somos la familia Macarias:
+- Andrei Iulian Macarie 🇷🇴/🇪🇸
+- Stefanny Arias Valencia 🇨🇴/🇪🇸
+- Emily Raquel Macarie Arias 🇪🇸
 - Elisabeth Caroline Macarie Arias 🇪🇸
 
 Macarias se nos ocurrió de la unión de nuestros apellidos, culturas y religiones.

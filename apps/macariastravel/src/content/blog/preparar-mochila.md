@@ -1,6 +1,6 @@
 ---
-title: "Como preparar tu mochila para una ruta de montana"
-description: " Guia completa para preparar tu mochila de senderismo. Aprende que llevar, como distribuir el peso y consejos para una excursion comoda."
+title: "Como preparar tu mochila para una ruta de montaña"
+description: " Guía completa para preparar tu mochila de senderismo. Aprende que llevar, como distribuir el peso y consejos para una excursion comoda."
 pubDate: 2026-03-20
 author: "Macarias Travel"
 tags: ["consejos", "equipamiento", "senderismo"]
@@ -8,9 +8,9 @@ heroImage: "https://images.unsplash.com/photo-1622260614153-03223fb72052?w=800"
 featured: true
 ---
 
-# Como preparar tu mochila para una ruta de montana
+# Como preparar tu mochila para una ruta de montaña
 
-Una buena preparacion es clave para disfrutar plenamente de cualquier ruta de montana. En esta guia te contamos todo lo que necesitas saber.
+Una buena preparacion es clave para disfrutar plenamente de cualquier ruta de montaña. En esta guía te contamos todo lo que necesitas saber.
 
 ## El peso ideal
 

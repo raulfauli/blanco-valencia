@@ -43,4 +43,4 @@ El Parque Natural de Somiedo es hogar de una gran variedad de especies:
 - Respeta la fauna y flora del parque
 - No dejes huella: llevate toda la basura
 
-Una ruta imprescindible para cualquier amante de la montana.
+Una ruta imprescindible para cualquier amante de la montaña.
