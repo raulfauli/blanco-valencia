@@ -1,24 +1,35 @@
----
----
-<header class="header">
-  <a href="/" class="logo-link">
-    <img src="/logo.svg" alt="Espinosa Logo" class="logo" />
-  </a>
+<header class="fixed top-0 z-50 w-full bg-white/95 shadow-lg backdrop-blur-md">
+	<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+		<div class="flex flex-col items-center justify-between gap-4 py-4 md:flex-row">
+			<div class="flex items-center gap-4">
+				<a href="/">
+					<img src="/logo.svg" alt="Logo de Equilibrados Espinosa" class="h-16 w-16" />
+				</a>
+				<div>
+					<h1 class="text-2xl font-bold text-gray-800"><a href="/">Equilibrados Espinosa</a></h1>
+					<span class="text-secondary text-sm">Mantenimiento Industrial</span>
+				</div>
+			</div>
+			<nav>
+				<ul class="flex flex-wrap justify-center gap-6 md:gap-8">
+					<li>
+						<a href="#servicios" class="hover:text-primary font-medium text-gray-800 transition-colors">Servicios</a>
+					</li>
+					<li>
+						<a href="#nosotros" class="hover:text-primary font-medium text-gray-800 transition-colors">Nosotros</a>
+					</li>
+					<li>
+						<a href="#contacto" class="hover:text-primary font-medium text-gray-800 transition-colors">Contacto</a>
+					</li>
+					<li>
+						<a
+							href="#login"
+							class="bg-primary rounded-full px-5 py-2 text-white transition-all hover:-translate-y-0.5 hover:bg-red-800"
+							>App Gestión</a
+						>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</div>
 </header>
-
-<style>
-  .header {
-    display: flex;
-    align-items: center;
-    padding: 1rem;
-  }
-
-  .logo-link {
-    display: block;
-  }
-
-  .logo {
-    height: 60px;
-    width: auto;
-  }
-</style>

@@ -1,44 +1,31 @@
 ---
-import Header from '../components/Header.astro';
-import Navigation from '../components/Navigation.astro';
-import Footer from '../components/Footer.astro';
+import "~/styles/global.css";
+import Footer from "../components/Footer.astro";
+import Header from "../components/Header.astro";
+import Navigation from "../components/Navigation.astro";
 
 interface Props {
-  title?: string;
+	title?: string;
 }
 
-const { title = 'Espinosa - Equilibrados Industriales' } = Astro.props;
+const { title = "Espinosa - Equilibrados Industriales" } = Astro.props;
 ---
 
 <!doctype html>
 <html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="icon" href="/favicon.ico" />
-    <meta name="generator" content={Astro.generator} />
-    <title>{title}</title>
-  </head>
-  <body>
-    <Header />
-    <Navigation />
-    <main>
-      <slot />
-    </main>
-    <Footer />
-  </body>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="icon" href="/favicon.ico" />
+		<title>{title}</title>
+	</head>
+	<body class="flex min-h-screen flex-col">
+		<Header />
+		<Navigation />
+		<main class="flex-1">
+			<slot />
+		</main>
+		<Footer />
+	</body>
 </html>
-
-<style>
-  html,
-  body {
-    margin: 0;
-    width: 100%;
-    height: 100%;
-  }
-
-  main {
-    padding: 1rem;
-  }
-</style>
