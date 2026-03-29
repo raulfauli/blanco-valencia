@@ -3,8 +3,8 @@
 @plugin "@tailwindcss/typography";
 
 @theme {
-	--color-primary: #f30000;
-	--color-brand: #e4e2dd;
+	--color-primary: #f20d0d;
+	--color-secondary:#d64233;
 }
 
 .prose ul > li::marker {
