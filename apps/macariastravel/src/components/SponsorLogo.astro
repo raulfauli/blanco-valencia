@@ -1,0 +1,37 @@
+---
+interface Props {
+  name: string;
+  href: string;
+  logo?: string;
+  size?: 'sm' | 'md' | 'lg';
+}
+
+const { name, href, logo, size = 'md' } = Astro.props;
+
+const sizeClasses = {
+  sm: 'h-8',
+  md: 'h-10',
+  lg: 'h-14',
+};
+---
+
+<a
+  href={href}
+  target="_blank"
+  rel="noopener noreferrer"
+  class="inline-block transition-opacity hover:opacity-75 focus:opacity-75 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2 rounded"
+  aria-label={`Visitar ${name}`}
+>
+  {logo ? (
+    <img
+      src={logo}
+      alt={name}
+      class={`${sizeClasses[size]} w-auto`}
+      loading="lazy"
+    />
+  ) : (
+    <span class="text-lg font-semibold text-stone-600 hover:text-stone-900">
+      {name}
+    </span>
+  )}
+</a>

@@ -1,0 +1,52 @@
+---
+interface Props {
+  wikilocUrl: string;
+  title?: string;
+}
+
+const { wikilocUrl, title = 'Ruta en Wikiloc' } = Astro.props;
+
+function extractWikilocId(url: string): string | null {
+  try {
+    const parsed = new URL(url);
+    const idFromParam = parsed.searchParams.get('id');
+    if (idFromParam) return idFromParam;
+    const pathNumberMatch = parsed.pathname.match(/(\d{5,})\/?$/);
+    if (pathNumberMatch) return pathNumberMatch[1];
+  } catch {
+    // invalid URL, fallback regex
+  }
+  const genericNumberMatch = url.match(/(\d{5,})/);
+  return genericNumberMatch ? genericNumberMatch[1] : null;
+}
+
+const wikilocId = extractWikilocId(wikilocUrl);
+const embedUrl = wikilocId
+  ? `https://www.wikiloc.com/wikiloc/embedv2.do?id=${wikilocId}&elevation=off&images=off&maptype=H`
+  : wikilocUrl;
+---
+
+<div class="relative w-full rounded-xl overflow-hidden bg-stone-100">
+  <div class="aspect-[4/3]">
+    <iframe
+      src={embedUrl}
+      title={title}
+      class="w-full h-full border-0"
+      loading="lazy"
+      allowfullscreen
+    ></iframe>
+  </div>
+  <div class="p-3 bg-stone-50 border-t border-stone-200">
+    <a
+      href={wikilocUrl}
+      target="_blank"
+      rel="noopener noreferrer"
+      class="inline-flex items-center gap-2 text-sm text-emerald-700 hover:text-emerald-800 font-medium"
+    >
+      <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+      </svg>
+      Ver ruta completa en Wikiloc
+    </a>
+  </div>
+</div>

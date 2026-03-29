@@ -1,0 +1,112 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import ShareButtons from '../../components/ShareButtons.astro';
+import SponsorAttribution from '../../components/SponsorAttribution.astro';
+import { getCollection, render } from 'astro:content';
+import type { GetStaticPaths } from 'astro';
+
+export const getStaticPaths: GetStaticPaths = async () => {
+  const posts = await getCollection('blog');
+  return posts.map((post) => ({
+    params: { slug: post.id },
+    props: { post },
+  }));
+};
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+
+const formattedDate = post.data.pubDate.toLocaleDateString('es-ES', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+});
+
+const siteUrl = Astro.site?.toString() || '';
+const postUrl = `${siteUrl}blog/${post.id}`;
+---
+
+<BaseLayout
+  title={post.data.title}
+  description={post.data.description}
+  image={post.data.heroImage}
+  type="article"
+  publishedDate={post.data.pubDate.toISOString()}
+  modifiedDate={post.data.updatedDate?.toISOString()}
+  author={post.data.author}
+  tags={post.data.tags}
+>
+  <Header />
+  <main>
+    <article class="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <div class="max-w-3xl mx-auto">
+        <header class="mb-8">
+          <div class="flex flex-wrap items-center gap-3 text-sm text-stone-500 mb-4">
+            <time datetime={post.data.pubDate.toISOString()}>{formattedDate}</time>
+            {post.data.author && (
+              <>
+                <span aria-hidden="true">&middot;</span>
+                <span>{post.data.author}</span>
+              </>
+            )}
+          </div>
+
+          <h1 class="text-4xl md:text-5xl font-bold text-stone-900 mb-6 leading-tight">
+            {post.data.title}
+          </h1>
+
+          {post.data.tags && post.data.tags.length > 0 && (
+            <div class="flex flex-wrap gap-2">
+              {post.data.tags.map((tag) => (
+                <a
+                  href={`/tags/${tag}`}
+                  class="px-3 py-1 bg-emerald-100 text-emerald-800 rounded-full text-sm font-medium hover:bg-emerald-200 transition-colors"
+                >
+                  {tag}
+                </a>
+              ))}
+            </div>
+          )}
+        </header>
+
+        {post.data.heroImage && (
+          <figure class="mb-8">
+            <img
+              src={post.data.heroImage}
+              alt={post.data.title}
+              class="w-full rounded-xl shadow-lg"
+              loading="eager"
+            />
+          </figure>
+        )}
+
+        {post.data.sponsor && <SponsorAttribution sponsor={post.data.sponsor} />}
+
+        <div class="prose prose-stone prose-lg max-w-none">
+          <Content />
+        </div>
+
+        <footer class="mt-12 pt-8 border-t border-stone-200">
+          <ShareButtons url={postUrl} title={post.data.title} />
+
+          {post.data.tags && post.data.tags.length > 0 && (
+            <div class="mt-6 flex flex-wrap gap-2">
+              <span class="text-sm text-stone-500 mr-2">Etiquetas:</span>
+              {post.data.tags.map((tag) => (
+                <a
+                  href={`/tags/${tag}`}
+                  class="text-sm text-emerald-700 hover:text-emerald-800 hover:underline"
+                >
+                  #{tag}
+                </a>
+              ))}
+            </div>
+          )}
+        </footer>
+      </div>
+    </article>
+  </main>
+  <Footer />
+</BaseLayout>

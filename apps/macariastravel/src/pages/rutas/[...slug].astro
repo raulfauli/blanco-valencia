@@ -1,0 +1,121 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import DifficultyBadge from '../../components/DifficultyBadge.astro';
+import RouteStats from '../../components/RouteStats.astro';
+import WikilocEmbed from '../../components/WikilocEmbed.astro';
+import ShareButtons from '../../components/ShareButtons.astro';
+import SponsorAttribution from '../../components/SponsorAttribution.astro';
+import { getCollection, render } from 'astro:content';
+import type { GetStaticPaths } from 'astro';
+
+export const getStaticPaths: GetStaticPaths = async () => {
+  const routes = await getCollection('routes');
+  return routes.map((route) => ({
+    params: { slug: route.id },
+    props: { route },
+  }));
+};
+
+const { route } = Astro.props;
+const { Content } = await render(route);
+
+const formattedDate = route.data.pubDate.toLocaleDateString('es-ES', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+});
+
+const siteUrl = Astro.site?.toString() || '';
+const routeUrl = `${siteUrl}rutas/${route.id}`;
+---
+
+<BaseLayout
+  title={route.data.title}
+  description={route.data.description}
+  image={route.data.heroImage}
+  type="article"
+  publishedDate={route.data.pubDate.toISOString()}
+  modifiedDate={route.data.updatedDate?.toISOString()}
+  author={route.data.author}
+  tags={route.data.tags}
+>
+  <Header />
+  <main>
+    <article class="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <div class="max-w-4xl mx-auto">
+        <header class="mb-8">
+          <div class="flex items-center gap-3 mb-4">
+            <DifficultyBadge difficulty={route.data.difficulty} />
+            <span class="text-stone-500">{route.data.location}</span>
+          </div>
+
+          <h1 class="text-4xl md:text-5xl font-bold text-stone-900 mb-4 leading-tight">
+            {route.data.title}
+          </h1>
+
+          <div class="flex flex-wrap items-center gap-3 text-sm text-stone-500">
+            <time datetime={route.data.pubDate.toISOString()}>{formattedDate}</time>
+            {route.data.author && (
+              <>
+                <span aria-hidden="true">&middot;</span>
+                <span>{route.data.author}</span>
+              </>
+            )}
+          </div>
+        </header>
+
+        <RouteStats
+          distance={route.data.distance}
+          elevation={route.data.elevation}
+          duration={route.data.duration}
+          location={route.data.location}
+        />
+
+        {route.data.heroImage && (
+          <figure class="mt-8 mb-8">
+            <img
+              src={route.data.heroImage}
+              alt={route.data.title}
+              class="w-full rounded-xl shadow-lg"
+              loading="eager"
+            />
+          </figure>
+        )}
+
+        {route.data.wikilocUrl && (
+          <section class="mb-8">
+            <h2 class="text-2xl font-bold text-stone-900 mb-4">Mapa de la ruta</h2>
+            <WikilocEmbed wikilocUrl={route.data.wikilocUrl} title={route.data.title} />
+          </section>
+        )}
+
+        {route.data.sponsor && <SponsorAttribution sponsor={route.data.sponsor} />}
+
+        <div class="prose prose-stone prose-lg max-w-none">
+          <Content />
+        </div>
+
+        <footer class="mt-12 pt-8 border-t border-stone-200">
+          <ShareButtons url={routeUrl} title={route.data.title} />
+
+          {route.data.tags && route.data.tags.length > 0 && (
+            <div class="mt-6 flex flex-wrap gap-2">
+              <span class="text-sm text-stone-500 mr-2">Etiquetas:</span>
+              {route.data.tags.map((tag) => (
+                <a
+                  href={`/tags/${tag}`}
+                  class="text-sm text-emerald-700 hover:text-emerald-800 hover:underline"
+                >
+                  #{tag}
+                </a>
+              ))}
+            </div>
+          )}
+        </footer>
+      </div>
+    </article>
+  </main>
+  <Footer />
+</BaseLayout>

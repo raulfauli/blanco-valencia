@@ -1,0 +1,84 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import DifficultyBadge from '../../components/DifficultyBadge.astro';
+import { getCollection } from 'astro:content';
+
+const routes = (await getCollection('routes')).sort(
+	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+);
+
+const title = 'Rutas';
+const description = 'Rutas de montana, senderismo y trails con dificultad, distancia y desnivel.';
+---
+
+<BaseLayout title={title} description={description}>
+  <Header />
+  <main class="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <div class="max-w-4xl mx-auto">
+      <div class="text-center mb-12">
+        <h1 class="text-4xl font-bold text-stone-900 mb-4">Rutas</h1>
+        <p class="text-lg text-stone-600">Rutas de montana y senderismo con datos de dificultad, distancia y desnivel</p>
+      </div>
+
+      <div class="space-y-6">
+        {routes.map((route) => (
+          <article class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300">
+            <a href={`/rutas/${route.id}`} class="block">
+              <div class="md:flex">
+                {route.data.heroImage && (
+                  <div class="md:w-1/3 aspect-video md:aspect-auto">
+                    <img
+                      src={route.data.heroImage}
+                      alt={route.data.title}
+                      class="w-full h-full object-cover"
+                      loading="lazy"
+                    />
+                  </div>
+                )}
+                <div class="p-6 md:flex-1">
+                  <div class="flex items-center gap-3 mb-3">
+                    <DifficultyBadge difficulty={route.data.difficulty} size="sm" />
+                    <span class="text-sm text-stone-500">{route.data.location}</span>
+                  </div>
+                  <h2 class="text-2xl font-bold text-stone-900 mb-2 hover:text-emerald-700 transition-colors">
+                    {route.data.title}
+                  </h2>
+                  <p class="text-stone-600 mb-4 line-clamp-2">{route.data.description}</p>
+                  <div class="flex flex-wrap gap-4 text-sm text-stone-500">
+                    <span class="flex items-center gap-1">
+                      <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7" />
+                      </svg>
+                      {route.data.distance} km
+                    </span>
+                    <span class="flex items-center gap-1">
+                      <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
+                      </svg>
+                      {route.data.elevation} m
+                    </span>
+                    <span class="flex items-center gap-1">
+                      <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                      </svg>
+                      {route.data.duration}
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </a>
+          </article>
+        ))}
+      </div>
+
+      {routes.length === 0 && (
+        <div class="text-center py-16">
+          <p class="text-stone-500">Pronto habra rutas disponibles.</p>
+        </div>
+      )}
+    </div>
+  </main>
+  <Footer />
+</BaseLayout>

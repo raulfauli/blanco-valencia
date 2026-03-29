@@ -1,0 +1,40 @@
+---
+interface Video {
+  videoId: string;
+  title: string;
+  thumbnail?: string;
+}
+
+interface Props {
+  videos: Video[];
+}
+
+const { videos } = Astro.props;
+---
+
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+  {videos.map((video, index) => (
+    <a
+      href={`#video-${index}`}
+      class="group relative aspect-video rounded-xl overflow-hidden bg-stone-900"
+      data-video-modal={video.videoId}
+    >
+      <img
+        src={video.thumbnail || `https://img.youtube.com/vi/${video.videoId}/maxresdefault.jpg`}
+        alt={video.title}
+        class="w-full h-full object-cover transition-transform group-hover:scale-105"
+        loading="lazy"
+      />
+      <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent flex items-end p-4">
+        <div class="flex items-center gap-2">
+          <div class="w-10 h-10 rounded-full bg-white/20 backdrop-blur flex items-center justify-center">
+            <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M8 5v14l11-7z"/>
+            </svg>
+          </div>
+          <span class="text-white font-medium text-sm">{video.title}</span>
+        </div>
+      </div>
+    </a>
+  ))}
+</div>

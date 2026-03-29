@@ -1,0 +1,59 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import ArticleCard from '../../components/ArticleCard.astro';
+import { getCollection } from 'astro:content';
+
+export async function getStaticPaths() {
+  const allPosts = await getCollection('blog');
+  const allRoutes = await getCollection('routes');
+  const allVideos = await getCollection('videos');
+
+  const allContent = [...allPosts, ...allRoutes, ...allVideos];
+
+  const tags = new Set<string>();
+  allContent.forEach((item) => {
+    item.data.tags?.forEach((tag) => tags.add(tag));
+  });
+
+  return Array.from(tags).map((tag) => ({
+    params: { tag },
+    props: {
+      tag,
+      posts: allContent
+        .filter((item) => item.data.tags?.includes(tag))
+        .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()),
+    },
+  }));
+}
+
+const { tag, posts } = Astro.props;
+---
+
+<BaseLayout title={`${tag} - Macarias Travel`} description={`Articulos y rutas con la etiqueta ${tag}`}>
+  <Header />
+  <main class="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <div class="max-w-4xl mx-auto">
+      <div class="text-center mb-12">
+        <p class="text-emerald-600 font-medium mb-2">Etiqueta</p>
+        <h1 class="text-4xl font-bold text-stone-900 mb-4">#{tag}</h1>
+        <p class="text-lg text-stone-600">{posts.length} {posts.length === 1 ? 'articulo' : 'articulos'}</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        {posts.map((post) => (
+          <ArticleCard
+            title={post.data.title}
+            description={post.data.description}
+            slug={post.id}
+            pubDate={post.data.pubDate}
+            heroImage={post.data.heroImage}
+            tags={post.data.tags}
+          />
+        ))}
+      </div>
+    </div>
+  </main>
+  <Footer />
+</BaseLayout>
