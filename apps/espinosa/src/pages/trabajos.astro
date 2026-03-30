@@ -1,4 +1,5 @@
 ---
+import Lightbox from "../components/Lightbox.astro";
 import PhotoGallery from "../components/PhotoGallery.astro";
 import Layout from "../layouts/Layout.astro";
 
@@ -15,6 +16,8 @@ const galleries = categories.map((category) => {
 	});
 	return { category, images };
 });
+
+const allImages = galleries.flatMap((g) => g.images.map((img) => ({ ...img, category: g.category })));
 
 function getImageCount(category: string): number {
 	const counts: Record<string, number> = {
@@ -46,6 +49,7 @@ function getFilename(category: string, num: string): string {
 	<div class="gallery-container">
 		{galleries.map((gallery) => <PhotoGallery category={gallery.category} images={gallery.images} />)}
 	</div>
+	<Lightbox images={allImages} />
 </Layout>
 
 <style>

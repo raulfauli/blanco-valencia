@@ -20,9 +20,14 @@ const label = categoryLabels[category] || category;
   <h2 class="category-title">{label}</h2>
   <div class="gallery-grid">
     {images.map((image) => (
-      <a href={image.src} class="gallery-item">
+      <button
+        class="gallery-item"
+        data-src={image.src}
+        data-category={category}
+        onclick={`openLightbox('${image.src}', '${category}')`}
+      >
         <img src={image.src} alt={image.alt} loading="lazy" />
-      </a>
+      </button>
     ))}
   </div>
 </section>
@@ -49,18 +54,44 @@ const label = categoryLabels[category] || category;
     aspect-ratio: 1;
     overflow: hidden;
     border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    transition: transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+    border: none;
+    padding: 0;
+    background: transparent;
   }
 
   .gallery-item:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    transform: scale(1.03) translateY(-4px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
   }
 
   .gallery-item img {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    transition: transform 0.3s ease;
+  }
+
+  .gallery-item:hover img {
+    transform: scale(1.05);
+  }
+
+  @media (max-width: 640px) {
+    .gallery-grid {
+      grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+      gap: 0.75rem;
+    }
+
+    .category-title {
+      font-size: 1.25rem;
+    }
+  }
+
+  @media (min-width: 1200px) {
+    .gallery-grid {
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    }
   }
 </style>
