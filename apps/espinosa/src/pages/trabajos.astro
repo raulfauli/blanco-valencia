@@ -22,7 +22,7 @@ const allImages = galleries.flatMap((g) => g.images.map((img) => ({ ...img, cate
 function getImageCount(category: string): number {
 	const counts: Record<string, number> = {
 		equilibrados: 10,
-		instalaciones: 21,
+		instalaciones: 20,
 		maquinaria: 21,
 		ventiladores: 1,
 	};
@@ -41,15 +41,17 @@ function getFilename(category: string, num: string): string {
 ---
 
 <Layout title="Galería - Espinosa">
-	<h1>Galería de Trabajos</h1>
-	<p class="intro">
-		Conoce algunos de nuestros trabajos realizados en equilibrado y reparación de maquinaria industrial.
-	</p>
-
-	<div class="gallery-container">
-		{galleries.map((gallery) => <PhotoGallery category={gallery.category} images={gallery.images} />)}
-	</div>
 	<Lightbox images={allImages} />
+	<div class="container">
+		<h1>Galería de Trabajos</h1>
+		<p class="intro">
+			Conoce algunos de nuestros trabajos realizados en equilibrado y reparación de maquinaria industrial.
+		</p>
+
+		<div class="gallery-container">
+			{galleries.map((gallery) => <PhotoGallery category={gallery.category} images={gallery.images} />)}
+		</div>
+	</div>
 </Layout>
 
 <style>

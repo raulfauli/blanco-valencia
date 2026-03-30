@@ -16,7 +16,7 @@ const categoryLabels: Record<string, string> = {
 const label = categoryLabels[category] || category;
 ---
 
-<section class="gallery-category">
+<section class="gallery-category" data-category={category}>
   <h2 class="category-title">{label}</h2>
   <div class="gallery-grid">
     {images.map((image) => (
@@ -24,7 +24,6 @@ const label = categoryLabels[category] || category;
         class="gallery-item"
         data-src={image.src}
         data-category={category}
-        onclick={`openLightbox('${image.src}', '${category}')`}
       >
         <img src={image.src} alt={image.alt} loading="lazy" />
       </button>
