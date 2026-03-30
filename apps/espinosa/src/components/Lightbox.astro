@@ -1,0 +1,209 @@
+---
+interface Props {
+	images: { src: string; alt: string; category: string }[];
+}
+
+const { images } = Astro.props;
+---
+
+<div id="lightbox" class="lightbox" data-images={JSON.stringify(images)}>
+	<div class="lightbox-overlay"></div>
+	<div class="lightbox-content">
+		<button class="lightbox-close" aria-label="Close">&times;</button>
+		<button class="lightbox-nav lightbox-prev" aria-label="Previous">&#8249;</button>
+		<img class="lightbox-image" src="" alt="" />
+		<button class="lightbox-nav lightbox-next" aria-label="Next">&#8250;</button>
+	</div>
+</div>
+
+<script type="module">
+	const imagesData = document.getElementById("lightbox")?.getAttribute("data-images");
+	const allImages = imagesData ? JSON.parse(imagesData) : [];
+	let categoryImages = [];
+	let currentIndex = -1;
+
+	const lightbox = document.getElementById("lightbox");
+	const overlay = lightbox?.querySelector(".lightbox-overlay");
+	const closeBtn = lightbox?.querySelector(".lightbox-close");
+	const prevBtn = lightbox?.querySelector(".lightbox-prev");
+	const nextBtn = lightbox?.querySelector(".lightbox-next");
+	const image = lightbox?.querySelector(".lightbox-image");
+
+	function open(src, category) {
+		categoryImages = allImages.filter((img) => img.category === category);
+		currentIndex = categoryImages.findIndex((img) => img.src === src);
+
+		updateImage();
+		lightbox.classList.add("open");
+		document.body.style.overflow = "hidden";
+		updateNavButtons();
+		preloadAdjacent();
+	}
+
+	function close() {
+		lightbox.classList.remove("open");
+		document.body.style.overflow = "";
+	}
+
+	function isOpen() {
+		return lightbox.classList.contains("open");
+	}
+
+	function prev() {
+		if (currentIndex > 0) {
+			currentIndex--;
+			updateImage();
+			updateNavButtons();
+			preloadAdjacent();
+		}
+	}
+
+	function next() {
+		if (currentIndex < categoryImages.length - 1) {
+			currentIndex++;
+			updateImage();
+			updateNavButtons();
+			preloadAdjacent();
+		}
+	}
+
+	function updateImage() {
+		if (currentIndex >= 0 && currentIndex < categoryImages.length) {
+			const img = categoryImages[currentIndex];
+			image.src = img.src;
+			image.alt = img.alt;
+		}
+	}
+
+	function updateNavButtons() {
+		prevBtn?.classList.toggle("hidden", currentIndex <= 0);
+		nextBtn?.classList.toggle("hidden", currentIndex >= categoryImages.length - 1);
+	}
+
+	function preloadAdjacent() {
+		const indices = [currentIndex - 1, currentIndex + 1];
+		indices.forEach((idx) => {
+			if (idx >= 0 && idx < categoryImages.length) {
+				const img = new Image();
+				img.src = categoryImages[idx].src;
+			}
+		});
+	}
+
+	// Event delegation for gallery items
+	document.addEventListener("click", (e) => {
+		const button = e.target.closest(".gallery-item");
+		if (!button) return;
+
+		const src = button.dataset.src;
+		const category = button.dataset.category;
+		if (src && category) {
+			e.preventDefault();
+			open(src, category);
+		}
+	});
+
+	overlay?.addEventListener("click", close);
+	closeBtn?.addEventListener("click", close);
+	prevBtn?.addEventListener("click", prev);
+	nextBtn?.addEventListener("click", next);
+
+	document.addEventListener("keydown", (e) => {
+		if (!isOpen()) return;
+		if (e.key === "Escape") close();
+		if (e.key === "ArrowLeft") prev();
+		if (e.key === "ArrowRight") next();
+	});
+</script>
+
+<style>
+	.lightbox {
+		display: none;
+		position: fixed;
+		inset: 0;
+		z-index: 1000;
+	}
+
+	.lightbox.open {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+
+	.lightbox-overlay {
+		position: absolute;
+		inset: 0;
+		background: rgba(0, 0, 0, 0.9);
+		cursor: pointer;
+	}
+
+	.lightbox-content {
+		position: relative;
+		max-width: 90vw;
+		max-height: 90vh;
+		display: flex;
+		align-items: center;
+		gap: 1rem;
+	}
+
+	.lightbox-image {
+		max-width: 80vw;
+		max-height: 85vh;
+		object-fit: contain;
+		border-radius: 4px;
+	}
+
+	.lightbox-close {
+		position: absolute;
+		top: -3rem;
+		right: 0;
+		background: none;
+		border: none;
+		color: white;
+		font-size: 2.5rem;
+		cursor: pointer;
+		line-height: 1;
+		padding: 0.5rem;
+	}
+
+	.lightbox-close:hover {
+		opacity: 0.8;
+	}
+
+	.lightbox-nav {
+		background: rgba(255, 255, 255, 0.1);
+		border: none;
+		color: white;
+		font-size: 3rem;
+		cursor: pointer;
+		padding: 1rem;
+		border-radius: 4px;
+		transition: background 0.2s;
+		min-width: 3rem;
+	}
+
+	.lightbox-nav:hover {
+		background: rgba(255, 255, 255, 0.2);
+	}
+
+	.lightbox-nav.hidden {
+		display: none;
+	}
+
+	@media (max-width: 768px) {
+		.lightbox-content {
+			gap: 0.5rem;
+			padding: 1rem;
+		}
+
+		.lightbox-nav {
+			font-size: 2rem;
+			padding: 0.5rem;
+			min-width: 2.5rem;
+		}
+
+		.lightbox-image {
+			max-width: 75vw;
+		}
+	}
+</style>
