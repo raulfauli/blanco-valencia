@@ -1,0 +1,93 @@
+---
+import Layout from "~/layouts/Layout.astro";
+import HeaderBar from "~/components/HeaderBar.astro";
+
+const baseUrl = import.meta.env.BASE_URL;
+---
+
+<Layout title="Sobre mi | Blanco Valencia" description="Conoce a Vicente Bravo, coach profesional certificado por la Asociacion Internacional de Coaching y Mentoring">
+  <HeaderBar />
+  <div class="container m-auto my-16 px-6">
+    <div class="mx-auto max-w-4xl">
+      <div class="mb-16 text-center">
+        <h1 class="mb-6 text-6xl font-black uppercase sm:text-7xl">Sobre mi</h1>
+        <p class="text-lg tracking-widest text-gray-600 uppercase">
+          Vicente Bravo — Coach Profesional
+        </p>
+      </div>
+
+      <div class="mb-20 grid gap-16 lg:grid-cols-2 lg:items-start">
+        <div>
+          <img
+            src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='700'%3E%3Crect fill='%23c0c0c0' width='600' height='700'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='sans-serif' font-size='24' fill='%23666'%3EFoto Vicente%3C/text%3E%3C/svg%3E"
+            alt="Vicente Bravo"
+            class="h-[500px] w-full object-cover contrast-110 grayscale"
+          />
+        </div>
+
+        <div class="space-y-6">
+          <p class="text-2xl font-bold leading-tight">
+            Ayudo a personas y equipos a descubrir sus fortalezas y construir un proposito real.
+          </p>
+
+          <p class="text-[15px] leading-relaxed text-gray-700">
+            Soy Vicente Bravo, coach profesional certificado por la Asociacion Internacional de Coaching y Mentoring.
+            Llevo mas de una decada acompanando a personas en su proceso de crecimiento personal y profesional.
+          </p>
+
+          <p class="text-[15px] leading-relaxed text-gray-700">
+            Mi enfoque se basa en la ciencia del bienestar humano. No creo en las soluciones rapidas ni en las
+            formulas magicas. Creo en el trabajo profundo, en las preguntas correctas y en el espacio seguro
+            donde cada persona puede explorar su verdadero potencial.
+          </p>
+
+          <p class="text-[15px] leading-relaxed text-gray-700">
+            Como fundador de Blanco Valencia, he disenado una metodologia que combina las fortalezas humanas
+            con un proposito real, ayudando a cientos de personas a encontrar claridad y direccion en sus vidas.
+          </p>
+        </div>
+      </div>
+
+      <div class="mb-20">
+        <h2 class="mb-10 text-3xl font-black uppercase">Formacion y Credenciales</h2>
+        <div class="space-y-4">
+          <div class="flex items-start gap-4 border-b border-gray-400 pb-4">
+            <div class="text-2xl font-black text-gray-400">01</div>
+            <div>
+              <div class="font-bold">Certificacion Internacional en Coaching</div>
+              <div class="text-sm text-gray-600">Asociacion Internacional de Coaching y Mentoring</div>
+            </div>
+          </div>
+          <div class="flex items-start gap-4 border-b border-gray-400 pb-4">
+            <div class="text-2xl font-black text-gray-400">02</div>
+            <div>
+              <div class="font-bold">Especializacion en Fortalezas Humanas</div>
+              <div class="text-sm text-gray-600">Positive Psychology Center — Universidad de Pennsylvania</div>
+            </div>
+          </div>
+          <div class="flex items-start gap-4 border-b border-gray-400 pb-4">
+            <div class="text-2xl font-black text-gray-400">03</div>
+            <div>
+              <div class="font-bold">Maestria en Desarrollo Organizacional</div>
+              <div class="text-sm text-gray-600">Universidad de Barcelona</div>
+            </div>
+          </div>
+          <div class="flex items-start gap-4 border-b border-gray-400 pb-4">
+            <div class="text-2xl font-black text-gray-400">04</div>
+            <div>
+              <div class="font-bold">Coaching Ejecutivo Avanzado</div>
+              <div class="text-sm text-gray-600">Escuela Europea de Coaching</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-black/5 px-10 py-16 text-center">
+        <blockquote class="mb-6 text-2xl font-bold italic leading-relaxed">
+          "El verdadero crecimiento no es cambiar quien eres, sino descubrir quien has sido siempre."
+        </blockquote>
+        <cite class="text-sm tracking-widest text-gray-600 uppercase">— Vicente Bravo</cite>
+      </div>
+    </div>
+  </div>
+</Layout>

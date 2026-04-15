@@ -1,0 +1,167 @@
+---
+interface PricingPlan {
+  name: string;
+  price: number;
+  duration: string;
+  description: string;
+  features: string[];
+  highlighted?: boolean;
+  badge?: string;
+}
+
+const plans: PricingPlan[] = [
+  {
+    name: "Primera Sesion",
+    price: 0,
+    duration: "60 minutos",
+    description: "Conoce el proceso sin compromiso",
+    features: [
+      "Evaluacion inicial completa",
+      "Identificacion de fortalezas",
+      "Definicion de objetivos",
+      "Sin compromiso de continuidad",
+    ],
+    badge: "Gratis",
+  },
+  {
+    name: "Sesion Individual",
+    price: 100,
+    duration: "60 minutos",
+    description: "Ideal para un tema especifico",
+    features: [
+      "Sesion de coaching online",
+      "Material de trabajo",
+      "Resumen de la sesion",
+      "Seguimiento por email",
+    ],
+  },
+  {
+    name: "Pack 4 Horas",
+    price: 50,
+    duration: "4 horas total",
+    description: "Proceso corto y enfocado",
+    features: [
+      "4 sesiones de 60 min",
+      "Evaluacion de fortalezas",
+      "Plan de accion personalizado",
+      "Soporte entre sesiones",
+    ],
+    highlighted: true,
+    badge: "Mas popular",
+  },
+  {
+    name: "Pack 8 Horas",
+    price: 140,
+    duration: "8 horas total",
+    description: "Transformacion personal profunda",
+    features: [
+      "8 sesiones de 60 min",
+      "Evaluacion completa",
+      "Plan de accion detallado",
+      "Seguimiento continuo",
+      "Material exclusivo",
+    ],
+  },
+  {
+    name: "Pack 12 Horas",
+    price: 270,
+    duration: "12 horas total",
+    description: "Acompanamiento integral de 3-6 meses",
+    features: [
+      "12 sesiones de 60 min",
+      "Evaluacion 360 grados",
+      "Plan de desarrollo completo",
+      "Seguimiento prioritario",
+      "Acceso a recursos premium",
+      "Revision trimestral",
+    ],
+  },
+];
+---
+
+<section class="py-20" {...Astro.props}>
+  <div class="mb-12 text-center">
+    <h2 class="mb-4 text-4xl font-black uppercase">Tarifas</h2>
+    <p class="mx-auto max-w-2xl text-lg text-gray-600">
+      Invierte en ti mismo. La primera sesion es gratuita para que puedas conocer el proceso sin riesgo.
+    </p>
+  </div>
+
+  <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
+    {
+      plans.map((plan) => (
+        <div
+          class={`relative p-6 transition-all hover:-translate-y-1 ${
+            plan.highlighted
+              ? "border-2 border-black bg-white shadow-lg"
+              : "border border-gray-400 bg-white/50"
+          }`}
+        >
+          {plan.badge && (
+            <div
+              class={`absolute -top-3 left-1/2 -translate-x-1/2 px-4 py-1 text-xs font-bold tracking-wider uppercase ${
+                plan.price === 0 ? "bg-emerald-600 text-white" : "bg-black text-[#e4e2dd]"
+              }`}
+            >
+              {plan.badge}
+            </div>
+          )}
+
+          <div class="mb-6">
+            <h3 class="mb-2 text-lg font-bold">{plan.name}</h3>
+            <p class="text-sm text-gray-600">{plan.description}</p>
+          </div>
+
+          <div class="mb-6">
+            <div class="flex items-baseline gap-1">
+              <span class="text-4xl font-black">{plan.price}</span>
+              <span class="text-lg text-gray-600">EUR</span>
+            </div>
+            <div class="text-sm text-gray-500">{plan.duration}</div>
+          </div>
+
+          <ul class="mb-8 space-y-3">
+            {plan.features.map((feature) => (
+              <li class="flex items-start gap-3 text-sm">
+                <svg
+                  class="mt-0.5 h-4 w-4 flex-shrink-0 text-emerald-600"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M5 13l4 4L19 7"
+                  />
+                </svg>
+                <span class="text-gray-700">{feature}</span>
+              </li>
+            ))}
+          </ul>
+
+          <a
+            href="#contacto"
+            class={`block w-full py-3 text-center text-sm font-bold tracking-wider uppercase transition-all ${
+              plan.highlighted
+                ? "bg-black text-[#e4e2dd] hover:bg-gray-800"
+                : "border-2 border-black text-black hover:bg-black hover:text-[#e4e2dd]"
+            }`}
+          >
+            {plan.price === 0 ? "Reservar ahora" : "Elegir plan"}
+          </a>
+        </div>
+      ))
+    }
+  </div>
+
+  <div class="mt-12 text-center">
+    <p class="mb-4 text-sm text-gray-600">
+      Todas las sesiones se realizan online via Zoom. Horarios flexibles de lunes a sabado.
+    </p>
+    <p class="text-sm text-gray-500">
+      * Los packs pueden dividirse en sesiones de 30, 45 o 60 minutos segun tu preferencia.
+    </p>
+  </div>
+</section>
