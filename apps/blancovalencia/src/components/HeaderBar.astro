@@ -1,13 +1,34 @@
 ---
 const baseUrl = import.meta.env.BASE_URL;
+
+const navItems = [
+  { href: `${baseUrl}`, label: "Inicio" },
+  { href: `${baseUrl}sobre-mi`, label: "Sobre mi" },
+  { href: `${baseUrl}crecimiento-personal`, label: "Crecimiento Personal" },
+  { href: `${baseUrl}equipos-empresas`, label: "Equipos y Empresas" },
+];
 ---
 
-<div class="flex items-center justify-between bg-black px-10 py-5">
-	<a href={baseUrl} class="text-blanco text-2xl font-black tracking-wide no-underline"> BLANCO VALENCIA </a>
-	<a
-		href={baseUrl}
-		class="text-blanco text-[13px] font-semibold tracking-wide uppercase no-underline transition-opacity hover:opacity-70"
-	>
-		← Volver al inicio
-	</a>
+<div class="flex items-center justify-between bg-black px-6 py-4 lg:px-10">
+  <a href={baseUrl} class="text-blanco text-xl font-black tracking-wide no-underline lg:text-2xl"> BLANCO VALENCIA </a>
+
+  <nav class="hidden items-center gap-6 lg:flex">
+    {
+      navItems.map((item) => (
+        <a
+          href={item.href}
+          class="text-blanco text-[13px] font-semibold tracking-wide uppercase no-underline transition-opacity hover:opacity-70"
+        >
+          {item.label}
+        </a>
+      ))
+    }
+  </nav>
+
+  <a
+    href={baseUrl}
+    class="text-blanco text-[13px] font-semibold tracking-wide uppercase no-underline transition-opacity hover:opacity-70 lg:hidden"
+  >
+    ← Volver
+  </a>
 </div>

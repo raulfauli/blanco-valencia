@@ -3,6 +3,7 @@ import { Image } from "astro:assets";
 import { getCollection } from "astro:content";
 import Layout from "~/layouts/Layout.astro";
 import Pillars from "../components/Pillars.astro";
+import PricingTable from "../components/PricingTable.astro";
 
 const posts = (await getCollection("cultura")).sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime());
 const baseUrl = import.meta.env.BASE_URL;
@@ -200,6 +201,9 @@ const postsWithImages = posts.map((post) => ({
 					</div>
 				</div>
 			</div>
+
+			<!-- Pricing Section -->
+			<PricingTable />
 
 			<!-- CTA Section -->
 			<section class="my-20 bg-black/5 px-16 py-20 text-center">
