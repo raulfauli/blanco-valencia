@@ -52,14 +52,14 @@ const baseUrl = import.meta.env.BASE_URL;
 				<p class="mx-auto max-w-2xl text-lg leading-relaxed text-gray-700">
 					{post.data.description}
 				</p>
-				<div class="mt-6 text-xs font-bold tracking-wider text-gray-600">
-					{post.data.pubDate.toLocaleDateString("es-ES", { day: "numeric", month: "short", year: "numeric" }).toUpperCase()}
+				<div class="mt-8 inline-block border-y-2 border-black px-6 py-2 text-sm font-bold tracking-widest uppercase">
+					{post.data.pubDate.toLocaleDateString("es-ES", { day: "numeric", month: "long", year: "numeric" })}
 				</div>
 			</div>
 
 			<Image src={post.data.image} alt={post.data.title} class="mb-12 h-[400px] w-full object-cover contrast-110" />
 
-			<article class="prose prose-lg mx-auto max-w-3xl">
+			<article class="prose prose-lg mx-auto max-w-3xl text-justify">
 				<Content />
 			</article>
 		</div>
