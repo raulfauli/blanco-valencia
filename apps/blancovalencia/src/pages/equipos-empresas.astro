@@ -1,155 +1,153 @@
 ---
-import Layout from "~/layouts/Layout.astro";
 import HeaderBar from "~/components/HeaderBar.astro";
+import Layout from "~/layouts/Layout.astro";
 
 const baseUrl = import.meta.env.BASE_URL;
 
 const services = [
-  {
-    title: "Coaching para Lideres",
-    description: "Desarrollo de capacidades de liderazgo basado en fortalezas, autenticidad y proposito.",
-    icon: "L",
-  },
-  {
-    title: "Coaching de Equipos",
-    description: "Facilitacion de sesiones grupales para mejorar la comunicacion, confianza y rendimiento colectivo.",
-    icon: "E",
-  },
-  {
-    title: "Cultura Organizacional",
-    description: "Diseno e implementacion de culturas centradas en el bienestar y el crecimiento sostenible.",
-    icon: "C",
-  },
-  {
-    title: "Talleres Formativos",
-    description: "Programas personalizados sobre fortalezas humanas, proposito y bienestar en el trabajo.",
-    icon: "T",
-  },
+	{
+		title: "Coaching para Lideres",
+		description: "Desarrollo de capacidades de liderazgo basado en fortalezas, autenticidad y proposito.",
+		icon: "L",
+	},
+	{
+		title: "Coaching de Equipos",
+		description: "Facilitacion de sesiones grupales para mejorar la comunicacion, confianza y rendimiento colectivo.",
+		icon: "E",
+	},
+	{
+		title: "Cultura Organizacional",
+		description: "Diseno e implementacion de culturas centradas en el bienestar y el crecimiento sostenible.",
+		icon: "C",
+	},
+	{
+		title: "Talleres Formativos",
+		description: "Programas personalizados sobre fortalezas humanas, proposito y bienestar en el trabajo.",
+		icon: "T",
+	},
 ];
 
 const results = [
-  { metric: "+35%", label: "Mejora en engagement de equipos" },
-  { metric: "+28%", label: "Reduccion en rotacion de talento" },
-  { metric: "+42%", label: "Incremento en productividad" },
-  { metric: "89%", label: "Satisfaccion de participantes" },
+	{ metric: "+35%", label: "Mejora en engagement de equipos" },
+	{ metric: "+28%", label: "Reduccion en rotacion de talento" },
+	{ metric: "+42%", label: "Incremento en productividad" },
+	{ metric: "89%", label: "Satisfaccion de participantes" },
 ];
 ---
 
 <Layout
-  title="Equipos y Empresas | Blanco Valencia"
-  description="Coaching corporativo para lideres y equipos. Transforma la cultura de tu organizacion desde las fortalezas humanas"
+	title="Equipos y Empresas | Blanco Valencia"
+	description="Coaching corporativo para lideres y equipos. Transforma la cultura de tu organizacion desde las fortalezas humanas"
 >
-  <HeaderBar />
-  <div class="container m-auto my-16 px-6">
-    <div class="mx-auto max-w-5xl">
-      <div class="mb-16 text-center">
-        <p class="mb-4 text-sm tracking-widest text-gray-600 uppercase">Coaching Corporativo</p>
-        <h1 class="mb-6 text-6xl font-black uppercase sm:text-7xl">Equipos y Empresas</h1>
-        <p class="mx-auto max-w-2xl text-lg leading-relaxed text-gray-700">
-          Transforma tu organizacion desde dentro. Desarrolla lideres autenticos y equipos de alto rendimiento
-          basados en el bienestar y el proposito compartido.
-        </p>
-      </div>
+	<HeaderBar />
+	<div class="container m-auto my-16 px-6">
+		<div class="mx-auto max-w-5xl">
+			<div class="mb-16 text-center">
+				<p class="mb-4 text-sm tracking-widest text-gray-600 uppercase">Coaching Corporativo</p>
+				<h1 class="mb-6 text-6xl font-black uppercase sm:text-7xl">Equipos y Empresas</h1>
+				<p class="mx-auto max-w-2xl text-lg leading-relaxed text-gray-700">
+					Transforma tu organizacion desde dentro. Desarrolla lideres autenticos y equipos de alto rendimiento basados
+					en el bienestar y el proposito compartido.
+				</p>
+			</div>
 
-      <div class="mb-20">
-        <img
-          src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1400' height='500'%3E%3Crect fill='%23c0c0c0' width='1400' height='500'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='sans-serif' font-size='24' fill='%23666'%3EEquipos y Empresas%3C/text%3E%3C/svg%3E"
-          alt="Equipos y Empresas"
-          class="mb-12 h-[400px] w-full object-cover contrast-110 grayscale"
-        />
+			<div class="mb-20">
+				<img
+					src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1400' height='500'%3E%3Crect fill='%23c0c0c0' width='1400' height='500'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='sans-serif' font-size='24' fill='%23666'%3EEquipos y Empresas%3C/text%3E%3C/svg%3E"
+					alt="Equipos y Empresas"
+					class="mb-12 h-[400px] w-full object-cover contrast-110"
+				/>
 
-        <div class="grid gap-12 lg:grid-cols-2">
-          <div>
-            <h2 class="mb-6 text-3xl font-black uppercase">Por que elegirnos</h2>
-            <div class="space-y-4 text-[15px] leading-relaxed text-gray-700">
-              <p>
-                Las organizaciones que invierten en el bienestar de sus personas obtienen resultados superiores.
-                No es teoria: la ciencia lo confirma una y otra vez.
-              </p>
-              <p>
-                Nuestro enfoque combina la evidencia cientifica con el arte del coaching. Trabajamos desde las
-                fortalezas, no desde las carencias. Construimos culturas donde las personas pueden dar lo mejor
-                de si mismas.
-              </p>
-              <p>
-                Cada programa se disena a medida, porque cada organizacion es unica. No ofrecemos soluciones
-                genericas: ofrecemos procesos que se adaptan a tus necesidades reales.
-              </p>
-            </div>
-          </div>
+				<div class="grid gap-12 lg:grid-cols-2">
+					<div>
+						<h2 class="mb-6 text-3xl font-black uppercase">Por que elegirnos</h2>
+						<div class="space-y-4 text-[15px] leading-relaxed text-gray-700">
+							<p>
+								Las organizaciones que invierten en el bienestar de sus personas obtienen resultados superiores. No es
+								teoria: la ciencia lo confirma una y otra vez.
+							</p>
+							<p>
+								Nuestro enfoque combina la evidencia cientifica con el arte del coaching. Trabajamos desde las
+								fortalezas, no desde las carencias. Construimos culturas donde las personas pueden dar lo mejor de si
+								mismas.
+							</p>
+							<p>
+								Cada programa se disena a medida, porque cada organizacion es unica. No ofrecemos soluciones genericas:
+								ofrecemos procesos que se adaptan a tus necesidades reales.
+							</p>
+						</div>
+					</div>
 
-          <div class="bg-black/5 p-10">
-            <h3 class="mb-8 text-xl font-black uppercase">Resultados medidos</h3>
-            <div class="grid grid-cols-2 gap-8">
-              {
-                results.map((result) => (
-                  <div>
-                    <div class="text-4xl font-black">{result.metric}</div>
-                    <div class="text-sm text-gray-600">{result.label}</div>
-                  </div>
-                ))
-              }
-            </div>
-          </div>
-        </div>
-      </div>
+					<div class="bg-black/5 p-10">
+						<h3 class="mb-8 text-xl font-black uppercase">Resultados medidos</h3>
+						<div class="grid grid-cols-2 gap-8">
+							{
+								results.map((result) => (
+									<div>
+										<div class="text-4xl font-black">{result.metric}</div>
+										<div class="text-sm text-gray-600">{result.label}</div>
+									</div>
+								))
+							}
+						</div>
+					</div>
+				</div>
+			</div>
 
-      <div class="mb-20">
-        <h2 class="mb-12 text-center text-4xl font-black uppercase">Servicios</h2>
-        <div class="grid gap-8 sm:grid-cols-2">
-          {
-            services.map((service) => (
-              <div class="flex gap-6 bg-white/50 p-8 transition-all hover:-translate-y-1 hover:shadow-lg">
-                <div class="flex h-16 w-16 flex-shrink-0 items-center justify-center bg-black text-2xl font-black text-[#e4e2dd]">
-                  {service.icon}
-                </div>
-                <div>
-                  <h3 class="mb-3 text-lg font-bold">{service.title}</h3>
-                  <p class="text-sm leading-relaxed text-gray-600">{service.description}</p>
-                </div>
-              </div>
-            ))
-          }
-        </div>
-      </div>
+			<div class="mb-20">
+				<h2 class="mb-12 text-center text-4xl font-black uppercase">Servicios</h2>
+				<div class="grid gap-8 sm:grid-cols-2">
+					{
+						services.map((service) => (
+							<div class="flex gap-6 bg-white/50 p-8 transition-all hover:-translate-y-1 hover:shadow-lg">
+								<div class="flex h-16 w-16 flex-shrink-0 items-center justify-center bg-black text-2xl font-black text-[#e4e2dd]">
+									{service.icon}
+								</div>
+								<div>
+									<h3 class="mb-3 text-lg font-bold">{service.title}</h3>
+									<p class="text-sm leading-relaxed text-gray-600">{service.description}</p>
+								</div>
+							</div>
+						))
+					}
+				</div>
+			</div>
 
-      <div class="grid gap-12 lg:grid-cols-2">
-        <div class="border-2 border-black p-10">
-          <h3 class="mb-6 text-2xl font-black uppercase">Proceso para Empresas</h3>
-          <ol class="space-y-4 text-[15px] leading-relaxed">
-            <li>
-              <strong>Diagnostico inicial gratuito.</strong> Analizamos la situacion actual de tu organizacion
-              y definimos objetivos claros.
-            </li>
-            <li>
-              <strong>Diseno del programa.</strong> Creamos un plan a medida que se ajusta a tus necesidades,
-              presupuesto y calendario.
-            </li>
-            <li>
-              <strong>Implementacion.</strong> Ejecutamos el programa con acompanamiento continuo y
-              medicion de resultados.
-            </li>
-            <li>
-              <strong>Seguimiento.</strong> Evaluamos el impacto y ajustamos para maximizar el retorno
-              de tu inversion.
-            </li>
-          </ol>
-        </div>
+			<div class="grid gap-12 lg:grid-cols-2">
+				<div class="border-2 border-black p-10">
+					<h3 class="mb-6 text-2xl font-black uppercase">Proceso para Empresas</h3>
+					<ol class="space-y-4 text-[15px] leading-relaxed">
+						<li>
+							<strong>Diagnostico inicial gratuito.</strong> Analizamos la situacion actual de tu organizacion y definimos
+							objetivos claros.
+						</li>
+						<li>
+							<strong>Diseno del programa.</strong> Creamos un plan a medida que se ajusta a tus necesidades, presupuesto
+							y calendario.
+						</li>
+						<li>
+							<strong>Implementacion.</strong> Ejecutamos el programa con acompanamiento continuo y medicion de resultados.
+						</li>
+						<li>
+							<strong>Seguimiento.</strong> Evaluamos el impacto y ajustamos para maximizar el retorno de tu inversion.
+						</li>
+					</ol>
+				</div>
 
-        <div class="bg-black px-10 py-10 text-[#e4e2dd]">
-          <h3 class="mb-6 text-2xl font-black uppercase">Hablemos de tu proyecto</h3>
-          <p class="mb-8 text-[15px] leading-relaxed">
-            Agenda una llamada gratuita para contarme sobre tu organizacion. Sin compromiso,
-            sin presion. Solo una conversacion honesta sobre como puedo ayudarte.
-          </p>
-          <a
-            href={`${baseUrl}contacto`}
-            class="inline-block w-full border-2 border-[#e4e2dd] px-8 py-4 text-center text-sm font-bold tracking-widest uppercase transition-all hover:bg-[#e4e2dd] hover:text-black"
-          >
-            Solicitar llamada gratuita
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
+				<div class="bg-black px-10 py-10 text-[#e4e2dd]">
+					<h3 class="mb-6 text-2xl font-black uppercase">Hablemos de tu proyecto</h3>
+					<p class="mb-8 text-[15px] leading-relaxed">
+						Agenda una llamada gratuita para contarme sobre tu organizacion. Sin compromiso, sin presion. Solo una
+						conversacion honesta sobre como puedo ayudarte.
+					</p>
+					<a
+						href={`${baseUrl}contacto`}
+						class="inline-block w-full border-2 border-[#e4e2dd] px-8 py-4 text-center text-sm font-bold tracking-widest uppercase transition-all hover:bg-[#e4e2dd] hover:text-black"
+					>
+						Solicitar llamada gratuita
+					</a>
+				</div>
+			</div>
+		</div>
+	</div>
 </Layout>
