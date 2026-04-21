@@ -10,13 +10,17 @@
 	--color-blanco: #e4e2dd;
 }
 
+.prose > h1:first-child {
+	display: none;
+}
+
 .prose ul > li::marker {
 	color: black;
 }
 
 /* Blockquotes styling */
 .prose blockquote {
-	border-left: 4px solid #000;
+	border-left: none;
 	padding-left: 1.5rem;
 	font-style: italic;
 	color: #374151;
