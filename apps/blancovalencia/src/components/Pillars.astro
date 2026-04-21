@@ -1,5 +1,6 @@
 ---
 const baseUrl = import.meta.env.BASE_URL;
+const currentPath = Astro.url.pathname;
 
 const pillars = [
 	{
@@ -32,16 +33,19 @@ const pillars = [
 <div class="mb-16">
 	<div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
 		{
-			pillars.map((pillar) => (
-				<a
-					href={pillar.href}
-					class="block bg-white/50 p-8 transition-all hover:-translate-y-1 hover:shadow-lg"
-				>
-					<div class="mb-4 text-4xl font-black text-gray-300">{pillar.step}</div>
-					<h3 class="mb-3 text-lg font-bold">{pillar.title}</h3>
-					<p class="text-sm leading-relaxed text-gray-600">{pillar.description}</p>
-				</a>
-			))
+			pillars.map((pillar) => {
+				const isActive = currentPath.replace(/\/$/, "") === pillar.href.replace(/\/$/, "");
+				return (
+					<a
+						href={pillar.href}
+						class={`block p-8 transition-all hover:-translate-y-1 hover:shadow-lg ${isActive ? "bg-black text-[#e4e2dd]" : "bg-white/50"}`}
+					>
+						<div class={`mb-4 text-4xl font-black ${isActive ? "text-[#e4e2dd]/30" : "text-gray-300"}`}>{pillar.step}</div>
+						<h3 class="mb-3 text-lg font-bold">{pillar.title}</h3>
+						<p class={`text-sm leading-relaxed ${isActive ? "text-[#e4e2dd]/70" : "text-gray-600"}`}>{pillar.description}</p>
+					</a>
+				);
+			})
 		}
 	</div>
 </div>
