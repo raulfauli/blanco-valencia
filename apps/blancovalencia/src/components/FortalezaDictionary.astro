@@ -1,33 +1,37 @@
 ---
 import { getCollection } from "astro:content";
 
-const fortalezas = await getCollection("fortalezas");
+const fortalezas = (await getCollection("fortalezas")).sort((a, b) =>
+	a.data.title.localeCompare(b.data.title, "es"),
+);
 const currentPath = Astro.url.pathname;
 const baseUrl = import.meta.env.BASE_URL;
 ---
 
 <section class="mt-16" id="diccionario">
 	<h3 class="mb-8 text-2xl font-bold tracking-wide uppercase">Diccionario de Fortalezas</h3>
-	<ul class="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6">
+	<div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
 		{
 			fortalezas.map((fortaleza) => {
 				const href = `${baseUrl}fortalezas/${fortaleza.id}`;
 				const isActive = currentPath.replace(/\/$/, "") === href.replace(/\/$/, "");
 
 				return (
-					<li>
-						<a
-							href={href}
-							title={fortaleza.data.title}
-							class={`block truncate border-2 px-4 py-3 text-center text-sm font-semibold uppercase transition-all ${
-								isActive ? "text-blanco border-black bg-black" : "hover:text-blanco border-black hover:bg-black"
-							}`}
-						>
+					<a
+						href={href}
+						class={`block p-6 transition-all hover:-translate-y-1 hover:shadow-lg ${
+							isActive ? "bg-black text-[#e4e2dd]" : "bg-white/50 hover:bg-white"
+						}`}
+					>
+						<div class={`mb-1 text-base font-bold uppercase ${isActive ? "text-[#e4e2dd]" : ""}`}>
 							{fortaleza.data.title}
-						</a>
-					</li>
+						</div>
+						<div class={`text-sm leading-relaxed ${isActive ? "text-[#e4e2dd]/70" : "text-gray-600"}`}>
+							{fortaleza.data.description}
+						</div>
+					</a>
 				);
 			})
 		}
-	</ul>
+	</div>
 </section>
