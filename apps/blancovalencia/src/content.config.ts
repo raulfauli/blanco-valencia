@@ -34,4 +34,15 @@ const pages = defineCollection({
 	}),
 });
 
-export const collections = { cultura, fortalezas, pages };
+const opiniones = defineCollection({
+	loader: glob({ base: "./src/content/opiniones", pattern: "**/*.{md,mdx}" }),
+	schema: ({ image }) =>
+		z.object({
+			name: z.string(),
+			role: z.string(),
+			stars: z.number().min(1).max(5).default(5),
+			avatar: image().optional(),
+		}),
+});
+
+export const collections = { cultura, fortalezas, pages, opiniones };

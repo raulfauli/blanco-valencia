@@ -1,6 +1,6 @@
 ---
 import { Image } from "astro:assets";
-import { getCollection } from "astro:content";
+import { getCollection, render } from "astro:content";
 import Layout from "~/layouts/Layout.astro";
 import Pillars from "../components/Pillars.astro";
 import PricingTable from "../components/PricingTable.astro";
@@ -15,6 +15,14 @@ const postsWithImages = posts.map((post) => ({
 		image: images[`../content/cultura/${post.id}.jpg`]?.default,
 	},
 }));
+
+const opiniones = (await getCollection("opiniones")).sort((a, b) => a.id.localeCompare(b.id));
+const opinionesWithContent = await Promise.all(
+	opiniones.map(async (opinion) => {
+		const { Content } = await render(opinion);
+		return { ...opinion, Content };
+	}),
+);
 ---
 
 <Layout>
@@ -108,98 +116,44 @@ const postsWithImages = posts.map((post) => ({
 				Trabajando para quienes prefieren ir despacio, pero llegar profundo
 			</div>
 			<div class="mb-16 grid grid-cols-1 gap-10 lg:grid-cols-2">
-				<!-- Testimonial 1 -->
-				<div class="flex gap-8 bg-white/50 p-10 transition-all hover:-translate-y-1 hover:shadow-2xl">
-					<div class="h-20 w-20 flex-shrink-0 overflow-hidden rounded-full bg-gray-400">
-						<img
-							src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80'%3E%3Ccircle cx='40' cy='40' r='40' fill='%23999'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='sans-serif' font-size='32' fill='%23666'%3EMG%3C/text%3E%3C/svg%3E"
-							alt="María García"
-							class="h-full w-full object-cover"
-						/>
-					</div>
-					<div class="flex-1">
-						<div class="mb-4 flex items-start justify-between">
-							<div class="flex-1">
-								<div class="mb-1 text-base font-bold">María García</div>
-								<div class="mb-3 text-[13px] text-gray-600">Directora de Marketing</div>
-								<div class="mb-4 flex gap-1">
-									<span class="text-lg">★</span>
-									<span class="text-lg">★</span>
-									<span class="text-lg">★</span>
-									<span class="text-lg">★</span>
-									<span class="text-lg">★</span>
+				{
+					opinionesWithContent.map(({ data, Content }) => {
+						const initials = data.name
+							.split(" ")
+							.slice(0, 2)
+							.map((w: string) => w[0])
+							.join("");
+						return (
+							<div class="flex gap-8 bg-white/50 p-10 transition-all hover:-translate-y-1 hover:shadow-2xl">
+								<div class="h-20 w-20 flex-shrink-0 overflow-hidden rounded-full bg-gray-400">
+									{data.avatar ? (
+										<Image src={data.avatar} alt={data.name} class="h-full w-full object-cover" />
+									) : (
+										<img
+											src={`data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80'%3E%3Ccircle cx='40' cy='40' r='40' fill='%23999'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='sans-serif' font-size='32' fill='%23666'%3E${initials}%3C/text%3E%3C/svg%3E`}
+											alt={data.name}
+											class="h-full w-full object-cover"
+										/>
+									)}
+								</div>
+								<div class="flex-1">
+									<div class="mb-4">
+										<div class="mb-1 text-base font-bold">{data.name}</div>
+										<div class="mb-3 text-[13px] text-gray-600">{data.role}</div>
+										<div class="mb-4 flex gap-1">
+											{Array.from({ length: data.stars }).map(() => (
+												<span class="text-lg">★</span>
+											))}
+										</div>
+									</div>
+									<div class="text-[15px] leading-relaxed text-gray-800">
+										<Content />
+									</div>
 								</div>
 							</div>
-						</div>
-						<div class="text-[15px] leading-relaxed text-gray-800">
-							"Trabajar con Vicente cambió mi perspectiva sobre lo que significa crecer profesionalmente. No busca
-							resultados rápidos sino transformaciones reales. Su enfoque en las fortalezas me ayudó a reconocer
-							capacidades que ni siquiera sabía que tenía."
-						</div>
-					</div>
-				</div>
-
-				<!-- Testimonial 2 -->
-				<div class="flex gap-8 bg-white/50 p-10 transition-all hover:-translate-y-1 hover:shadow-2xl">
-					<div class="h-20 w-20 flex-shrink-0 overflow-hidden rounded-full bg-gray-400">
-						<img
-							src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80'%3E%3Ccircle cx='40' cy='40' r='40' fill='%23999'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='sans-serif' font-size='32' fill='%23666'%3ECR%3C/text%3E%3C/svg%3E"
-							alt="Carlos Ruiz"
-							class="h-full w-full object-cover"
-						/>
-					</div>
-					<div class="flex-1">
-						<div class="mb-4 flex items-start justify-between">
-							<div class="flex-1">
-								<div class="mb-1 text-base font-bold">Carlos Ruiz</div>
-								<div class="mb-3 text-[13px] text-gray-600">Emprendedor</div>
-								<div class="mb-4 flex gap-1">
-									<span class="text-lg">★</span>
-									<span class="text-lg">★</span>
-									<span class="text-lg">★</span>
-									<span class="text-lg">★</span>
-									<span class="text-lg">★</span>
-								</div>
-							</div>
-						</div>
-						<div class="text-[15px] leading-relaxed text-gray-800">
-							"El proceso fue profundo y revelador. Vicente tiene la habilidad de hacer las preguntas correctas en el
-							momento correcto. Su paciencia y su enfoque pausado fueron exactamente lo que necesitaba para encontrar
-							claridad en medio del caos."
-						</div>
-					</div>
-				</div>
-
-				<!-- Testimonial 3 -->
-				<div class="flex gap-8 bg-white/50 p-10 transition-all hover:-translate-y-1 hover:shadow-2xl">
-					<div class="h-20 w-20 flex-shrink-0 overflow-hidden rounded-full bg-gray-400">
-						<img
-							src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80'%3E%3Ccircle cx='40' cy='40' r='40' fill='%23999'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='sans-serif' font-size='32' fill='%23666'%3EAM%3C/text%3E%3C/svg%3E"
-							alt="Ana Martínez"
-							class="h-full w-full object-cover"
-						/>
-					</div>
-					<div class="flex-1">
-						<div class="mb-4 flex items-start justify-between">
-							<div class="flex-1">
-								<div class="mb-1 text-base font-bold">Ana Martínez</div>
-								<div class="mb-3 text-[13px] text-gray-600">Psicóloga</div>
-								<div class="mb-4 flex gap-1">
-									<span class="text-lg">★</span>
-									<span class="text-lg">★</span>
-									<span class="text-lg">★</span>
-									<span class="text-lg">★</span>
-									<span class="text-lg">★</span>
-								</div>
-							</div>
-						</div>
-						<div class="text-[15px] leading-relaxed text-gray-800">
-							"Después de años probando diferentes métodos, finalmente encontré en este enfoque algo auténtico. No es
-							coaching tradicional; es una invitación a conocerte de verdad. Los resultados llegan, pero de una forma
-							más sólida y duradera."
-						</div>
-					</div>
-				</div>
+						);
+					})
+				}
 			</div>
 
 			<!-- Pricing Section -->

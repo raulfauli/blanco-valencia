@@ -13,108 +13,26 @@ if (!entry) {
 	throw new Error("No se encontró el contenido de proposito-real");
 }
 
-const { Content, headings } = await render(entry);
+const { Content } = await render(entry);
 ---
 
-<Layout>
+<Layout title="Propósito real | Blanco Valencia" description="Nuestro propósito real">
 	<HeaderBar />
 
-	<div class="relative flex h-[70vh] items-center justify-center overflow-hidden">
-		<Image src={propositoBg} alt="Propósito real" class="absolute inset-0 h-full w-full object-cover" />
+	<div class="container m-auto my-16 px-6">
+		<div class="mx-auto max-w-4xl">
+			<div class="mb-16 text-center">
+				<p class="mb-4 text-sm tracking-widest text-gray-600 uppercase">Nosotros</p>
+				<h1 class="mb-6 text-5xl font-black uppercase sm:text-6xl">Propósito real</h1>
+			</div>
 
-		<div class="absolute inset-0 bg-black/50"></div>
+			<div class="mb-16">
+				<Image src={propositoBg} alt="Propósito real" class="h-[400px] w-full object-cover" />
+			</div>
 
-		<div class="relative z-10 px-10 text-center">
-			<h1
-				class="mb-6 text-4xl leading-none font-black tracking-tight text-white uppercase sm:text-5xl md:text-6xl lg:text-7xl"
-			>
-				Propósito real
-			</h1>
-			<div class="mx-auto h-1 w-32 bg-white"></div>
-		</div>
-	</div>
-
-	<div class="container">
-		<div class="grid gap-8 md:grid-cols-3">
-			<article class="prose lg:prose-xl md:col-span-2">
+			<article class="prose lg:prose-xl max-w-none">
 				<Content />
 			</article>
-
-			<aside class="md:col-span-1">
-				<nav class="sticky top-20 self-start">
-					<ul class="space-y-2 text-sm">
-						{
-							headings.map((h) => (
-								<li class={`ml-${(h.depth - 2) * 4}`}>
-									<a class="toc-link" data-slug={h.slug} href={`#${h.slug}`}>
-										{h.text}
-									</a>
-								</li>
-							))
-						}
-					</ul>
-				</nav>
-			</aside>
 		</div>
 	</div>
-
-	<script type="module">
-		// TOC active link on scroll
-		document.addEventListener("DOMContentLoaded", () => {
-			const content = document.querySelector("article.prose");
-			if (!content) return;
-
-			const headingSelectors = "h1,h2,h3,h4,h5,h6";
-			const headings = Array.from(content.querySelectorAll(headingSelectors)).filter((h) => h.id);
-			const links = Array.from(document.querySelectorAll("a.toc-link"));
-			const linkById = Object.fromEntries(links.map((l) => [l.dataset.slug, l]));
-
-			function onScroll() {
-				const offset = 120; // pixels from top to consider
-				let activeId = null;
-
-				// If we're at (or very near) the bottom of the page, activate the last heading
-				const nearBottom = window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 80;
-				if (nearBottom && headings.length) {
-					activeId = headings[headings.length - 1].id;
-				} else {
-					for (let i = headings.length - 1; i >= 0; i--) {
-						const top = headings[i].getBoundingClientRect().top;
-						if (top <= offset) {
-							activeId = headings[i].id;
-							break;
-						}
-					}
-
-					// Fallback to first heading if none matched and we're near top
-					if (!activeId && headings.length) {
-						const firstTop = headings[0].getBoundingClientRect().top;
-						if (firstTop <= window.innerHeight) activeId = headings[0].id;
-					}
-				}
-
-				links.forEach((l) => l.classList.remove("font-bold"));
-				if (activeId && linkById[activeId]) {
-					linkById[activeId].classList.add("font-bold");
-				}
-			}
-
-			// Run on load and on scroll (throttle)
-			onScroll();
-			let ticking = false;
-			window.addEventListener(
-				"scroll",
-				() => {
-					if (!ticking) {
-						window.requestAnimationFrame(() => {
-							onScroll();
-							ticking = false;
-						});
-						ticking = true;
-					}
-				},
-				{ passive: true },
-			);
-		});
-	</script>
 </Layout>
